@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: ship
+    uniqueID: 576618129
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: people
+    uniqueID: 873595709
+    locked: 0
+  - name: props
+    uniqueID: 2744421653
     locked: 0
