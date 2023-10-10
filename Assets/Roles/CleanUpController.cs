@@ -18,7 +18,7 @@ public class CleanUpController : MonoBehaviour
     void Start()
     {
         inRange = false;
-        SquareBar = GetComponent<Image>();
+        //SquareBar = GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -32,6 +32,17 @@ public class CleanUpController : MonoBehaviour
         {
             total_happiness -= MAX_HAPPINESS * messyRate;
         }
+        
+        if (total_happiness > MAX_HAPPINESS)
+        {
+            total_happiness = MAX_HAPPINESS;    
+        }
+        if (total_happiness < 0)
+        {
+            total_happiness = 0;
+        }
+
+        Debug.Log(total_happiness / MAX_HAPPINESS); 
         SquareBar.fillAmount = total_happiness / MAX_HAPPINESS;
     }
 
@@ -41,7 +52,7 @@ public class CleanUpController : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Grabbing Mop");
+            //Debug.Log("Grabbing Mop");
             inRange = true;
         }
     }
@@ -50,7 +61,7 @@ public class CleanUpController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("All cleaned up");
+            //Debug.Log("All cleaned up");
             inRange = false;
         }
     }
