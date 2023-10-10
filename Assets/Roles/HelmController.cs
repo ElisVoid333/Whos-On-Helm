@@ -10,11 +10,14 @@ public class HelmController : MonoBehaviour
 
     public Text TimerText;
 
+    private bool inRange;
+
     // Start is called before the first frame update
     void Start()
     {
         TimeLeft = 240.0f; //4 minutes
         TimerOn = true;
+        inRange = false;
     }
 
     // Update is called once per frame
@@ -25,6 +28,10 @@ public class HelmController : MonoBehaviour
             if (TimeLeft > 0)
             {
                 TimeLeft -= Time.deltaTime;
+                if (inRange)
+                {
+                    TimeLeft -= Time.deltaTime;
+                }
             }
             else
             {
@@ -34,7 +41,31 @@ public class HelmController : MonoBehaviour
         }
         TimerText.text = "Countdown: " + TimeLeft.ToString("F0");
     }
-    
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log(collision.gameObject.tag);
+
+        if (collision.gameObject.tag == "Player")
+        {
+            //Debug.Log("IM DRIVING");
+            inRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            //Debug.Log("Bye bye");
+            inRange = false;
+        }
+    }
+}
+
+
+
+/*
     private void OnTriggerEvent2D(Collider2D collision)
     {
         Debug.Log(collision.gameObject.tag);
@@ -44,6 +75,6 @@ public class HelmController : MonoBehaviour
             Debug.Log("IM DRIVING");
             TimeLeft -= Time.deltaTime;
         }
-    }
-}
+    }*/ 
+
 
