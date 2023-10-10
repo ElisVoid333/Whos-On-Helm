@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class CleanUpController : MonoBehaviour
 {
     private const float MAX_HAPPINESS = 100f;
-    public float messyRate = 0.03f;
-    public float cleaningRate = 0.1f;
+    public float messyRate = 0.001f;
+    public float cleaningRate = 0.01f;
     public Image SquareBar;
 
     private bool inRange;
