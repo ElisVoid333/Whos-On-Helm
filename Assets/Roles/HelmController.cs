@@ -44,7 +44,7 @@ public class HelmController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //Debug.Log(collision.gameObject.tag);
+        Debug.Log(collision.gameObject.tag);
 
         if (collision.gameObject.tag == "Player")
         {
@@ -62,3 +62,19 @@ public class HelmController : MonoBehaviour
         }
     }
 }
+
+
+
+/*
+    private void OnTriggerEvent2D(Collider2D collision)
+    {
+        Debug.Log(collision.gameObject.tag);
+
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("IM DRIVING");
+            TimeLeft -= Time.deltaTime;
+        }
+    }*/ 
+
+
