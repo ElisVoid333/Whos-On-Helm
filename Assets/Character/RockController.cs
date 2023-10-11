@@ -7,7 +7,6 @@ public class RockController : MonoBehaviour
 {
     public float speed;
     public float damageRate = 15f;
-    public Image SquareBar;
     public HealthController health;
     private float x;
     private float y;
@@ -32,15 +31,14 @@ public class RockController : MonoBehaviour
     {
         if (inflictDamage)
         {
-            //SquareBar.fillAmount -= damageRate;
             health.total_health -= damageRate;
             inflictDamage = false;
         }
 
         if (myRectTransform.localPosition.x < lowerBound)
         {
-            x = 25;
-            y = Random.Range(-2.0f, 2.0f);
+            x = 10.0f;
+            y = Random.Range(-6.0f, 6.0f);
         }
         else
         {

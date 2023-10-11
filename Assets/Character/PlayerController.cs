@@ -8,7 +8,9 @@ public class PlayerController : MonoBehaviour
     //Movement Variables
     private float speed;
     private float inputX;
-    private float inputY;    
+    private float inputY;
+
+    public Collider2D playableArea;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,18 @@ public class PlayerController : MonoBehaviour
         transform.Translate(movement);
         inputX = 0;
         inputY = 0;
+
+        // Get player input (e.g., using Input.GetAxis) and calculate the new position.
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        Vector3 newPosition = transform.position + new Vector3(horizontalInput, verticalInput, 0) * speed * Time.deltaTime;
+
+
+        newPosition.x = Mathf.Clamp(newPosition.x, playableArea.bounds.min.x, playableArea.bounds.max.x);
+        newPosition.y = Mathf.Clamp(newPosition.y, playableArea.bounds.min.y, playableArea.bounds.max.y);
+
+        transform.position = newPosition;
+
     }
 
     /*
