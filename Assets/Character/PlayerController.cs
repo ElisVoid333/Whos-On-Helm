@@ -8,12 +8,7 @@ public class PlayerController : MonoBehaviour
     //Movement Variables
     private float speed;
     private float inputX;
-    private float inputY;
-
-    //Time Variables
-
-    //Role Variables
-    
+    private float inputY;    
 
     // Start is called before the first frame update
     void Start()
