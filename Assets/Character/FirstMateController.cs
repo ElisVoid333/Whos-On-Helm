@@ -13,7 +13,7 @@ public class FirstMateController : MonoBehaviour
     {
         position = new Vector2(0, 0);
         repairTask = new Vector2(-0.78f, -0.86f);
-        cleaningTask = new Vector2(1.98f, 1.25f);
+        cleaningTask = new Vector2(2.40f, 1.25f);
     }
 
     // Update is called once per frame
