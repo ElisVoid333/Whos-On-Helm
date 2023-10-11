@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         inputX = 0; inputY = 0;
-        speed = 0.05f;
+        speed = 0.005f;
         
     }
 
