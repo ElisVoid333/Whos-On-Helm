@@ -223,8 +223,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repairRate: 15
-  damageRate: 15
   SquareBar: {fileID: 565127989}
+  total_health: 10
 --- !u!61 &365180150
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -512,9 +512,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f2a5de098c49b439915cc2ffb6291c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.004
+  speed: 0.05
   damageRate: 15
   SquareBar: {fileID: 565127989}
+  health: {fileID: 2085186582}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,7 +703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.9245283, b: 0.08581421, a: 1}
+  m_Color: {r: 0.9254902, g: 0.009250521, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2141,8 +2142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repairRate: 15
-  damageRate: 15
   SquareBar: {fileID: 565127989}
+  total_health: 10
 --- !u!61 &2085186583
 BoxCollider2D:
   m_ObjectHideFlags: 0

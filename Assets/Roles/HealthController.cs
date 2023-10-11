@@ -11,7 +11,7 @@ public class HealthController : MonoBehaviour
 
     private bool inRange;
 
-    private float total_health = 10f;
+    public float total_health = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +48,6 @@ public class HealthController : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-            //Debug.Log("Grabbing Mop");
             inRange = true;
         }
     }
@@ -57,7 +56,6 @@ public class HealthController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            //Debug.Log("All cleaned up");
             inRange = false;
         }
 

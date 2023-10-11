@@ -8,6 +8,7 @@ public class RockController : MonoBehaviour
     public float speed;
     public float damageRate = 15f;
     public Image SquareBar;
+    public HealthController health;
     private float x;
     private float y;
     private float lowerBound;
@@ -31,7 +32,8 @@ public class RockController : MonoBehaviour
     {
         if (inflictDamage)
         {
-            SquareBar.fillAmount -= damageRate;
+            //SquareBar.fillAmount -= damageRate;
+            health.total_health -= damageRate;
             inflictDamage = false;
         }
 
@@ -46,10 +48,7 @@ public class RockController : MonoBehaviour
         }
 
         Vector2 movement = new Vector2(x, y);
-        transform.Translate(movement);
-
-        x = 0;
-        y = 0;
+        transform.position = movement;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
