@@ -12,7 +12,7 @@ public class FirstMateController : MonoBehaviour
     void Start()
     {
         position = new Vector2(0, 0);
-        repairTask = new Vector2(-0.78f, -0.86f);
+        repairTask = new Vector2(-2.12f, -1.10f);
         cleaningTask = new Vector2(2.40f, 1.25f);
     }
 

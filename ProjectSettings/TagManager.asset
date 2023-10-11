@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Helm
+  - Damage
+  - Ship
   layers:
   - Default
   - TransparentFX
