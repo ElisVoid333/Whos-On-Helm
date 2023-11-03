@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HelmController : MonoBehaviour
 {
+    public GameController gameCtrl;
     public float TimeLeft;
     public bool TimerOn;
 
@@ -37,6 +38,7 @@ public class HelmController : MonoBehaviour
             {
                 TimeLeft = 0;
                 TimerOn = false;
+                gameCtrl.setScene(2);
             }
         }
         TimerText.text = "Countdown: " + TimeLeft.ToString("F0");

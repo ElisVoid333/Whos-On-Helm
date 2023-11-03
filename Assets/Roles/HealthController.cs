@@ -9,9 +9,12 @@ public class HealthController : MonoBehaviour
     public float repairRate = 15f;
     public Image SquareBar;
 
-    private bool inRange;
+    public Collider2D ship;
 
-    public float total_health = 10f;
+    private bool inRange;
+    private bool hit;
+
+    public float total_health = 90f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,11 @@ public class HealthController : MonoBehaviour
         {
             total_health += repairRate;
             inRange = false;
+        }
+
+        if (hit)
+        {
+            total_health -= 0.5f;
         }
 
         if (total_health > MAX_HEALTH)
@@ -50,6 +58,11 @@ public class HealthController : MonoBehaviour
         {
             inRange = true;
         }
+
+        if (collision.gameObject.tag == "Damage")
+        {
+            hit = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -59,5 +72,9 @@ public class HealthController : MonoBehaviour
             inRange = false;
         }
 
+        if (collision.gameObject.tag == "Damage")
+        {
+            hit = false;
+        }
     }
 }
