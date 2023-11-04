@@ -10,6 +10,7 @@ public class CleanUpController : MonoBehaviour
     public float cleaningRate = 0.01f;
     public Image SquareBar;
 
+    private bool occupied;
     private bool inRange;
 
     private float total_happiness = 100f;
@@ -64,5 +65,10 @@ public class CleanUpController : MonoBehaviour
             //Debug.Log("All cleaned up");
             inRange = false;
         }
+    }
+
+    public void SetOccupied(bool state)
+    {
+        occupied = state;
     }
 }

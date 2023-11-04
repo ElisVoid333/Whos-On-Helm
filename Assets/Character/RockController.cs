@@ -12,7 +12,7 @@ public class RockController : MonoBehaviour
     private float y;
     private float lowerBound;
 
-    private bool inflictDamage;
+    public bool inflictDamage;
     RectTransform myRectTransform;
 
     // Start is called before the first frame update
@@ -29,12 +29,6 @@ public class RockController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inflictDamage)
-        {
-            health.total_health -= damageRate;
-            inflictDamage = false;
-        }
-
         if (myRectTransform.localPosition.x < lowerBound)
         {
             x = 10.0f;
