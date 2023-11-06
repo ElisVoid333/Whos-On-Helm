@@ -6,20 +6,25 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    //Health Variables
     private const float MAX_HEALTH = 100f;
-    private const float MAX_HAPPINESS = 100f;
+    public Image healthMeter;
+    public float total_health;
 
+    //Happiness Variables
+    private const float MAX_HAPPINESS = 100f;
+    public Image happinessMeter;
+    public float total_happiness;
+
+    //Controller Variables
     public RoleController cleaner;
     public RoleController canon;
     public RoleController repair;
     public float repairRate = 15f;
 
+    /*-- RANDOM EVENTS --*/
+    //Random Rocks
     public RockController rock;
-
-    public Image happinessMeter;
-    public float total_happiness;
-    public Image healthMeter;
-    public float total_health;
 
 
 
@@ -29,12 +34,12 @@ public class GameController : MonoBehaviour
         total_happiness = MAX_HAPPINESS;
         total_health = MAX_HEALTH;
 
-        total_happiness = happinessMeter.fillAmount;
-        total_health = healthMeter.fillAmount;
+        //total_happiness = happinessMeter.fillAmount;
+        //total_health = healthMeter.fillAmount;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (cleaner.inRange)
         {
@@ -68,9 +73,12 @@ public class GameController : MonoBehaviour
         if (total_happiness > MAX_HAPPINESS)
         {
             total_happiness = MAX_HAPPINESS;
-        }else if (total_happiness < 0)
+        }else if (total_happiness < 0f)
         {
-            total_happiness = 0;
+            total_happiness = 0f;
+        }
+        else if (total_happiness == 0f)
+        {
             //Mutany
             setScene(3);
         }
@@ -82,6 +90,9 @@ public class GameController : MonoBehaviour
         else if (total_health < 0)
         {
             total_health = 0;
+        }
+        else if (total_health == 0)
+        {
             //Sinks
             setScene(3);
         }

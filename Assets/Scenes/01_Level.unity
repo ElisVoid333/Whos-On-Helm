@@ -727,7 +727,7 @@ GameObject:
   - component: {fileID: 584776624}
   m_Layer: 0
   m_Name: ship wheel
-  m_TagString: Untagged
+  m_TagString: Role
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1683,7 +1683,7 @@ GameObject:
   - component: {fileID: 1187077685}
   m_Layer: 0
   m_Name: canon
-  m_TagString: Untagged
+  m_TagString: Role
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2046,13 +2046,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1187077681}
+  - {fileID: 597187540}
+  - {fileID: 2085186580}
   - {fileID: 584776622}
   - {fileID: 1031935674}
-  - {fileID: 442201631}
   - {fileID: 365180147}
-  - {fileID: 597187540}
-  - {fileID: 1187077681}
-  - {fileID: 2085186580}
+  - {fileID: 442201631}
   - {fileID: 1181612695}
   - {fileID: 1577644902}
   - {fileID: 2057825127}
@@ -2180,15 +2180,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e0b363b6ffff44b8b5420b44608ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthMeter: {fileID: 565127989}
+  total_health: 1000000
+  happinessMeter: {fileID: 1216688717}
+  total_happiness: 10000
   cleaner: {fileID: 597187545}
   canon: {fileID: 1187077685}
   repair: {fileID: 2085186585}
   repairRate: 15
   rock: {fileID: 442201634}
-  happinessMeter: {fileID: 1216688717}
-  total_happiness: 100
-  healthMeter: {fileID: 565127989}
-  total_health: 100
 --- !u!4 &1670624685
 Transform:
   m_ObjectHideFlags: 0
@@ -2284,7 +2284,7 @@ Transform:
   m_GameObject: {fileID: 1799898953}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.25832582, y: 0.6324274, z: -517.13275}
+  m_LocalPosition: {x: 0.99, y: 0.45, z: -517.13275}
   m_LocalScale: {x: 0.19457325, y: 0.19457325, z: 0.19457325}
   m_ConstrainProportionsScale: 0
   m_Children: []
