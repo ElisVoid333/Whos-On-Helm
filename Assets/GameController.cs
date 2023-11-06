@@ -26,6 +26,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        total_happiness = MAX_HAPPINESS;
+        total_health = MAX_HEALTH;
+
         total_happiness = happinessMeter.fillAmount;
         total_health = healthMeter.fillAmount;
     }
@@ -83,7 +86,7 @@ public class GameController : MonoBehaviour
             setScene(3);
         }
 
-        Debug.Log(total_happiness / MAX_HAPPINESS);
+       // Debug.Log(total_happiness / MAX_HAPPINESS);
         happinessMeter.fillAmount = total_happiness / MAX_HAPPINESS;
         healthMeter.fillAmount = total_health / MAX_HEALTH;
     }

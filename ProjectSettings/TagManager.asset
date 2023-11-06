@@ -7,6 +7,7 @@ TagManager:
   - Helm
   - Damage
   - Ship
+  - Role
   layers:
   - Default
   - TransparentFX
