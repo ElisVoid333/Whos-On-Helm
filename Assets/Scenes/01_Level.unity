@@ -2400,7 +2400,7 @@ MonoBehaviour:
   total_health: 1000000
   happinessMeter: {fileID: 1216688717}
   total_happiness: 10000
-  TimeLeft: 240
+  TimeLeft: 120
   TimerOn: 1
   TimerText: {fileID: 1181612696}
   cleaner: {fileID: 597187545}
