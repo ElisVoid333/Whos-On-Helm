@@ -20,6 +20,7 @@ public class HealthController : MonoBehaviour
     void Start()
     {
         inRange = false;
+        total_health = MAX_HEALTH; 
         //SquareBar = GetComponent<Image>();
     }
 
@@ -46,7 +47,7 @@ public class HealthController : MonoBehaviour
             total_health = 0;
         }
 
-        Debug.Log(total_health / MAX_HEALTH); 
+        //Debug.Log(total_health / MAX_HEALTH); 
         SquareBar.fillAmount = total_health / MAX_HEALTH;
     }
 

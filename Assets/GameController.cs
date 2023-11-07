@@ -6,33 +6,49 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    //Health Variables
     private const float MAX_HEALTH = 100f;
-    private const float MAX_HAPPINESS = 100f;
+    public Image healthMeter;
+    public float total_health;
 
+    //Happiness Variables
+    private const float MAX_HAPPINESS = 100f;
+    public Image happinessMeter;
+    public float total_happiness;
+
+    //Helm Variables
+    public float TimeLeft;
+    public bool TimerOn;
+    public Text TimerText;
+
+    //Controller Variables
     public RoleController cleaner;
     public RoleController canon;
     public RoleController repair;
     public float repairRate = 15f;
+    public RoleController helm;
 
+    /*-- RANDOM EVENTS --*/
+    //Random Rocks
     public RockController rock;
-
-    public Image happinessMeter;
-    public float total_happiness;
-    public Image healthMeter;
-    public float total_health;
-
-
+    public EnemyController enemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        total_happiness = happinessMeter.fillAmount;
-        total_health = healthMeter.fillAmount;
+        total_happiness = MAX_HAPPINESS;
+        total_health = MAX_HEALTH;
+
+        //Timer Variables Initialize
+        TimeLeft = 240.0f; //4 minutes
+        TimerOn = true;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        /*-- Roles --*/
+        //Cleaning Role
         if (cleaner.inRange)
         {
             total_happiness += 0.05f;
@@ -42,12 +58,14 @@ public class GameController : MonoBehaviour
             total_happiness -= 0.005f;
         }
 
+        //Repair Role
         if (repair.inRange)
         {
             total_health += 10;
             repair.inRange = false;
         }
 
+        //Canon Role
         if (canon.inRange)
         {
             canon.shooting = true;
@@ -57,21 +75,46 @@ public class GameController : MonoBehaviour
             canon.shooting = false;
         }
 
+        //Helm Role
+        if (TimerOn)
+        {
+            if (TimeLeft > 0)
+            {
+                TimeLeft -= Time.deltaTime;
+                if (helm.inRange)
+                {
+                    TimeLeft -= Time.deltaTime;
+                }
+            }
+            else
+            {
+                TimeLeft = 0;
+                TimerOn = false;
+            }
+        }
+
+        /*-- Random Events --*/
         if (rock.inflictDamage)
         {
             total_health -= 0.02f;
         }
 
+        /*-- Outputable Variables --*/
+        //Happiness
         if (total_happiness > MAX_HAPPINESS)
         {
             total_happiness = MAX_HAPPINESS;
-        }else if (total_happiness < 0)
+        }else if (total_happiness < 0f)
         {
-            total_happiness = 0;
+            total_happiness = 0f;
+        }
+        else if (total_happiness == 0f)
+        {
             //Mutany
             setScene(3);
         }
 
+        //Health
         if (total_health > MAX_HEALTH)
         {
             total_health = MAX_HEALTH;
@@ -79,11 +122,20 @@ public class GameController : MonoBehaviour
         else if (total_health < 0)
         {
             total_health = 0;
+        }
+        else if (total_health == 0)
+        {
             //Sinks
             setScene(3);
         }
 
-        Debug.Log(total_happiness / MAX_HAPPINESS);
+        //Time
+        if (TimerOn == false)
+        {
+            setScene(2);
+        }
+        // Debug.Log(total_happiness / MAX_HAPPINESS);
+        TimerText.text = "Countdown: " + TimeLeft.ToString("F0");
         happinessMeter.fillAmount = total_happiness / MAX_HAPPINESS;
         healthMeter.fillAmount = total_health / MAX_HEALTH;
     }
