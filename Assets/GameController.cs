@@ -74,6 +74,7 @@ public class GameController : MonoBehaviour
         {
             canon.shooting = false;
         }
+
         //Helm Role
         if (TimerOn)
         {
