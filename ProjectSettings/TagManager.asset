@@ -7,6 +7,10 @@ TagManager:
   - Helm
   - Damage
   - Ship
+  - Role
+  - Enemy
+  - Canonball
+  - Enemy_canonball
   layers:
   - Default
   - TransparentFX

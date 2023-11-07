@@ -19,6 +19,7 @@ public class CleanUpController : MonoBehaviour
     void Start()
     {
         inRange = false;
+        total_happiness = MAX_HAPPINESS;
         //SquareBar = GetComponent<Image>();
     }
 
@@ -43,7 +44,7 @@ public class CleanUpController : MonoBehaviour
             total_happiness = 0;
         }
 
-        Debug.Log(total_happiness / MAX_HAPPINESS); 
+        //Debug.Log(total_happiness / MAX_HAPPINESS); 
         SquareBar.fillAmount = total_happiness / MAX_HAPPINESS;
     }
 

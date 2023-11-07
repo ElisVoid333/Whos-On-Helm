@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private float speed;
     private float inputX;
     private float inputY;
+    private bool moveable;
 
     public Collider2D playableArea;
 
@@ -17,12 +19,21 @@ public class PlayerController : MonoBehaviour
     {
         inputX = 0; inputY = 0;
         speed = 0.005f;
-        
+        moveable = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (moveable)
+        {
+            speed = 0.005f;
+        }
+        if (moveable == false)
+        {
+            speed = 0f;
+        }
+
         if (Input.GetKey(KeyCode.W))
         {
             inputY += speed;
@@ -60,23 +71,25 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    /*
-    //Stop players from moving until role is complete
-    private void RoleWorking()
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        speed = 0;
-    }
-
-    //Collisions to Do Roles
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        //Debug.Log(collision.gameObject.tag);
-
-        //Helm Role: Steering makes time go down faster
-        if (collision.gameObject.tag == "Helm")
+        if (collision.gameObject.tag == "Role") 
         {
-            
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log(collision.gameObject.tag);
+                //Interact with role
+                if (moveable)
+                {
+                    Debug.Log("Interacting with role");
+                    moveable = false;
+                }
+                if (moveable == false)
+                {
+                    Debug.Log("Leaving role");
+                    moveable = true;
+                }
+            }
         }
     }
-    */
 }
