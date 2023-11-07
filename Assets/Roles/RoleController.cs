@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoleController : MonoBehaviour
 {
-
+    //Canon Role Variables
     public bool inRange;
     public GameObject ball;
     public bool shooting;
@@ -12,6 +12,8 @@ public class RoleController : MonoBehaviour
 
     private float y;
     private float x;
+
+
 
     // Start is called before the first frame update
     void Start()

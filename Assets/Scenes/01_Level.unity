@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 584776623}
   - component: {fileID: 584776626}
   - component: {fileID: 584776625}
-  - component: {fileID: 584776624}
+  - component: {fileID: 584776627}
   m_Layer: 0
   m_Name: ship wheel
   m_TagString: Role
@@ -799,22 +799,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &584776624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584776621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df07681407e92f442b946655458e86da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameCtrl: {fileID: 1670624684}
-  TimeLeft: 0
-  TimerOn: 0
-  TimerText: {fileID: 1181612696}
 --- !u!61 &584776625
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -887,6 +871,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &584776627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584776621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e9d5941fbefe7244853b4654e2979e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inRange: 0
+  ball: {fileID: 0}
+  shooting: 0
+  continuous: 0
 --- !u!1 &597187539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,7 +1172,7 @@ GameObject:
   - component: {fileID: 712109350}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: Canonball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1286,9 +1286,10 @@ GameObject:
   m_Component:
   - component: {fileID: 879100045}
   - component: {fileID: 879100044}
+  - component: {fileID: 879100046}
   m_Layer: 0
   m_Name: enemy_ship
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1361,6 +1362,51 @@ Transform:
   - {fileID: 1545388121}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &879100046
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879100043}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 19.2, y: 10.8}
+    newSize: {x: 19.2, y: 10.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 19.2, y: 10.8}
+  m_EdgeRadius: 0
 --- !u!1 &893665129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,8 +1754,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -133.44, y: 29.23999}
-  m_SizeDelta: {x: 139.82, y: 27.14}
+  m_AnchoredPosition: {x: -99.900024, y: 29.23999}
+  m_SizeDelta: {x: 221.13, y: 27.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1181612696
 MonoBehaviour:
@@ -2354,11 +2400,16 @@ MonoBehaviour:
   total_health: 1000000
   happinessMeter: {fileID: 1216688717}
   total_happiness: 10000
+  TimeLeft: 240
+  TimerOn: 1
+  TimerText: {fileID: 1181612696}
   cleaner: {fileID: 597187545}
   canon: {fileID: 1187077685}
   repair: {fileID: 2085186585}
   repairRate: 15
+  helm: {fileID: 584776627}
   rock: {fileID: 442201634}
+  enemy: {fileID: 0}
 --- !u!4 &1670624685
 Transform:
   m_ObjectHideFlags: 0
@@ -2529,7 +2580,7 @@ GameObject:
   - component: {fileID: 1886141334}
   m_Layer: 0
   m_Name: Circle (1)
-  m_TagString: Untagged
+  m_TagString: Canonball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
