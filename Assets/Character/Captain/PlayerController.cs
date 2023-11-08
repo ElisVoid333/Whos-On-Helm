@@ -73,58 +73,37 @@ public class PlayerController : MonoBehaviour
         // inputX = 0;
         //inputY = 0;
 
-        // Get input for player movement
-        //float horizontalInput = Input.GetAxis("Horizontal");
-        //float verticalInput = Input.GetAxis("Vertical");
+      
 
-        //// Calculate the player's new position
-        //Vector3 newPosition = transform.position + new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime;
+        //BORDER OF SHIPS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        //// Check if the new position is outside any colliders with the "border" tag
-        //Collider2D[] colliders = Physics2D.OverlapCircleAll(newPosition, 0.1f);
-        //foreach (Collider2D collider in colliders)
-        //{
-        //    if (collider.CompareTag("Border"))
-        //    {
-        //        // If the new position is outside a border collider, clamp the position
-        //        newPosition = new Vector3(
-        //            Mathf.Clamp(newPosition.x, collider.bounds.min.x, collider.bounds.max.x),
-        //            Mathf.Clamp(newPosition.y, collider.bounds.min.y, collider.bounds.max.y),
-        //            transform.position.z
-        //        );
-        //    }
-        //}
+       float horizontalInput = inputX;
+        float verticalInput = inputY;
 
-        //// Apply the new position to the player
-        //transform.position = newPosition;
+        // Calculate the player's new position
+        Vector3 newPosition = transform.position + new Vector3(horizontalInput, verticalInput, 0) * speed * Time.deltaTime;
 
-        // Get input for player movement
-        //float horizontalInput = Input.GetAxis("Horizontal");
-        //float verticalInput = Input.GetAxis("Vertical");
+        // Check if the new position is inside or overlapping any colliders with the "border" tag
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(newPosition, 0.1f);
+        bool canMove = true;
 
-        //// Calculate the player's new position
-        //Vector3 newPosition = transform.position + new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime;
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("Border"))
+            {
+                // If the new position is inside or overlapping a border collider, prevent movement
+                canMove = false;
+                break;
+            }
+        }
 
-        //// Check if the new position is inside or overlapping any colliders with the "border" tag
-        //Collider2D[] colliders = Physics2D.OverlapCircleAll(newPosition, 0.1f);
-        //bool canMove = true;
+        // Apply the new position to the player if movement is allowed
+        if (canMove)
+        {
+            transform.position = newPosition;
+        }
 
-        //foreach (Collider2D collider in colliders)
-        //{
-        //    if (collider.CompareTag("Border"))
-        //    {
-        //        // If the new position is inside or overlapping a border collider, prevent movement
-        //        canMove = false;
-        //        break;
-        //    }
-        //}
-
-        //// Apply the new position to the player if movement is allowed
-        //if (canMove)
-        //{
-        //    transform.position = newPosition;
-        //}
-
+        //BORDER OF SHIPS END~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
     }
