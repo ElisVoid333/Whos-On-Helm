@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
     public RoleController repair;
     public float repairRate = 15f;
     public RoleController helm;
+    private int captain;
 
     /*-- RANDOM EVENTS --*/
     //Random Rocks
@@ -54,14 +55,14 @@ public class GameController : MonoBehaviour
         if (cleaner.inRange)
         {
             total_happiness += 0.05f;
-            //cleaner.transform.GetChild(0).gameObject.SetActive(true);
+            cleaner.transform.GetChild(0).gameObject.SetActive(true);
         }
         else
         {
             total_happiness -= 0.005f;
-            /*cleaner.transform.GetChild(0).gameObject.SetActive(false);
+            cleaner.transform.GetChild(0).gameObject.SetActive(false);
             cleaner.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
-            cleaner.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);*/
+            cleaner.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
         }
 
         if (cleaner.crewInRange)
@@ -80,9 +81,9 @@ public class GameController : MonoBehaviour
         }
         else 
         {
-            //repair.transform.GetChild(0).gameObject.SetActive(false);
-            //repair.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
-            //repair.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
+            repair.transform.GetChild(0).gameObject.SetActive(false);
+            repair.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
+            repair.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
         }
 
         if (repair.crewInRange)
@@ -93,6 +94,17 @@ public class GameController : MonoBehaviour
 
         //Canon Role
         if (canon.inRange)
+        {
+            canon.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            canon.transform.GetChild(1).gameObject.SetActive(false);
+            canon.transform.GetChild(1).GetChild(1).GetChild(1).gameObject.SetActive(false);
+            canon.transform.GetChild(1).GetChild(1).GetChild(2).gameObject.SetActive(false);
+        }
+
+        if (canon.crewInRange)
         {
             canon.shooting = true;
         }
@@ -117,6 +129,14 @@ public class GameController : MonoBehaviour
                 TimeLeft = 0;
                 TimerOn = false;
             }
+        }
+        if (helm.inRange)
+        {
+            helm.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else
+        {
+            helm.transform.GetChild(0).gameObject.SetActive(false);
         }
 
         /*-- Random Events --*/
@@ -183,5 +203,16 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene("07_LoseScene");
         }
+    }
+
+    public void setCaptain(int num)
+    {
+        PlayerPrefs.SetInt("Captain", num);
+
+    }
+
+    public void getCaptain(string name)
+    {
+        captain = PlayerPrefs.GetInt(name);
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class RoleController : MonoBehaviour
@@ -9,7 +10,7 @@ public class RoleController : MonoBehaviour
     public bool crewInRange;
     public GameObject ball;
     public bool shooting;
-    public bool continuous;
+    public TextMeshProUGUI instructions;
 
     private float y;
     //private float x;
@@ -54,12 +55,13 @@ public class RoleController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             //Debug.Log("Grabbing Mop");
-            
-            if (Input.GetKeyDown(KeyCode.E))
+            instructions.gameObject.SetActive(true);
+            inRange = true;
+            /*if (Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log(collision.gameObject.tag);
                 inRange = true;
-            }
+            }*/
         } else if (collision.gameObject.tag == "Crew")
         {
             crewInRange = true;
@@ -72,6 +74,7 @@ public class RoleController : MonoBehaviour
         {
             //Debug.Log("All cleaned up");
             inRange = false;
+            instructions.gameObject.SetActive(false);
         } else if (collision.gameObject.tag == "Crew")
         {
             crewInRange = false;

@@ -12,9 +12,14 @@ public class PlayerController : MonoBehaviour
     private float inputY;
     private bool moveable;
 
-    public Collider2D playableArea;
-    
- 
+    //public Collider2D playableArea;
+
+    private Vector2 position;
+    private Vector2 cleaningTask;
+    private Vector2 repairTask;
+    private Vector2 canonTask;
+    private Vector2 helmTask;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,13 +28,11 @@ public class PlayerController : MonoBehaviour
         speed = 0.005f;
         moveable = true;
 
-      
-
-
-        //position = new Vector2(0, 0);
-        //repairTask = new Vector2(-2.12f, -1.10f);
-        //cleaningTask = new Vector2(2.50f, 1.25f);
-
+        position = new Vector2(0, 0);
+        repairTask = new Vector2(5.47f, 0.08f);
+        cleaningTask = new Vector2(-2.46f, 1.64f);
+        canonTask = new Vector2(1.24f, -1.6f);
+        helmTask = new Vector2(-6.14f, 0.16f);
 
     }
 
@@ -126,22 +129,31 @@ public class PlayerController : MonoBehaviour
         //}
 
 
-
     }
 
-    //public void moveCaptain(string role)
-    //{
-    //    if (role == "cleaner")
-    //    {
-    //        position = cleaningTask;
-    //        transform.position = position;
-    //    }
-    //    else if (role == "repair")
-    //    {
-    //        position = repairTask;
-    //        transform.position = position;
-    //    }
-    //}
+    public void moveCaptain(string role)
+    {
+        if (role == "cleaner")
+        {
+            position = cleaningTask;
+            transform.position = position;
+        }
+        else if (role == "repair")
+        {
+            position = repairTask;
+            transform.position = position;
+        }
+        else if (role == "canon")
+        {
+            position = canonTask;
+            transform.position = position;
+        }
+        else if (role == "helm")
+        {
+            position = helmTask;
+            transform.position = position;
+        }
+    }
 
 
 
@@ -150,7 +162,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Role") 
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            /*if (Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log(collision.gameObject.tag);
                 //Interact with role
@@ -164,7 +176,7 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Leaving role");
                     moveable = true;
                 }
-            }
+            }*/
         }
     }
 }
