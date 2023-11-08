@@ -14,6 +14,10 @@ public class TiltController : MonoBehaviour
     private GameObject player;
     Vector3[] initial_positions;
 
+    public float moveSpeed = 5f;
+    public bool canMove;
+    public string boundaryTag = "Border"; // Use the tag you assigned to your colliders.
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +30,39 @@ public class TiltController : MonoBehaviour
 
         initial_positions = new Vector3[roles.Length];
         initial_positions = setInitialPositions(roles, initial_positions);
+    }
+
+    void Update()
+    {
+        canMove = true;
+        // Get input for player movement
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        // Calculate the player's new position
+        Vector3 newPosition = player.transform.position + new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime;
+
+        // Check if the new position is inside or overlapping any colliders with the "border" tag
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(newPosition, 0.1f);
+
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("Border"))
+            {
+                // If the new position is inside or overlapping a border collider, prevent movement
+                canMove = false;
+                break;
+            }
+        }
+
+        // Apply the new position to the player if movement is allowed
+        if (canMove)
+        {
+            player.transform.position = newPosition;
+        }
+
+        canMove = true;
     }
 
     // Update is called once per frame
@@ -45,15 +82,23 @@ public class TiltController : MonoBehaviour
         //Player Move tilt Directions
         //Tilt Left/Up
         //Tilt Left/Up
-        if (tiltDirection == 1f)
+
+
+        if (canMove == true)
         {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.03f, player.transform.position.z);
+            if (tiltDirection == 1f)
+            {
+                //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.03f, player.transform.position.z);
+
+            }
+            //Tilt Right/Down
+            if (tiltDirection == 3f)
+            {
+                //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.03f, player.transform.position.z);
+            }
+
         }
-        //Tilt Right/Down
-        if (tiltDirection == 3f)
-        {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.03f, player.transform.position.z);
-        }
+
 
         // Roles tilt positions
         //Neutral
@@ -87,6 +132,8 @@ public class TiltController : MonoBehaviour
                 roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y - 0.2f, initial_positions[i].z);
             }
         }
+
+       
     }
 
     protected float setTilt(float seconds)
