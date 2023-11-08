@@ -25,9 +25,9 @@ public class PlayerController : MonoBehaviour
         speed = 0.005f;
         moveable = true;
         
-        position = new Vector2(0, 0);
-        repairTask = new Vector2(-2.12f, -1.10f);
-        cleaningTask = new Vector2(2.50f, 1.25f);
+        //position = new Vector2(0, 0);
+        //repairTask = new Vector2(-2.12f, -1.10f);
+        //cleaningTask = new Vector2(2.50f, 1.25f);
 
 
     }
@@ -126,19 +126,19 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void moveCaptain(string role)
-    {
-        if (role == "cleaner")
-        {
-            position = cleaningTask;
-            transform.position = position;
-        }
-        else if (role == "repair")
-        {
-            position = repairTask;
-            transform.position = position;
-        }
-    }
+    //public void moveCaptain(string role)
+    //{
+    //    if (role == "cleaner")
+    //    {
+    //        position = cleaningTask;
+    //        transform.position = position;
+    //    }
+    //    else if (role == "repair")
+    //    {
+    //        position = repairTask;
+    //        transform.position = position;
+    //    }
+    //}
 
 
 
