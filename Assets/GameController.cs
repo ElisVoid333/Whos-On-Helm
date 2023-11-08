@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour
                 total_happiness -= 0.005f;
                 cleaner.transform.GetChild(0).gameObject.SetActive(false);
                 cleaner.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
-                cleaner.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
+                //cleaner.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
             }
 
             if (cleaner.crewInRange)
@@ -80,18 +80,19 @@ public class GameController : MonoBehaviour
             if (repair.inRange)
             {
                 repair.transform.GetChild(0).gameObject.SetActive(true);
+                total_health += 10;
             }
             else
             {
                 repair.transform.GetChild(0).gameObject.SetActive(false);
                 repair.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
-                repair.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
+                //repair.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
             }
 
             if (repair.crewInRange)
             {
                 total_health += 10;
-                repair.inRange = false;
+                //repair.inRange = false;
             }
 
             //Canon Role
@@ -103,7 +104,7 @@ public class GameController : MonoBehaviour
             {
                 canon.transform.GetChild(1).gameObject.SetActive(false);
                 canon.transform.GetChild(1).GetChild(1).GetChild(1).gameObject.SetActive(false);
-                canon.transform.GetChild(1).GetChild(1).GetChild(2).gameObject.SetActive(false);
+                //canon.transform.GetChild(1).GetChild(1).GetChild(2).gameObject.SetActive(false);
             }
 
             if (canon.crewInRange)
