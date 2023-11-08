@@ -194,7 +194,7 @@ public class GameController : MonoBehaviour
     public void setScene(int i)
     {
         if (i == 0) { 
-            SceneManager.LoadScene("01_Level1"); 
+            SceneManager.LoadScene("dani_test"); 
         }
         else if (i == 1)
         {
@@ -216,8 +216,9 @@ public class GameController : MonoBehaviour
 
     }
 
-    public void getCaptain(string name)
+    public int getCaptain(string name)
     {
         captain = PlayerPrefs.GetInt(name);
+        return captain;
     }
 }

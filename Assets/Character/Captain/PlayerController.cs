@@ -20,6 +20,19 @@ public class PlayerController : MonoBehaviour
     private Vector2 canonTask;
     private Vector2 helmTask;
 
+    private int captainSelected;
+    public GameController game;
+    public SpriteRenderer spriteRenderer;
+    public Sprite maleStatic;
+    public Sprite femaleStatic;
+    public Sprite neutralStatic;
+
+    //Player Animation
+    Animator animator;
+    string currState;
+    string CAP_STATIC = "";
+    string CAP_WALK = "";
+    string CAP_INTERACT = "";
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +47,43 @@ public class PlayerController : MonoBehaviour
         canonTask = new Vector2(1.24f, -1.6f);
         helmTask = new Vector2(-6.14f, 0.16f);
 
+        captainSelected = game.getCaptain("Captain");
+
+        //Animation & Captain selection
+        if (captainSelected == 0)
+        {
+            spriteRenderer.sprite = maleStatic;
+            CAP_STATIC = "Cap_Static";
+            CAP_WALK = "Cap_Walk";
+            CAP_INTERACT = "Cap_Interact";
+        }
+        else if (captainSelected == 1)
+        {
+            spriteRenderer.sprite = femaleStatic;
+            CAP_STATIC = "CapF_Static";
+            CAP_WALK = "CapF_Walk";
+            CAP_INTERACT = "CapF_Interact";
+        }
+        else if (captainSelected == 2)
+        {
+            spriteRenderer.sprite = neutralStatic;
+            CAP_STATIC = "CapN_Static";
+            CAP_WALK = "CapN_Walk";
+            CAP_INTERACT = "CapN_Interact";
+        }
+        animator = gameObject.GetComponent<Animator>();
+    }
+
+    //Change Animation
+    private void ChangeAnimationState(string newState)
+    {
+        if (newState == currState)
+        {
+            return;
+        }
+
+        animator.Play(newState);
+        currState = newState;
     }
 
     // Update is called once per frame
@@ -51,20 +101,45 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             inputY += speed;
+            ChangeAnimationState(CAP_WALK);
             //if tilt is up, speed up
             //get tiltDirection from other script???
         }
         if (Input.GetKey(KeyCode.S))
         {
             inputY -= speed;
+            ChangeAnimationState(CAP_WALK);
         }
         if (Input.GetKey(KeyCode.A))
         {
             inputX -= speed;
+            ChangeAnimationState(CAP_WALK);
+            spriteRenderer.flipX = true;
         }
         if (Input.GetKey(KeyCode.D))
         {
             inputX += speed;
+            ChangeAnimationState(CAP_WALK);
+            spriteRenderer.flipX = false;
+        }
+        //Key Up - change back to static animation
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            ChangeAnimationState(CAP_STATIC);
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            ChangeAnimationState(CAP_STATIC);
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            ChangeAnimationState(CAP_STATIC);
+            spriteRenderer.flipX = false;
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            ChangeAnimationState(CAP_STATIC);
+            spriteRenderer.flipX = false;
         }
 
 
@@ -76,14 +151,14 @@ public class PlayerController : MonoBehaviour
         // inputX = 0;
         //inputY = 0;
 
-    
+
 
         // BORDERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-       // transform.position = newPosition;
+        // transform.position = newPosition;
 
-       
 
-       float horizontalInput = inputX;
+
+        float horizontalInput = inputX;
         float verticalInput = inputY;
 
         // Calculate the player's new position
@@ -120,21 +195,25 @@ public class PlayerController : MonoBehaviour
         {
             position = cleaningTask;
             transform.position = position;
+            ChangeAnimationState(CAP_INTERACT);
         }
         else if (role == "repair")
         {
             position = repairTask;
             transform.position = position;
+            ChangeAnimationState(CAP_INTERACT);
         }
         else if (role == "canon")
         {
             position = canonTask;
             transform.position = position;
+            ChangeAnimationState(CAP_INTERACT);
         }
         else if (role == "helm")
         {
             position = helmTask;
             transform.position = position;
+            ChangeAnimationState(CAP_INTERACT);
         }
     }
 
