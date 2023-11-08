@@ -18,7 +18,7 @@ public class RockController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lowerBound = -600;
+        lowerBound = -600f;
 
         inflictDamage = false;
 
