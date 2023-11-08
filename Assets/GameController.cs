@@ -80,9 +80,9 @@ public class GameController : MonoBehaviour
         }
         else 
         {
-            repair.transform.GetChild(0).gameObject.SetActive(false);
-            repair.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
-            repair.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
+            //repair.transform.GetChild(0).gameObject.SetActive(false);
+            //repair.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
+            //repair.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
         }
 
         if (repair.crewInRange)

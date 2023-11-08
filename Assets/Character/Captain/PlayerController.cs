@@ -13,10 +13,8 @@ public class PlayerController : MonoBehaviour
     private bool moveable;
 
     public Collider2D playableArea;
-
-    public float moveSpeed = 5f;
-    public string boundaryTag = "Border"; // Use the tag you assigned to your colliders.
-
+    
+ 
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +22,10 @@ public class PlayerController : MonoBehaviour
         inputX = 0; inputY = 0;
         speed = 0.005f;
         moveable = true;
-        
+
+      
+
+
         //position = new Vector2(0, 0);
         //repairTask = new Vector2(-2.12f, -1.10f);
         //cleaningTask = new Vector2(2.50f, 1.25f);
@@ -47,6 +48,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             inputY += speed;
+            //if tilt is up, speed up
+            //get tiltDirection from other script???
         }
         if (Input.GetKey(KeyCode.S))
         {
@@ -96,31 +99,31 @@ public class PlayerController : MonoBehaviour
         //transform.position = newPosition;
 
         // Get input for player movement
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        //float horizontalInput = Input.GetAxis("Horizontal");
+        //float verticalInput = Input.GetAxis("Vertical");
 
-        // Calculate the player's new position
-        Vector3 newPosition = transform.position + new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime;
+        //// Calculate the player's new position
+        //Vector3 newPosition = transform.position + new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime;
 
-        // Check if the new position is inside or overlapping any colliders with the "border" tag
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(newPosition, 0.1f);
-        bool canMove = true;
+        //// Check if the new position is inside or overlapping any colliders with the "border" tag
+        //Collider2D[] colliders = Physics2D.OverlapCircleAll(newPosition, 0.1f);
+        //bool canMove = true;
 
-        foreach (Collider2D collider in colliders)
-        {
-            if (collider.CompareTag("Border"))
-            {
-                // If the new position is inside or overlapping a border collider, prevent movement
-                canMove = false;
-                break;
-            }
-        }
+        //foreach (Collider2D collider in colliders)
+        //{
+        //    if (collider.CompareTag("Border"))
+        //    {
+        //        // If the new position is inside or overlapping a border collider, prevent movement
+        //        canMove = false;
+        //        break;
+        //    }
+        //}
 
-        // Apply the new position to the player if movement is allowed
-        if (canMove)
-        {
-            transform.position = newPosition;
-        }
+        //// Apply the new position to the player if movement is allowed
+        //if (canMove)
+        //{
+        //    transform.position = newPosition;
+        //}
 
 
 
