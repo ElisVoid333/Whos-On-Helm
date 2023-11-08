@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -36,10 +37,11 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Ship Variables
         total_happiness = MAX_HAPPINESS;
         total_health = MAX_HEALTH;
 
-        //Timer Variables Initialize
+        //Countdown Timer Variables Initialize
         TimeLeft = 240.0f; //4 minutes
         TimerOn = true;
     }
@@ -51,15 +53,15 @@ public class GameController : MonoBehaviour
         //Cleaning Role
         if (cleaner.inRange)
         {
-            //total_happiness += 0.05f;
-            cleaner.transform.GetChild(0).gameObject.SetActive(true);
+            total_happiness += 0.05f;
+            //cleaner.transform.GetChild(0).gameObject.SetActive(true);
         }
         else
         {
-            //total_happiness -= 0.005f;
-            cleaner.transform.GetChild(0).gameObject.SetActive(false);
+            total_happiness -= 0.005f;
+            /*cleaner.transform.GetChild(0).gameObject.SetActive(false);
             cleaner.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
-            cleaner.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
+            cleaner.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);*/
         }
 
         if (cleaner.crewInRange)
@@ -153,7 +155,7 @@ public class GameController : MonoBehaviour
             setScene(3);
         }
 
-        //Time
+        //Timer Countdown
         if (TimerOn == false)
         {
             setScene(2);
