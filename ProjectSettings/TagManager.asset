@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Canonball
   - Enemy_canonball
+  - Crew
   layers:
   - Default
   - TransparentFX
