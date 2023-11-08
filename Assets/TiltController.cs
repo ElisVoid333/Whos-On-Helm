@@ -34,7 +34,7 @@ public class TiltController : MonoBehaviour
         //Tilt Timing Controls
         tiltTimer += Time.deltaTime;
 
-        if (tiltTimer > 6f)
+        if (tiltTimer > 4f)
         {
             tiltTimer = 0f;
         }
@@ -44,56 +44,47 @@ public class TiltController : MonoBehaviour
         //Debug.Log(initial_positions);
         //Player Move tilt Directions
         //Tilt Left/Up
-        if (tiltDirection == 0f)
-        {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.03f, player.transform.position.z);
-        }
-        //Back To Neutral
+        //Tilt Left/Up
         if (tiltDirection == 1f)
         {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.03f, player.transform.position.z);
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.03f, player.transform.position.z);
         }
         //Tilt Right/Down
-        if (tiltDirection == 2f)
-        {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.03f, player.transform.position.z);
-        }
-        //Back To Neutral
         if (tiltDirection == 3f)
         {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.03f, player.transform.position.z);
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.03f, player.transform.position.z);
         }
 
         // Roles tilt positions
-        //Tilt Left/Up
+        //Neutral
         if (tiltDirection == 0f) {
+            for (int i = 0; i < roles.Length; i++)
+            {
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y, initial_positions[i].z);
+            }
+        }
+        //Tilt Left/Up
+        if (tiltDirection == 1f)
+        {
             for (int i = 0; i < roles.Length; i++)
             {
                 roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y + 0.2f, initial_positions[i].z);
             }
         }
-        //Back To Neutral
-        if (tiltDirection == 1f)
-        {
-            for (int i = 0; i < roles.Length; i++)
-            {
-                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y , initial_positions[i].z);
-            }
-        }
-        //Tilt Right/Down
+        //Neutral
         if (tiltDirection == 2f)
         {
             for (int i = 0; i < roles.Length; i++)
             {
-                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y - 0.2f, initial_positions[i].z);
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y, initial_positions[i].z);
             }
         }
-        //Back To Neutral
+        //Tilt Right/Down
         if (tiltDirection == 3f)
         {
             for (int i = 0; i < roles.Length; i++)
             {
-                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y , initial_positions[i].z);
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y - 0.2f, initial_positions[i].z);
             }
         }
     }
@@ -107,17 +98,17 @@ public class TiltController : MonoBehaviour
             phase = 0f;
         }
         //Tilt Left/Up
-        if (seconds > 1.5f)
+        if (seconds >= 1f)
         {
             phase = 1f;
         }
         //Neutral
-        if (seconds > 3f)
+        if (seconds >= 2f)
         {
             phase = 2f;
         }
         //Tilt Right/Down
-        if (seconds > 4.5f)
+        if (seconds >= 3f)
         {
             phase = 3f;
         }
