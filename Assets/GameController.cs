@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -36,10 +37,11 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Ship Variables
         total_happiness = MAX_HAPPINESS;
         total_health = MAX_HEALTH;
 
-        //Timer Variables Initialize
+        //Countdown Timer Variables Initialize
         TimeLeft = 240.0f; //4 minutes
         TimerOn = true;
     }
@@ -142,7 +144,7 @@ public class GameController : MonoBehaviour
             setScene(3);
         }
 
-        //Time
+        //Timer Countdown
         if (TimerOn == false)
         {
             setScene(2);
