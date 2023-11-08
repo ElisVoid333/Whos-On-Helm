@@ -54,7 +54,12 @@ public class RoleController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             //Debug.Log("Grabbing Mop");
-            inRange = true;
+            
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log(collision.gameObject.tag);
+                inRange = true;
+            }
         } else if (collision.gameObject.tag == "Crew")
         {
             crewInRange = true;
