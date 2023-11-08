@@ -24,8 +24,12 @@ public class PlayerController : MonoBehaviour
         inputX = 0; inputY = 0;
         speed = 0.005f;
         moveable = true;
-
         
+        position = new Vector2(0, 0);
+        repairTask = new Vector2(-2.12f, -1.10f);
+        cleaningTask = new Vector2(2.50f, 1.25f);
+
+
     }
 
     // Update is called once per frame
