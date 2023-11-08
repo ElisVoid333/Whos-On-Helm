@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TiltController : MonoBehaviour
@@ -9,7 +11,8 @@ public class TiltController : MonoBehaviour
     //private float tiltStart;
     public float tiltDirection; // 0=Straight, 1=Left/Up, 2=Right/Down
     private GameObject[] roles;
-
+    private GameObject player;
+    Vector3[] initial_positions;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +20,12 @@ public class TiltController : MonoBehaviour
         //Ship Tilt Timer Variables Initialize
         tiltTimer = 0f;
         tiltDirection = 0f;
-        roles = GameObject.FindGameObjectsWithTag("Role");    
+
+        player = GameObject.FindGameObjectWithTag("Player");
+        roles = GameObject.FindGameObjectsWithTag("Role");
+
+        initial_positions = new Vector3[roles.Length];
+        initial_positions = setInitialPositions(roles, initial_positions);
     }
 
     // Update is called once per frame
@@ -33,36 +41,59 @@ public class TiltController : MonoBehaviour
         Debug.Log(tiltTimer);
         tiltDirection = setTilt(tiltTimer);
 
-        //Move tilt Directions
+        //Debug.Log(initial_positions);
+        //Player Move tilt Directions
+        //Tilt Left/Up
+        if (tiltDirection == 0f)
+        {
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.03f, player.transform.position.z);
+        }
+        //Back To Neutral
+        if (tiltDirection == 1f)
+        {
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.03f, player.transform.position.z);
+        }
+        //Tilt Right/Down
+        if (tiltDirection == 2f)
+        {
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.03f, player.transform.position.z);
+        }
+        //Back To Neutral
+        if (tiltDirection == 3f)
+        {
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.03f, player.transform.position.z);
+        }
+
+        // Roles tilt positions
         //Tilt Left/Up
         if (tiltDirection == 0f) {
-            foreach (GameObject role in roles)
+            for (int i = 0; i < roles.Length; i++)
             {
-                role.transform.position = new Vector3(role.transform.position.x, role.transform.position.y + 0.03f, role.transform.position.z);
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y + 0.1f, initial_positions[i].z);
             }
         }
         //Back To Neutral
         if (tiltDirection == 1f)
         {
-            foreach (GameObject role in roles)
+            for (int i = 0; i < roles.Length; i++)
             {
-                role.transform.position = new Vector3(role.transform.position.x, role.transform.position.y - 0.03f, role.transform.position.z); ;
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y - 0.1f, initial_positions[i].z);
             }
         }
         //Tilt Right/Down
         if (tiltDirection == 2f)
         {
-            foreach (GameObject role in roles)
+            for (int i = 0; i < roles.Length; i++)
             {
-                role.transform.position = new Vector3(role.transform.position.x, role.transform.position.y - 0.03f, role.transform.position.z); ;
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y - 0.1f, initial_positions[i].z);
             }
         }
         //Back To Neutral
         if (tiltDirection == 3f)
         {
-            foreach (GameObject role in roles)
+            for (int i = 0; i < roles.Length; i++)
             {
-                role.transform.position = new Vector3(role.transform.position.x, role.transform.position.y + 0.03f, role.transform.position.z); ;
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y + 0.1f, initial_positions[i].z);
             }
         }
     }
@@ -92,5 +123,14 @@ public class TiltController : MonoBehaviour
         }
         //Debug.Log(phase);
         return phase;
+    }
+
+    private Vector3[] setInitialPositions(GameObject[] roles, Vector3[] initial_positions)
+    {
+        for (int i = 0; i < roles.Length; i++)
+        {
+            initial_positions[i] = roles[i].transform.position;
+        }
+        return initial_positions;
     }
 }
