@@ -12,6 +12,7 @@ TagManager:
   - Canonball
   - Enemy_canonball
   - Crew
+  - Border
   layers:
   - Default
   - TransparentFX

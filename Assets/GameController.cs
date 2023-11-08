@@ -76,6 +76,17 @@ public class GameController : MonoBehaviour
         //Repair Role
         if (repair.inRange)
         {
+            repair.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else 
+        {
+            repair.transform.GetChild(0).gameObject.SetActive(false);
+            repair.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
+            repair.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
+        }
+
+        if (repair.crewInRange)
+        {
             total_health += 10;
             repair.inRange = false;
         }
