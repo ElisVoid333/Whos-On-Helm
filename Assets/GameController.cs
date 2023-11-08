@@ -51,6 +51,19 @@ public class GameController : MonoBehaviour
         //Cleaning Role
         if (cleaner.inRange)
         {
+            //total_happiness += 0.05f;
+            cleaner.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else
+        {
+            //total_happiness -= 0.005f;
+            cleaner.transform.GetChild(0).gameObject.SetActive(false);
+            cleaner.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
+            cleaner.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
+        }
+
+        if (cleaner.crewInRange)
+        {
             total_happiness += 0.05f;
         }
         else

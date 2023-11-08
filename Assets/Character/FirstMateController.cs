@@ -30,6 +30,19 @@ public class FirstMateController : MonoBehaviour
             transform.position = position;
         }
     }
+
+    public void moveCrewmate(string role)
+    {
+        if(role == "cleaner")
+        {
+            position = cleaningTask;
+            transform.position = position;
+        }else if(role == "repair")
+        {
+            position = repairTask;
+            transform.position = position;
+        }
+    }
 }
 
 

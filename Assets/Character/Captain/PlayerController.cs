@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +15,10 @@ public class PlayerController : MonoBehaviour
     private bool moveable;
 
     public Collider2D playableArea;
+
+    private Vector2 position;
+    private Vector2 cleaningTask;
+    private Vector2 repairTask;
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +96,20 @@ public class PlayerController : MonoBehaviour
                     moveable = true;
                 }
             }
+        }
+    }
+
+    public void moveCaptain(string role)
+    {
+        if (role == "cleaner")
+        {
+            position = cleaningTask;
+            transform.position = position;
+        }
+        else if (role == "repair")
+        {
+            position = repairTask;
+            transform.position = position;
         }
     }
 }

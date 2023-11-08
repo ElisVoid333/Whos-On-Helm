@@ -6,12 +6,13 @@ public class RoleController : MonoBehaviour
 {
     //Canon Role Variables
     public bool inRange;
+    public bool crewInRange;
     public GameObject ball;
     public bool shooting;
     public bool continuous;
 
     private float y;
-    private float x;
+    //private float x;
 
 
 
@@ -54,6 +55,9 @@ public class RoleController : MonoBehaviour
         {
             //Debug.Log("Grabbing Mop");
             inRange = true;
+        } else if (collision.gameObject.tag == "Crew")
+        {
+            crewInRange = true;
         }
     }
 
@@ -63,6 +67,9 @@ public class RoleController : MonoBehaviour
         {
             //Debug.Log("All cleaned up");
             inRange = false;
+        } else if (collision.gameObject.tag == "Crew")
+        {
+            crewInRange = false;
         }
     }
 }
