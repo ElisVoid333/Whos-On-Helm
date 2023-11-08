@@ -75,7 +75,7 @@ public class TiltController : MonoBehaviour
         {
             tiltTimer = 0f;
         }
-        Debug.Log(tiltTimer);
+        //Debug.Log(tiltTimer);
         tiltDirection = setTilt(tiltTimer);
 
         //Debug.Log(initial_positions);
@@ -88,13 +88,13 @@ public class TiltController : MonoBehaviour
         {
             if (tiltDirection == 1f)
             {
-                //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.03f, player.transform.position.z);
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
 
             }
             //Tilt Right/Down
             if (tiltDirection == 3f)
             {
-                //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.03f, player.transform.position.z);
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
             }
 
         }

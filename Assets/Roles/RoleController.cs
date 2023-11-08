@@ -7,6 +7,7 @@ public class RoleController : MonoBehaviour
 {
     //Canon Role Variables
     public bool inRange;
+    private bool interact;
     public bool crewInRange;
     public GameObject ball;
     public bool shooting;
@@ -21,6 +22,7 @@ public class RoleController : MonoBehaviour
     void Start()
     {
         inRange = false;
+        interact = false;
     }
 
     // Update is called once per frame
@@ -46,6 +48,20 @@ public class RoleController : MonoBehaviour
             ball.SetActive(false);
             y = 0;
         }
+
+        if (Input.GetKeyDown(KeyCode.E) && interact)
+        {
+            //Debug.Log("EEEEEEEEEEEEEEEEEEEEEEEEE");
+            //inRange = true;
+            if (inRange)
+            {
+                inRange = false;
+            }
+            else
+            {
+                inRange = true;
+            }
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -54,15 +70,13 @@ public class RoleController : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-            //Debug.Log("Grabbing Mop");
+            //Debug.Log("Write Instructions");
+            //Debug.Log("Interact: " + interact);
+            //Debug.Log("inRange: " + inRange);
             instructions.gameObject.SetActive(true);
-            inRange = true;
-            /*if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log(collision.gameObject.tag);
-                inRange = true;
-            }*/
-        } else if (collision.gameObject.tag == "Crew")
+            interact = true;
+        }
+        else if (collision.gameObject.tag == "Crew")
         {
             crewInRange = true;
         }
@@ -74,10 +88,16 @@ public class RoleController : MonoBehaviour
         {
             //Debug.Log("All cleaned up");
             inRange = false;
+            interact = false;
             instructions.gameObject.SetActive(false);
         } else if (collision.gameObject.tag == "Crew")
         {
             crewInRange = false;
         }
+    }
+
+    public void setRange(bool setter)
+    {
+        inRange = setter;
     }
 }
