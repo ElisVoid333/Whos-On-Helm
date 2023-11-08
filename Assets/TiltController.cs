@@ -69,7 +69,7 @@ public class TiltController : MonoBehaviour
         if (tiltDirection == 0f) {
             for (int i = 0; i < roles.Length; i++)
             {
-                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y + 0.1f, initial_positions[i].z);
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y + 0.2f, initial_positions[i].z);
             }
         }
         //Back To Neutral
@@ -77,7 +77,7 @@ public class TiltController : MonoBehaviour
         {
             for (int i = 0; i < roles.Length; i++)
             {
-                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y - 0.1f, initial_positions[i].z);
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y , initial_positions[i].z);
             }
         }
         //Tilt Right/Down
@@ -85,7 +85,7 @@ public class TiltController : MonoBehaviour
         {
             for (int i = 0; i < roles.Length; i++)
             {
-                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y - 0.1f, initial_positions[i].z);
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y - 0.2f, initial_positions[i].z);
             }
         }
         //Back To Neutral
@@ -93,7 +93,7 @@ public class TiltController : MonoBehaviour
         {
             for (int i = 0; i < roles.Length; i++)
             {
-                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y + 0.1f, initial_positions[i].z);
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y , initial_positions[i].z);
             }
         }
     }
