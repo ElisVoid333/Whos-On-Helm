@@ -8,10 +8,12 @@ public class TiltController : MonoBehaviour
 {
     //Ship Tilt variables
     private float tiltTimer;
+    public float tiltForce = 50f;
     //private float tiltStart;
     public float tiltDirection; // 0=Straight, 1=Left/Up, 2=Right/Down
     private GameObject[] roles;
     private GameObject player;
+    public Rigidbody2D rb;
     Vector3[] initial_positions;
 
     public float moveSpeed = 5f;
@@ -26,14 +28,18 @@ public class TiltController : MonoBehaviour
         tiltDirection = 0f;
 
         player = GameObject.FindGameObjectWithTag("Player");
+        //rb = player.GetComponent<Rigidbody2D>();
+
         roles = GameObject.FindGameObjectsWithTag("Role");
 
         initial_positions = new Vector3[roles.Length];
         initial_positions = setInitialPositions(roles, initial_positions);
     }
 
+    /*
     void Update()
     {
+        
         canMove = true;
         // Get input for player movement
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -63,7 +69,7 @@ public class TiltController : MonoBehaviour
         }
 
         canMove = true;
-    }
+    }*/
 
     // Update is called once per frame
     void FixedUpdate()
@@ -77,26 +83,22 @@ public class TiltController : MonoBehaviour
         }
         //Debug.Log(tiltTimer);
         tiltDirection = setTilt(tiltTimer);
-
         //Debug.Log(initial_positions);
+
         //Player Move tilt Directions
         //Tilt Left/Up
-        //Tilt Left/Up
-
-
-        if (canMove == true)
+        if (tiltDirection == 1f)
         {
-            if (tiltDirection == 1f)
-            {
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
-
-            }
-            //Tilt Right/Down
-            if (tiltDirection == 3f)
-            {
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
-            }
-
+            //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
+            rb.AddForce(new Vector2(0f, tiltForce));
+            print("Tilt Up");
+        }
+        //Tilt Right/Down
+        if (tiltDirection == 3f)
+        {
+            //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
+            rb.AddForce(new Vector2(0f, -tiltForce));
+            print("Tilt Down");
         }
 
 

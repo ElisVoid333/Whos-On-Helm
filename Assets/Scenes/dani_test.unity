@@ -624,7 +624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39109d6f65a67d34fa39897a2965a904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tiltForce: 50
   tiltDirection: 0
+  rb: {fileID: 1096069405}
   moveSpeed: 5
   canMove: 0
   boundaryTag: Border
@@ -2343,6 +2345,7 @@ GameObject:
   - component: {fileID: 1096069400}
   - component: {fileID: 1096069403}
   - component: {fileID: 1096069404}
+  - component: {fileID: 1096069405}
   m_Layer: 0
   m_Name: Captain
   m_TagString: Player
@@ -2500,6 +2503,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &1096069405
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096069399}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1143852199
 GameObject:
   m_ObjectHideFlags: 0

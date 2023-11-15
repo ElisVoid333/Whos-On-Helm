@@ -34,11 +34,16 @@ public class PlayerController : MonoBehaviour
     string CAP_WALK = "";
     string CAP_INTERACT = "";
 
+    //RigidBody
+    private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+
         inputX = 0; inputY = 0;
-        speed = 0.005f;
+        speed = 1.5f;
         moveable = true;
 
         position = new Vector2(0, 0);
@@ -91,7 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         if (moveable)
         {
-            speed = 0.005f;
+            speed = 1.5f;
         }
         if (moveable == false)
         {
@@ -100,44 +105,48 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            inputY += speed;
+            inputY = speed;
             ChangeAnimationState(CAP_WALK);
             //if tilt is up, speed up
             //get tiltDirection from other script???
         }
         if (Input.GetKey(KeyCode.S))
         {
-            inputY -= speed;
+            inputY = -speed;
             ChangeAnimationState(CAP_WALK);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            inputX -= speed;
+            inputX = -speed;
             ChangeAnimationState(CAP_WALK);
             spriteRenderer.flipX = true;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            inputX += speed;
+            inputX = speed;
             ChangeAnimationState(CAP_WALK);
             spriteRenderer.flipX = false;
         }
         //Key Up - change back to static animation
         if (Input.GetKeyUp(KeyCode.W))
         {
+            inputY = 0f;
             ChangeAnimationState(CAP_STATIC);
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
+            inputY = 0f;
             ChangeAnimationState(CAP_STATIC);
         }
         if (Input.GetKeyUp(KeyCode.A))
         {
+            inputX = 0f;
             ChangeAnimationState(CAP_STATIC);
             spriteRenderer.flipX = false;
         }
         if (Input.GetKeyUp(KeyCode.D))
         {
+            inputX = 0f;
             ChangeAnimationState(CAP_STATIC);
             spriteRenderer.flipX = false;
         }
@@ -150,16 +159,15 @@ public class PlayerController : MonoBehaviour
 
         // inputX = 0;
         //inputY = 0;
-
-
-
-        // BORDERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        // transform.position = newPosition;
-
-
-
         float horizontalInput = inputX;
         float verticalInput = inputY;
+
+        rb.velocity = new Vector2(horizontalInput * speed, verticalInput * speed);
+        //rb.drag = 500f;
+        
+        /*
+        // BORDERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // transform.position = newPosition;
 
         // Calculate the player's new position
         Vector3 newPosition = transform.position + new Vector3(horizontalInput, verticalInput, 0) * speed * Time.deltaTime;
@@ -183,7 +191,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = newPosition;
         }
-
+        */
         // BORDERS END~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
