@@ -41,9 +41,9 @@ public class BirdController : MonoBehaviour
 
         if (timer == randomTime)
         {
+            Debug.Log("Im pooping!");
             numOfPoops++;
             spawnPoop(transform.position.x);
-            
         }
 
         transform.Translate(0.02f, 0, 0);
@@ -63,4 +63,5 @@ public class BirdController : MonoBehaviour
         //Create New Poop Instance at bird location
         poopList[numOfPoops] = Instantiate(poopObject, new Vector3(current_position, y, 0), Quaternion.identity);
     }
+
 }
