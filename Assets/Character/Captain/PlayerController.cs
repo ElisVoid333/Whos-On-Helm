@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         inputX = 0; inputY = 0;
-        speed = 5f;
+        speed = 1.5f;
         moveable = true;
 
         position = new Vector2(0, 0);
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         if (moveable)
         {
-            speed = 5f;
+            speed = 1.5f;
         }
         if (moveable == false)
         {
@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
         float verticalInput = inputY;
 
         rb.velocity = new Vector2(horizontalInput * speed, verticalInput * speed);
-        rb.drag = 500f;
+        //rb.drag = 500f;
         
         /*
         // BORDERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -8,6 +8,7 @@ public class TiltController : MonoBehaviour
 {
     //Ship Tilt variables
     private float tiltTimer;
+    public float tiltForce = 5f;
     //private float tiltStart;
     public float tiltDirection; // 0=Straight, 1=Left/Up, 2=Right/Down
     private GameObject[] roles;
@@ -27,6 +28,8 @@ public class TiltController : MonoBehaviour
         tiltDirection = 0f;
 
         player = GameObject.FindGameObjectWithTag("Player");
+        rb = player.GetComponent<Rigidbody2D>();
+
         roles = GameObject.FindGameObjectsWithTag("Role");
 
         initial_positions = new Vector3[roles.Length];
@@ -93,12 +96,15 @@ public class TiltController : MonoBehaviour
             if (tiltDirection == 1f)
             {
                 //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
-
+                rb.AddForce(new Vector2(0f, tiltForce));
+                print("Tilt Up");
             }
             //Tilt Right/Down
             if (tiltDirection == 3f)
             {
                 //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
+                rb.AddForce(new Vector2(0f, -tiltForce));
+                print("Tilt Down");
             }
 
         }
