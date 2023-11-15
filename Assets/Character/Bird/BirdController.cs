@@ -6,7 +6,7 @@ public class BirdController : MonoBehaviour
 {
     public float speed = 1f;
     public float rateOfUnhappy = 2f;
-    public float spawnRate = 4f;
+    public float spawnRate = 10f;
     public float timer;
     public float randomTime;
 
@@ -36,17 +36,18 @@ public class BirdController : MonoBehaviour
         {
             spawnBird();
             timer = 0f;
-            randomTime = Random.Range(0.4f, 1f);
+            randomTime = Random.Range(0.4f, 3f);
         }
 
-        if (timer == randomTime)
+        if (timer >= randomTime)
         {
             Debug.Log("Im pooping!");
             numOfPoops++;
             spawnPoop(transform.position.x);
+            randomTime = 100f;
         }
 
-        transform.Translate(0.02f, 0, 0);
+        transform.Translate(0.01f, 0, 0);
     }
 
     private void spawnBird()
@@ -61,7 +62,7 @@ public class BirdController : MonoBehaviour
     private void spawnPoop(float current_position)
     {
         //Create New Poop Instance at bird location
-        poopList[numOfPoops] = Instantiate(poopObject, new Vector3(current_position, y, 0), Quaternion.identity);
+        Instantiate(poopObject, new Vector3(current_position, y, 0), Quaternion.identity);
     }
 
 }
