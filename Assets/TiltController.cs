@@ -12,6 +12,7 @@ public class TiltController : MonoBehaviour
     public float tiltDirection; // 0=Straight, 1=Left/Up, 2=Right/Down
     private GameObject[] roles;
     private GameObject player;
+    Rigidbody2D rb;
     Vector3[] initial_positions;
 
     public float moveSpeed = 5f;
@@ -32,8 +33,10 @@ public class TiltController : MonoBehaviour
         initial_positions = setInitialPositions(roles, initial_positions);
     }
 
+    /*
     void Update()
     {
+        
         canMove = true;
         // Get input for player movement
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -63,7 +66,7 @@ public class TiltController : MonoBehaviour
         }
 
         canMove = true;
-    }
+    }*/
 
     // Update is called once per frame
     void FixedUpdate()
@@ -86,15 +89,16 @@ public class TiltController : MonoBehaviour
 
         if (canMove == true)
         {
+            //Tilt Left/Up
             if (tiltDirection == 1f)
             {
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
+                //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
 
             }
             //Tilt Right/Down
             if (tiltDirection == 3f)
             {
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
+                //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
             }
 
         }
