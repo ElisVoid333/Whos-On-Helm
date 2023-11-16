@@ -52,46 +52,60 @@ public class GameController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name != "IntroScene")
         {
+            PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+            if (player.occupied)
+            {
+                if (player.currentJob == cleaner)
+                {
+                    total_happiness += 0.05f;
+                }else if (player.currentJob == repair)
+                {
+                    total_health += 0.05f;
+                }else if (player.currentJob == canon)
+                {
+                    canon.shooting = true;
+                }
+                else
+                {
+                    canon.shooting = false;
+                }
+            }
             /*-- Roles --*/
             //Cleaning Role
             if (cleaner.inRange)
             {
-                total_happiness += 0.05f;
                 cleaner.transform.GetChild(0).gameObject.SetActive(true);
             }
             else
             {
-                total_happiness -= 0.005f;
                 cleaner.transform.GetChild(0).gameObject.SetActive(false);
                 cleaner.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
-                //cleaner.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
+                cleaner.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
             }
 
             if (cleaner.crewInRange)
             {
                 total_happiness += 0.05f;
             }
-            else
-            {
-                total_happiness -= 0.005f;
-            }
+
+            total_happiness -= 0.01f;
 
             //Repair Role
             if (repair.inRange)
             {
                 repair.transform.GetChild(0).gameObject.SetActive(true);
-                total_health += 10;
             }
             else
             {
                 repair.transform.GetChild(0).gameObject.SetActive(false);
                 repair.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
-                //repair.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
+                repair.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
             }
 
             if (repair.crewInRange)
             {
-                total_health += 10;
+                total_health += 0.05f;
                 //repair.inRange = false;
             }
 
@@ -104,7 +118,7 @@ public class GameController : MonoBehaviour
             {
                 canon.transform.GetChild(1).gameObject.SetActive(false);
                 canon.transform.GetChild(1).GetChild(1).GetChild(1).gameObject.SetActive(false);
-                //canon.transform.GetChild(1).GetChild(1).GetChild(2).gameObject.SetActive(false);
+                canon.transform.GetChild(1).GetChild(1).GetChild(2).gameObject.SetActive(false);
             }
 
             if (canon.crewInRange)
@@ -122,9 +136,10 @@ public class GameController : MonoBehaviour
                 if (TimeLeft > 0)
                 {
                     TimeLeft -= Time.deltaTime;
-                    if (helm.inRange)
+                    if (player.occupied && player.currentJob == helm)
                     {
                         TimeLeft -= Time.deltaTime;
+                        Debug.Log("Double Time! : " + TimeLeft);
                     }
                 }
                 else

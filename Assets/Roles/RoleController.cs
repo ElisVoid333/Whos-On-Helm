@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RoleController : MonoBehaviour
 {
-    //Canon Role Variables
+    //Role Variables
     public bool inRange;
     private bool interact;
     public bool crewInRange;
@@ -14,7 +14,6 @@ public class RoleController : MonoBehaviour
     public TextMeshProUGUI instructions;
 
     private float y;
-    //private float x;
 
 
 
@@ -70,11 +69,16 @@ public class RoleController : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
+            if(collision.gameObject.GetComponent<PlayerController>().moveable == true)
+            {
+                instructions.gameObject.SetActive(true);
+                interact = true;
+            }
+
             //Debug.Log("Write Instructions");
             //Debug.Log("Interact: " + interact);
             //Debug.Log("inRange: " + inRange);
-            instructions.gameObject.SetActive(true);
-            interact = true;
+            
         }
         else if (collision.gameObject.tag == "Crew")
         {

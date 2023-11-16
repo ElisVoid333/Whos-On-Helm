@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
     private float speed;
     private float inputX;
     private float inputY;
-    private bool moveable;
+    public bool moveable;
+    public bool occupied;
+    public RoleController currentJob;
 
     //public Collider2D playableArea;
 
@@ -45,11 +47,12 @@ public class PlayerController : MonoBehaviour
         inputX = 0; inputY = 0;
         speed = 1.5f;
         moveable = true;
+        occupied = false;
 
         position = new Vector2(0, 0);
-        repairTask = new Vector2(5.47f, 0.08f);
-        cleaningTask = new Vector2(-2.46f, 1.64f);
-        canonTask = new Vector2(1.24f, -1.6f);
+        repairTask = new Vector2(5.1f, 0.64f);
+        cleaningTask = new Vector2(-2.09f, 1.66f);
+        canonTask = new Vector2(1.37f, -1.88f);
         helmTask = new Vector2(-6.14f, 0.16f);
 
         captainSelected = game.getCaptain("Captain");
@@ -103,53 +106,57 @@ public class PlayerController : MonoBehaviour
             speed = 0f;
         }
 
-        if (Input.GetKey(KeyCode.W))
+        if (moveable == true)
         {
-            inputY = speed;
-            ChangeAnimationState(CAP_WALK);
-            //if tilt is up, speed up
-            //get tiltDirection from other script???
+            if (Input.GetKey(KeyCode.W))
+            {
+                inputY = speed;
+                ChangeAnimationState(CAP_WALK);
+                //if tilt is up, speed up
+                //get tiltDirection from other script???
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                inputY = -speed;
+                ChangeAnimationState(CAP_WALK);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                inputX = -speed;
+                ChangeAnimationState(CAP_WALK);
+                spriteRenderer.flipX = true;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                inputX = speed;
+                ChangeAnimationState(CAP_WALK);
+                spriteRenderer.flipX = false;
+            }
+            //Key Up - change back to static animation
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                inputY = 0f;
+                ChangeAnimationState(CAP_STATIC);
+            }
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                inputY = 0f;
+                ChangeAnimationState(CAP_STATIC);
+            }
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                inputX = 0f;
+                ChangeAnimationState(CAP_STATIC);
+                spriteRenderer.flipX = false;
+            }
+            if (Input.GetKeyUp(KeyCode.D))
+            {
+                inputX = 0f;
+                ChangeAnimationState(CAP_STATIC);
+                spriteRenderer.flipX = false;
+            }
         }
-        if (Input.GetKey(KeyCode.S))
-        {
-            inputY = -speed;
-            ChangeAnimationState(CAP_WALK);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            inputX = -speed;
-            ChangeAnimationState(CAP_WALK);
-            spriteRenderer.flipX = true;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            inputX = speed;
-            ChangeAnimationState(CAP_WALK);
-            spriteRenderer.flipX = false;
-        }
-        //Key Up - change back to static animation
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            inputY = 0f;
-            ChangeAnimationState(CAP_STATIC);
-        }
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            inputY = 0f;
-            ChangeAnimationState(CAP_STATIC);
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            inputX = 0f;
-            ChangeAnimationState(CAP_STATIC);
-            spriteRenderer.flipX = false;
-        }
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            inputX = 0f;
-            ChangeAnimationState(CAP_STATIC);
-            spriteRenderer.flipX = false;
-        }
+        
 
 
         //Vector2 movement = new Vector2(inputX, inputY);
@@ -164,7 +171,7 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(horizontalInput * speed, verticalInput * speed);
         //rb.drag = 500f;
-        
+
         /*
         // BORDERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // transform.position = newPosition;
@@ -194,6 +201,22 @@ public class PlayerController : MonoBehaviour
         */
         // BORDERS END~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+        if (Input.GetKeyDown(KeyCode.E) && occupied)
+        {
+            Debug.Log("MOOOOOOOOOVVVVVVVEEEEEEE");
+            //Interact with role
+            if (moveable)
+            {
+                Debug.Log("Interacting with role");
+                moveable = false;
+            }
+            if (moveable == false)
+            {
+                Debug.Log("Leaving role");
+                moveable = true;
+                occupied = false;
+            }
+        }
 
     }
 
@@ -225,28 +248,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void SetMoveable(bool input)
+    {
+        moveable = input;
+    }
 
+    public void SetOccupied(RoleController job)
+    {
+        currentJob = job;
+
+        occupied = true;
+    }
 
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Role") 
         {
-            /*if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log(collision.gameObject.tag);
-                //Interact with role
-                if (moveable)
-                {
-                    Debug.Log("Interacting with role");
-                    moveable = false;
-                }
-                if (moveable == false)
-                {
-                    Debug.Log("Leaving role");
-                    moveable = true;
-                }
-            }*/
+            
         }
     }
 }
