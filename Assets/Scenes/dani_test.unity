@@ -207,7 +207,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1799898956}
+      - m_Target: {fileID: 1860512480}
         m_TargetAssemblyTypeName: FirstMateController, Assembly-CSharp
         m_MethodName: moveCrewmate
         m_Mode: 5
@@ -222,6 +222,30 @@ MonoBehaviour:
       - m_Target: {fileID: 2085186585}
         m_TargetAssemblyTypeName: RoleController, Assembly-CSharp
         m_MethodName: setRange
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1053389198}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 71061025}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8210,7 +8234,7 @@ Transform:
   m_GameObject: {fileID: 1799898953}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.32, y: 1.56, z: 0}
+  m_LocalPosition: {x: 2.54, y: 0.5, z: 0}
   m_LocalScale: {x: 0.9794429, y: 0.9794429, z: 0.9794429}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8368,7 +8392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1860512478
 Transform:
   m_ObjectHideFlags: 0
@@ -8378,7 +8402,7 @@ Transform:
   m_GameObject: {fileID: 1860512477}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.95, y: -0.86, z: 0}
+  m_LocalPosition: {x: -3.27, y: 0.36, z: 0}
   m_LocalScale: {x: 0.9794429, y: 0.9794429, z: 0.9794429}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8416,7 +8440,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.034025103, y: -0.102074504}
+  m_Offset: {x: 0, y: -0.102074504}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -8427,7 +8451,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.85253066, y: 1.5122027}
+  m_Size: {x: 0.52, y: 1.5122027}
   m_EdgeRadius: 0
 --- !u!114 &1860512480
 MonoBehaviour:

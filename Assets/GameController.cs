@@ -55,6 +55,7 @@ public class GameController : MonoBehaviour
         {
             PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
+            //Handle most of the Captain role behaviour
             if (player.occupied)
             {
                 if (player.currentJob == cleaner)
@@ -66,7 +67,6 @@ public class GameController : MonoBehaviour
                 }else if (player.currentJob == canon)
                 {
                     canon.shooting = true;
-                    //Debug.Log("Captain Shooting!");
                 }
                 else
                 {
@@ -75,6 +75,7 @@ public class GameController : MonoBehaviour
             }
             /*-- Roles --*/
             //Cleaning Role
+            //Enable the Radial menu
             if (cleaner.inRange)
             {
                 cleaner.transform.GetChild(0).gameObject.SetActive(true);
@@ -94,6 +95,7 @@ public class GameController : MonoBehaviour
             total_happiness -= 0.01f;
 
             //Repair Role
+            //Enable the Radial menu
             if (repair.inRange)
             {
                 repair.transform.GetChild(0).gameObject.SetActive(true);
@@ -112,6 +114,7 @@ public class GameController : MonoBehaviour
             }
 
             //Canon Role
+            //Enable the Radial menu
             if (canon.inRange)
             {
                 canon.transform.GetChild(1).gameObject.SetActive(true);
@@ -125,7 +128,6 @@ public class GameController : MonoBehaviour
 
             if (canon.crewInRange)
             {
-                Debug.Log("Crew Shooting");
                 canon.shooting = true;
             }
             else
@@ -142,7 +144,7 @@ public class GameController : MonoBehaviour
                     if (player.occupied && player.currentJob == helm)
                     {
                         TimeLeft -= Time.deltaTime;
-                        Debug.Log("Double Time! : " + TimeLeft);
+                        //Debug.Log("Double Time! : " + TimeLeft);
                     }
                 }
                 else
@@ -151,6 +153,7 @@ public class GameController : MonoBehaviour
                     TimerOn = false;
                 }
             }
+            //Enable the Radial menu
             if (helm.inRange)
             {
                 helm.transform.GetChild(0).gameObject.SetActive(true);

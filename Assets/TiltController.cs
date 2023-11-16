@@ -8,7 +8,7 @@ public class TiltController : MonoBehaviour
 {
     //Ship Tilt variables
     private float tiltTimer;
-    public float tiltForce = 50f;
+    public float tiltForce;
     //private float tiltStart;
     public float tiltDirection; // 0=Straight, 1=Left/Up, 2=Right/Down
     private GameObject[] roles;
