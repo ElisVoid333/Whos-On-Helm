@@ -30,28 +30,27 @@ public class RoleController : MonoBehaviour
         if (shooting)
         {
             ball.SetActive(true);
-            if (ball.transform.localPosition.y > 10)
+            if (ball.transform.position.y > 5)
             {
                 y = 0;
             }
             else
             {
-                y += 0.005f;
+                y += 0.01f;
+                Debug.Log("SHOOTING");
             }
 
             Vector2 movement = new Vector2(0, y);
-            ball.transform.position = movement;
-        }
-        else
+            movement = ball.transform.position;
+        }/*else
         {
             ball.SetActive(false);
             y = 0;
-        }
+            Debug.Log("Turned ball off");
+        }*/
 
         if (Input.GetKeyDown(KeyCode.E) && interact)
         {
-            //Debug.Log("EEEEEEEEEEEEEEEEEEEEEEEEE");
-            //inRange = true;
             if (inRange)
             {
                 inRange = false;
@@ -65,8 +64,6 @@ public class RoleController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //Debug.Log(collision.gameObject.tag);
-
         if (collision.gameObject.tag == "Player")
         {
             if(collision.gameObject.GetComponent<PlayerController>().moveable == true)
@@ -76,9 +73,6 @@ public class RoleController : MonoBehaviour
             }
 
             //Debug.Log("Write Instructions");
-            //Debug.Log("Interact: " + interact);
-            //Debug.Log("inRange: " + inRange);
-            
         }
         else if (collision.gameObject.tag == "Crew")
         {
@@ -90,7 +84,6 @@ public class RoleController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            //Debug.Log("All cleaned up");
             inRange = false;
             interact = false;
             instructions.gameObject.SetActive(false);

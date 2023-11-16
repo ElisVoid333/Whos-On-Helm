@@ -17,10 +17,6 @@ public class PlayerController : MonoBehaviour
     //public Collider2D playableArea;
 
     private Vector2 position;
-    private Vector2 cleaningTask;
-    private Vector2 repairTask;
-    private Vector2 canonTask;
-    private Vector2 helmTask;
 
     private int captainSelected;
     public GameController game;
@@ -50,10 +46,6 @@ public class PlayerController : MonoBehaviour
         occupied = false;
 
         position = new Vector2(0, 0);
-        repairTask = new Vector2(5.1f, 0.64f);
-        cleaningTask = new Vector2(-2.09f, 1.66f);
-        canonTask = new Vector2(1.37f, -1.88f);
-        helmTask = new Vector2(-6.14f, 0.16f);
 
         captainSelected = game.getCaptain("Captain");
 
@@ -203,7 +195,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && occupied)
         {
-            Debug.Log("MOOOOOOOOOVVVVVVVEEEEEEE");
+            //Debug.Log("MOOOOOOOOOVVVVVVVEEEEEEE");
             //Interact with role
             if (moveable)
             {
@@ -224,25 +216,29 @@ public class PlayerController : MonoBehaviour
     {
         if (role == "cleaner")
         {
-            position = cleaningTask;
+            //position = cleaningTask;
+            position = game.cleaner.GetComponent<Transform>().position;
             transform.position = position;
             ChangeAnimationState(CAP_INTERACT);
         }
         else if (role == "repair")
         {
-            position = repairTask;
+            //position = repairTask;
+            position = game.repair.GetComponent<Transform>().position;
             transform.position = position;
             ChangeAnimationState(CAP_INTERACT);
         }
         else if (role == "canon")
         {
-            position = canonTask;
+            //position = canonTask;
+            position = game.canon.GetComponent<Transform>().position;
             transform.position = position;
             ChangeAnimationState(CAP_INTERACT);
         }
         else if (role == "helm")
         {
-            position = helmTask;
+            //position = helmTask;
+            position = game.helm.GetComponent<Transform>().position;
             transform.position = position;
             ChangeAnimationState(CAP_INTERACT);
         }

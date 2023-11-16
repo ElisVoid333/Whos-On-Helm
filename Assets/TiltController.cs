@@ -28,7 +28,6 @@ public class TiltController : MonoBehaviour
         tiltDirection = 0f;
 
         player = GameObject.FindGameObjectWithTag("Player");
-        //rb = player.GetComponent<Rigidbody2D>();
 
         roles = GameObject.FindGameObjectsWithTag("Role");
 
@@ -81,9 +80,7 @@ public class TiltController : MonoBehaviour
         {
             tiltTimer = 0f;
         }
-        //Debug.Log(tiltTimer);
         tiltDirection = setTilt(tiltTimer);
-        //Debug.Log(initial_positions);
 
         //Player Move tilt Directions
         //Tilt Left/Up
@@ -91,14 +88,12 @@ public class TiltController : MonoBehaviour
         {
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
             rb.AddForce(new Vector2(0f, tiltForce));
-            //print("Tilt Up");
         }
         //Tilt Right/Down
         if (tiltDirection == 3f)
         {
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
             rb.AddForce(new Vector2(0f, -tiltForce));
-            //print("Tilt Down");
         }
 
 
@@ -115,7 +110,7 @@ public class TiltController : MonoBehaviour
         {
             for (int i = 0; i < roles.Length; i++)
             {
-                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y + 0.2f, initial_positions[i].z);
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y + 0.6f, initial_positions[i].z);
             }
         }
         //Neutral
@@ -161,7 +156,7 @@ public class TiltController : MonoBehaviour
         {
             phase = 3f;
         }
-        //Debug.Log(phase);
+        
         return phase;
     }
 

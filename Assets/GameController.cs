@@ -50,7 +50,8 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (SceneManager.GetActiveScene().name != "IntroScene")
+
+        if (SceneManager.GetActiveScene().name != "00_IntroScene" || SceneManager.GetActiveScene().name != "06_WinScene" || SceneManager.GetActiveScene().name != "07_LoseScene")
         {
             PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
@@ -65,6 +66,7 @@ public class GameController : MonoBehaviour
                 }else if (player.currentJob == canon)
                 {
                     canon.shooting = true;
+                    //Debug.Log("Captain Shooting!");
                 }
                 else
                 {
@@ -123,6 +125,7 @@ public class GameController : MonoBehaviour
 
             if (canon.crewInRange)
             {
+                Debug.Log("Crew Shooting");
                 canon.shooting = true;
             }
             else
