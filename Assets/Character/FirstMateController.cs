@@ -14,15 +14,16 @@ public class FirstMateController : MonoBehaviour
     void Start()
     {
         position = new Vector2(0, 0);
-        repairTask = new Vector2(5.47f, 0.08f);
-        cleaningTask = new Vector2(-2.46f, 1.64f);
-        canonTask = new Vector2(1.24f, -1.6f);
+        repairTask = new Vector2(5.1f, 0.90f);
+        cleaningTask = new Vector2(-2.09f, 1.66f);
+        canonTask = new Vector2(1.38f, -1.20f);
         helmTask = new Vector2(-6.14f, 0.16f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             position = repairTask;
@@ -32,7 +33,7 @@ public class FirstMateController : MonoBehaviour
         {
             position = cleaningTask;
             transform.position = position;
-        }
+        }*/
     }
 
     public void moveCrewmate(string role)
