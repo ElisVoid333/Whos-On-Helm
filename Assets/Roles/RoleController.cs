@@ -11,7 +11,8 @@ public class RoleController : MonoBehaviour
     public bool crewInRange;
     public GameObject ball;
     public bool shooting;
-    public TextMeshProUGUI instructions;
+    //public TextMeshProUGUI instructions;
+    public GameObject instructions;
 
     private float y;
 
