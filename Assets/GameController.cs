@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -76,6 +77,8 @@ public class GameController : MonoBehaviour
             /*-- Roles --*/
             //Cleaning Role
             //Enable the Radial menu
+            ShowMenu(0, cleaner);
+            /*
             if (cleaner.inRange)
             {
                 cleaner.transform.GetChild(0).gameObject.SetActive(true);
@@ -85,7 +88,7 @@ public class GameController : MonoBehaviour
                 cleaner.transform.GetChild(0).gameObject.SetActive(false);
                 cleaner.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
                 cleaner.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
-            }
+            }*/
 
             if (cleaner.crewInRange)
             {
@@ -96,6 +99,8 @@ public class GameController : MonoBehaviour
 
             //Repair Role
             //Enable the Radial menu
+            ShowMenu(0, repair);
+            /*
             if (repair.inRange)
             {
                 repair.transform.GetChild(0).gameObject.SetActive(true);
@@ -105,7 +110,7 @@ public class GameController : MonoBehaviour
                 repair.transform.GetChild(0).gameObject.SetActive(false);
                 repair.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.SetActive(false);
                 repair.transform.GetChild(0).GetChild(1).GetChild(2).gameObject.SetActive(false);
-            }
+            }*/
 
             if (repair.crewInRange)
             {
@@ -115,6 +120,8 @@ public class GameController : MonoBehaviour
 
             //Canon Role
             //Enable the Radial menu
+            ShowMenu(1, canon);
+            /*
             if (canon.inRange)
             {
                 canon.transform.GetChild(1).gameObject.SetActive(true);
@@ -124,7 +131,7 @@ public class GameController : MonoBehaviour
                 canon.transform.GetChild(1).gameObject.SetActive(false);
                 canon.transform.GetChild(1).GetChild(1).GetChild(1).gameObject.SetActive(false);
                 canon.transform.GetChild(1).GetChild(1).GetChild(2).gameObject.SetActive(false);
-            }
+            }*/
 
             if (canon.crewInRange)
             {
@@ -153,7 +160,8 @@ public class GameController : MonoBehaviour
                     TimerOn = false;
                 }
             }
-            //Enable the Radial menu
+
+            //Enable the Radial menu on helm
             if (helm.inRange)
             {
                 helm.transform.GetChild(0).gameObject.SetActive(true);
@@ -166,7 +174,7 @@ public class GameController : MonoBehaviour
             /*-- Random Events --*/
             if (rock.inflictDamage)
             {
-                total_health -= 0.02f;
+                InflictShipDamage(2f);
             }
 
             /*-- Outputable Variables --*/
@@ -211,7 +219,25 @@ public class GameController : MonoBehaviour
             healthMeter.fillAmount = total_health / MAX_HEALTH;
         }
     }
-        
+
+    private void InflictShipDamage(float damage)
+    {
+        total_health -= 0.02f * damage;
+    }
+
+    private void ShowMenu(int step, RoleController role) 
+    {
+        if (role.inRange)
+        {
+            role.transform.GetChild(step).gameObject.SetActive(true);
+        }
+        else
+        {
+            role.transform.GetChild(step).gameObject.SetActive(false);
+            role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
+            role.transform.GetChild(step).GetChild(1).GetChild(2).gameObject.SetActive(false);
+        }
+    }
 
     public void setScene(int i)
     {
