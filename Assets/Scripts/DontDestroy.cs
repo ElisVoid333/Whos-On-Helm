@@ -5,18 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class DontDestroy : MonoBehaviour
 {
-    private int captain;
+    public int captain;
 
     private void Awake()
     {
-        if (SceneManager.GetActiveScene().name == "06_WinScene" || SceneManager.GetActiveScene().name == "07_LoseScene")
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
+
+        if (objs.Length > 1)
         {
+            Debug.Log("Destroy");
             Destroy(this.gameObject);
         }
-        else
-        {
-            DontDestroyOnLoad(this.gameObject);
-        }
+
+        Debug.Log("Don't Destroy");
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void setScene(int i)

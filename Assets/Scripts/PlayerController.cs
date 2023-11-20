@@ -47,7 +47,9 @@ public class PlayerController : MonoBehaviour
 
         position = new Vector2(0, 0);
 
-        captainSelected = game.getCaptain("Captain");
+        //captainSelected = game.getCaptain("Captain");
+        captainSelected = GameObject.FindGameObjectWithTag("DontDestroy").GetComponent<DontDestroy>().GetCaptain();
+        Debug.Log("The Capatain: " + captainSelected);
 
         //Animation & Captain selection
         if (captainSelected == 0)
@@ -233,6 +235,7 @@ public class PlayerController : MonoBehaviour
         {
             //position = helmTask;
             position = game.helm.GetComponent<Transform>().position;
+            position.x = position.x - 0.7f;
             transform.position = position;
             ChangeAnimationState(CAP_INTERACT);
         }

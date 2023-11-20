@@ -739,24 +739,24 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1097349996}
         m_TargetAssemblyTypeName: DontDestroy, Assembly-CSharp
-        m_MethodName: setScene
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1097349996}
-        m_TargetAssemblyTypeName: DontDestroy, Assembly-CSharp
         m_MethodName: SetCaptain
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1097349996}
+        m_TargetAssemblyTypeName: DontDestroy, Assembly-CSharp
+        m_MethodName: setScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -922,24 +922,24 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1097349996}
         m_TargetAssemblyTypeName: DontDestroy, Assembly-CSharp
-        m_MethodName: setScene
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1097349996}
-        m_TargetAssemblyTypeName: DontDestroy, Assembly-CSharp
         m_MethodName: SetCaptain
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1097349996}
+        m_TargetAssemblyTypeName: DontDestroy, Assembly-CSharp
+        m_MethodName: setScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1011,6 +1011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab5aca1389c81445a60861593affe61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  captain: 0
 --- !u!4 &1097349997
 Transform:
   m_ObjectHideFlags: 0
@@ -1617,7 +1618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1275978713
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2733,7 +2734,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1097349996}
         m_TargetAssemblyTypeName: DontDestroy, Assembly-CSharp
-        m_MethodName: setScene
+        m_MethodName: SetCaptain
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2745,7 +2746,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1097349996}
         m_TargetAssemblyTypeName: DontDestroy, Assembly-CSharp
-        m_MethodName: SetCaptain
+        m_MethodName: setScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

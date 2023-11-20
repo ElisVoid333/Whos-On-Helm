@@ -49,6 +49,7 @@ public class GameController : MonoBehaviour
         //Countdown Timer Variables Initialize
         TimeLeft = 240.0f; //4 minutes
         TimerOn = true;
+
     }
 
     // Update is called once per frame
@@ -78,14 +79,7 @@ public class GameController : MonoBehaviour
                     canon.shooting = true;
                 }
                 
-            }/*
-            else
-            {
-                if (!canon.crewInRange)
-                {
-                    canon.shooting = false;
-                }
-            }*/
+            }
 
             HandleCanonBall(canon);
 
@@ -121,13 +115,6 @@ public class GameController : MonoBehaviour
                 //repair.inRange = false;
             }
 
-            //HandleCanonBall(canon);
-            /*
-            else
-            {
-                canon.shooting = false;
-            }*/
-
             //Helm Role
             if (TimerOn)
             {
@@ -137,7 +124,6 @@ public class GameController : MonoBehaviour
                     if (player.occupied && player.currentJob == helm)
                     {
                         TimeLeft -= Time.deltaTime;
-                        //Debug.Log("Double Time! : " + TimeLeft);
                     }
                 }
                 else
@@ -200,10 +186,11 @@ public class GameController : MonoBehaviour
             {
                 setScene(2);
             }
-            // Debug.Log(total_happiness / MAX_HAPPINESS);
             TimerText.text = "Countdown: " + TimeLeft.ToString("F0");
             happinessMeter.fillAmount = total_happiness / MAX_HAPPINESS;
             healthMeter.fillAmount = total_health / MAX_HEALTH;
+
+
         }
     }
 
@@ -230,7 +217,6 @@ public class GameController : MonoBehaviour
     {
 
         if (canon.shooting) {
-            //Debug.Log("SHOOTING");
             canon.ball.SetActive(true);
             canon.y = canon.ball.transform.position.y;
             if (canon.ball.transform.position.y < -10f)
@@ -282,5 +268,11 @@ public class GameController : MonoBehaviour
     {
         captain = PlayerPrefs.GetInt(name);
         return captain;
+    }
+
+    public void StartEvent()
+    {
+        Random rnd = new Random();
+        int month = rnd.Next(1, 13);
     }
 }

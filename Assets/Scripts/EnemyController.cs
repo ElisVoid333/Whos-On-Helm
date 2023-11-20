@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
 
     private Vector2 targetPos;
     private Vector2 currentPos;
+    private Vector2 initialPos;
 
     private Vector2 attackPos;
     private Vector2 fleePos;
@@ -29,7 +30,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         //ship.enabled = false;
-        Vector2 initialPos = new Vector2(-13.3f, -5.3f);
+        initialPos = new Vector2(-13.3f, -5.3f);
         currentPos = initialPos;
         targetPos = currentPos;
 
@@ -55,6 +56,11 @@ public class EnemyController : MonoBehaviour
 
                 currentPos.x = currentPos.x + shipSpeed;
                 ship.transform.position = new Vector3(currentPos.x, currentPos.y, 0f);
+            }else if (currentPos.x >= fleePos.x)
+            {
+                currentPos.x = initialPos.x;
+                ship.transform.position = new Vector3(currentPos.x, currentPos.y, 0f);
+                targetPos = initialPos;
             }
         }
 

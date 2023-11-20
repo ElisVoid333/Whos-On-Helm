@@ -13,6 +13,7 @@ TagManager:
   - Enemy_canonball
   - Crew
   - Border
+  - DontDestroy
   layers:
   - Default
   - TransparentFX
