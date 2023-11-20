@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour
     private Vector2 ballPos;
 
     private int lives;
-    private float damage = 20f;
+    public float damage = 200f;
     private float timeBetweenShots = 6f;
     public GameObject ship;
 
@@ -25,8 +25,10 @@ public class EnemyController : MonoBehaviour
     public bool fire;
     private GameObject ball;
 
-    private float respawnTime;
-    
+    public float respawnRate;
+    public float timer; //Time.deltaTime
+    public float randomTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,12 +46,23 @@ public class EnemyController : MonoBehaviour
         lives = 3;
 
         ball = ship.transform.GetChild(0).gameObject;
+        ball.gameObject.GetComponent<BallController>().damage = damage;
 
+        timer = 0f;
+        randomTime = Random.Range(1f, 2f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+        if (timer >= respawnRate && !attacking)
+        {
+            SetTarget("attack");
+            timer = 0f;
+            //randomTime = Random.Range(2f, 8f);
+        }
+
         currentPos.x = transform.position.x;
         currentPos.y = transform.position.y;
 
@@ -57,8 +70,6 @@ public class EnemyController : MonoBehaviour
         {
             if (targetPos.x > currentPos.x)
             {
-                //Debug.Log("Target x: " + targetPos.x + "  Current x: " + currentPos.x);
-
                 currentPos.x = currentPos.x + shipSpeed;
                 ship.transform.position = new Vector3(currentPos.x, currentPos.y, 0f);
             }else if (currentPos.x >= fleePos.x)
@@ -101,7 +112,7 @@ public class EnemyController : MonoBehaviour
         {
             if (!fire)
             {
-                Debug.Log("FIRE!!!");
+                //Debug.Log("FIRE!!!");
                 ballPos.x = ship.transform.position.x + 2f;
                 fire = true;
             }
@@ -131,7 +142,7 @@ public class EnemyController : MonoBehaviour
         }
         
         Vector2 movement = new Vector2(ballPos.x, ballPos.y);
-        Debug.Log("Move : " + movement);
+        //Debug.Log("Move : " + movement);
         canonball.transform.position = movement;
     }
 
@@ -143,13 +154,14 @@ public class EnemyController : MonoBehaviour
         attacking = false;
         lives = 3;
         shooting = false;
+        timer = 0f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Canonball")
         {
-            Debug.Log("Enemy HIT");
+            //Debug.Log("Enemy HIT");
             if (!hit)
             {
                 lives--;
@@ -163,7 +175,7 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.tag == "Canonball")
         {
             hit = false;
-            Debug.Log("Enemy MISSED");
+            //Debug.Log("Enemy MISSED");
         }
     }
 
