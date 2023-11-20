@@ -17,8 +17,10 @@ public class BirdController : MonoBehaviour
     private float y_start_max = 2;
 
     public int numOfPoops;
-    protected GameObject[] poopList;
+    //protected GameObject[] poopList;
     public GameObject poopObject;
+
+    //public CleanUpController happiness;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +65,7 @@ public class BirdController : MonoBehaviour
     {
         //Create New Poop Instance at bird location
         Instantiate(poopObject, new Vector3(current_position, y, 0), Quaternion.identity);
+        //total
     }
 
 }
