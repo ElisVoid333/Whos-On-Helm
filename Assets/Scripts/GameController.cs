@@ -73,7 +73,7 @@ public class GameController : MonoBehaviour
                     total_happiness += 0.05f;
                 }else if (player.currentJob == repair)
                 {
-                    total_health += 0.05f;
+                    total_health += 0.07f;
                 }else if (player.currentJob == canon)
                 {
                     canon.shooting = true;
@@ -111,7 +111,7 @@ public class GameController : MonoBehaviour
 
             if (repair.crewInRange)
             {
-                total_health += 0.05f;
+                total_health += 0.07f;
                 //repair.inRange = false;
             }
 
@@ -190,29 +190,10 @@ public class GameController : MonoBehaviour
             happinessMeter.fillAmount = total_happiness / MAX_HAPPINESS;
             healthMeter.fillAmount = total_health / MAX_HEALTH;
 
-            if (!enemy.attacking)
-            {
-                if(TimeLeft % 5f < 0.011f)
-                {
-                    /*
-                    Debug.Log("Random Event?");
-                    float rnd = Random.Range(0f, 100.0f);
-                    if (rnd < 95f && rnd > 90f)
-                    {
-                        Debug.Log("ATTACK!!!!");
-                        enemy.SetTarget("attack");
-                    }*/
-
-                    //Debug.Log("ATTACK!!!!");
-                    enemy.SetTarget("attack");
-
-                }
-
-            }
         }
     }
 
-    private void InflictShipDamage(float damage)
+    public void InflictShipDamage(float damage)
     {
         total_health -= 0.02f * damage;
     }
