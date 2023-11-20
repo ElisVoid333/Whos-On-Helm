@@ -27,7 +27,7 @@ public class BirdController : MonoBehaviour
     {
         timer = 0f;
         numOfPoops = 0;
-        randomTime = Random.Range(0.4f, 1f);
+        randomTime = Random.Range(1f, 2f);
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class BirdController : MonoBehaviour
         {
             spawnBird();
             timer = 0f;
-            randomTime = Random.Range(2.5f, 8f);
+            randomTime = Random.Range(2f, 8f);
         }
 
         if (timer >= randomTime)
