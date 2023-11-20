@@ -246,8 +246,9 @@ MonoBehaviour:
   rateOfUnhappy: 2
   spawnRate: 4
   timer: 0
+  randomTime: 0
   numOfPoops: 0
-  poopObject: {fileID: 2312343875685760731, guid: b260303ed679ac7478a8913d05082392, type: 3}
+  poopObject: {fileID: 7538687851232325678, guid: 7f8515ac65bb1914291aff7bf62b0ce2, type: 3}
 --- !u!212 &182159287
 SpriteRenderer:
   m_ObjectHideFlags: 0
