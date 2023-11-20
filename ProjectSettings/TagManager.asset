@@ -13,7 +13,6 @@ TagManager:
   - Enemy_canonball
   - Crew
   - Border
-  - DontDestroy
   layers:
   - Default
   - TransparentFX
@@ -59,7 +58,4 @@ TagManager:
     locked: 0
   - name: props
     uniqueID: 2744421653
-    locked: 0
-  - name: UI
-    uniqueID: 625878099
     locked: 0
