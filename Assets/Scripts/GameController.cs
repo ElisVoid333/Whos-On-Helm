@@ -61,7 +61,7 @@ public class GameController : MonoBehaviour
             PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
             //Handle most of the Captain role behaviour
-            if(canon.occupant == null) {
+            if(canon.occupant == canon.ball) {
 
                 canon.shooting = false;
             }
@@ -192,7 +192,7 @@ public class GameController : MonoBehaviour
 
             if (!enemy.attacking)
             {
-                if(TimeLeft % 2f < 0.02f)
+                if(TimeLeft % 5f < 0.011f)
                 {
                     /*
                     Debug.Log("Random Event?");
@@ -203,7 +203,7 @@ public class GameController : MonoBehaviour
                         enemy.SetTarget("attack");
                     }*/
 
-                    Debug.Log("ATTACK!!!!");
+                    //Debug.Log("ATTACK!!!!");
                     enemy.SetTarget("attack");
 
                 }

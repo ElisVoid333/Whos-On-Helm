@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
 
     private Vector2 attackPos;
     private Vector2 fleePos;
+    private Vector2 ballPos;
 
     private int lives;
     private float damage = 20f;
@@ -21,6 +22,7 @@ public class EnemyController : MonoBehaviour
     public bool attacking;
     public bool hit;
     public bool shooting;
+    public bool fire;
     private GameObject ball;
 
     private float respawnTime;
@@ -37,7 +39,11 @@ public class EnemyController : MonoBehaviour
         fleePos = new Vector2(13f, -5.3f);
 
         attacking = false;
+        shooting = false;
+        fire = false;
         lives = 3;
+
+        ball = ship.transform.GetChild(0).gameObject;
 
     }
 
@@ -57,18 +63,16 @@ public class EnemyController : MonoBehaviour
                 ship.transform.position = new Vector3(currentPos.x, currentPos.y, 0f);
             }else if (currentPos.x >= fleePos.x)
             {
-                currentPos.x = initialPos.x;
-                ship.transform.position = new Vector3(currentPos.x, currentPos.y, 0f);
-                targetPos = initialPos;
-                attacking = false;
+                ResetShip();
             }
         }
 
         if (attacking)
         {
-            ball = transform.GetChild(0).gameObject;
-            HandleCanonBall(ball);
+            shooting = true;
+            
         }
+        HandleEnemyCanonBall(ball);
 
         if (lives == 0)
         {
@@ -90,34 +94,55 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    private void HandleCanonBall(GameObject canonball)
+    private void HandleEnemyCanonBall(GameObject canonball)
     {
-        Vector2 canon;
+        //Debug.Log("Enemy CanonBall");
         if (shooting)
         {
-            canonball.SetActive(true);
-            canon.y = canonball.transform.position.y;
-            if (canonball.transform.position.y > 18f)
+            if (!fire)
             {
-                canon.y = canonball.transform.position.y + 1f;
+                Debug.Log("FIRE!!!");
+                ballPos.x = ship.transform.position.x + 2f;
+                fire = true;
+            }
+            //Debug.Log("Enemy CanonBall");
+            canonball.SetActive(true);
+            ballPos.y = canonball.transform.position.y;
+            if (canonball.transform.localPosition.y > 50f)
+            {
+                ballPos.y = initialPos.y + 0.5f;
+                fire = false;
             }
             else
             {
-                canon.y += 0.05f;
+                ballPos.y += 0.025f;
                 //Debug.Log("SHOOTING");
             }
         }
         else
         {
             //Debug.Log("NOT Shooting");
-            canon.y = transform.position.y + 1f;
-            
+            ballPos.y = transform.position.y + 1f;
+            ballPos.x = ship.transform.position.x + 2f;
+
+            fire = false;
+
             canonball.SetActive(false);
         }
-
-        canon.x = transform.position.x + 2f;
-        Vector2 movement = new Vector2(canon.x, canon.y);
+        
+        Vector2 movement = new Vector2(ballPos.x, ballPos.y);
+        Debug.Log("Move : " + movement);
         canonball.transform.position = movement;
+    }
+
+    private void ResetShip()
+    {
+        currentPos.x = initialPos.x;
+        ship.transform.position = new Vector3(currentPos.x, currentPos.y, 0f);
+        targetPos = initialPos;
+        attacking = false;
+        lives = 3;
+        shooting = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
