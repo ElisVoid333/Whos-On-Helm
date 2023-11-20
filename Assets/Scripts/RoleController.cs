@@ -9,12 +9,13 @@ public class RoleController : MonoBehaviour
     public bool inRange;
     private bool interact;
     public bool crewInRange;
+    public GameObject occupant;
     public GameObject ball;
     public bool shooting;
-    //public TextMeshProUGUI instructions;
     public GameObject instructions;
 
-    private float y;
+    public float y;
+    public float x;
 
 
 
@@ -23,44 +24,31 @@ public class RoleController : MonoBehaviour
     {
         inRange = false;
         interact = false;
+        shooting = false;
+
+        occupant = ball;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (shooting)
-        {
-            ball.SetActive(true);
-            if (ball.transform.position.y > 5)
-            {
-                y = 0;
-            }
-            else
-            {
-                y += 0.01f;
-                Debug.Log("SHOOTING");
-            }
-
-            Vector2 movement = new Vector2(0, y);
-            movement = ball.transform.position;
-        }/*else
-        {
-            ball.SetActive(false);
-            y = 0;
-            Debug.Log("Turned ball off");
-        }*/
 
         if (Input.GetKeyDown(KeyCode.E) && interact)
         {
             if (inRange)
             {
                 inRange = false;
+                
             }
             else
             {
                 inRange = true;
+                
             }
+
+            occupant = ball;
         }
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -88,14 +76,28 @@ public class RoleController : MonoBehaviour
             inRange = false;
             interact = false;
             instructions.gameObject.SetActive(false);
+
+
         } else if (collision.gameObject.tag == "Crew")
         {
-            crewInRange = false;
+            if (collision.gameObject == occupant.gameObject)
+            {
+                crewInRange = false;
+
+                occupant = ball;
+            }
+
         }
     }
 
     public void setRange(bool setter)
     {
         inRange = setter;
+    }
+
+    public void SetOccupant(GameObject worker)
+    {
+        occupant = worker;
+
     }
 }

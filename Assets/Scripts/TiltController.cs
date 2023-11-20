@@ -89,12 +89,24 @@ public class TiltController : MonoBehaviour
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
             rb.AddForce(new Vector2(0f, tiltForce));
         }
+        if (tiltDirection == 2f)
+        {
+            //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
+            rb.AddForce(new Vector2(0f, -tiltForce / 2));
+        }
+
         //Tilt Right/Down
         if (tiltDirection == 3f)
         {
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
             rb.AddForce(new Vector2(0f, -tiltForce));
         }
+        if (tiltDirection == 0f)
+        {
+            //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
+            rb.AddForce(new Vector2(0f, tiltForce / 2));
+        }
+
 
 
         // Roles tilt positions

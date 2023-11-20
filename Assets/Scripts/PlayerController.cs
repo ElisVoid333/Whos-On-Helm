@@ -47,7 +47,9 @@ public class PlayerController : MonoBehaviour
 
         position = new Vector2(0, 0);
 
-        captainSelected = game.getCaptain("Captain");
+        //captainSelected = game.getCaptain("Captain");
+        captainSelected = GameObject.FindGameObjectWithTag("DontDestroy").GetComponent<DontDestroy>().GetCaptain();
+        Debug.Log("The Capatain: " + captainSelected);
 
         //Animation & Captain selection
         if (captainSelected == 0)
@@ -195,13 +197,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && occupied)
         {
-            //Debug.Log("MOOOOOOOOOVVVVVVVEEEEEEE");
-            //Interact with role
-            if (moveable)
-            {
-                Debug.Log("Interacting with role");
-                moveable = false;
-            }
             if (moveable == false)
             {
                 Debug.Log("Leaving role");
@@ -232,6 +227,7 @@ public class PlayerController : MonoBehaviour
         {
             //position = canonTask;
             position = game.canon.GetComponent<Transform>().position;
+            position.x = position.x - 0.5f;
             transform.position = position;
             ChangeAnimationState(CAP_INTERACT);
         }
@@ -239,6 +235,7 @@ public class PlayerController : MonoBehaviour
         {
             //position = helmTask;
             position = game.helm.GetComponent<Transform>().position;
+            position.x = position.x - 0.7f;
             transform.position = position;
             ChangeAnimationState(CAP_INTERACT);
         }
