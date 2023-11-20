@@ -7445,7 +7445,7 @@ GameObject:
   - component: {fileID: 1490629880}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Canonball
+  m_TagString: Enemy_canonball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7847,11 +7847,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534942410}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9959d6a495f54a347828e3c27ec55a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  CREW_STATIC: 
+  CREW_INTERACT: 
 --- !u!1 &1550268745
 GameObject:
   m_ObjectHideFlags: 0
@@ -9200,6 +9203,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9959d6a495f54a347828e3c27ec55a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1799898958}
+  CREW_STATIC: crewmate1_idle
+  CREW_INTERACT: crewmate1_interact
 --- !u!61 &1799898957
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9255,7 +9261,7 @@ Animator:
   m_GameObject: {fileID: 1799898953}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4f125f30836c02d4694abfe722d95800, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -9489,6 +9495,7 @@ GameObject:
   - component: {fileID: 1860512481}
   - component: {fileID: 1860512480}
   - component: {fileID: 1860512479}
+  - component: {fileID: 1860512482}
   m_Layer: 0
   m_Name: secondm8
   m_TagString: Crew
@@ -9568,6 +9575,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9959d6a495f54a347828e3c27ec55a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1860512482}
+  CREW_STATIC: crewmate2_idle
+  CREW_INTERACT: crewmate2_interact
 --- !u!212 &1860512481
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9620,6 +9630,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1860512482
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860512477}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4556f2aded5e98e4a8c7542af93c07f5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1880348496
 GameObject:
   m_ObjectHideFlags: 0
