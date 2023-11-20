@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    //Player's Ships Health
-    //public HealthController health;
-    //public Rigidbody2D shipRb;
     public float shipSpeed;
 
     private Vector2 targetPos;
@@ -23,6 +20,8 @@ public class EnemyController : MonoBehaviour
 
     public bool attacking;
     public bool hit;
+    public bool shooting;
+    private GameObject ball;
 
     private float respawnTime;
     
@@ -61,7 +60,14 @@ public class EnemyController : MonoBehaviour
                 currentPos.x = initialPos.x;
                 ship.transform.position = new Vector3(currentPos.x, currentPos.y, 0f);
                 targetPos = initialPos;
+                attacking = false;
             }
+        }
+
+        if (attacking)
+        {
+            ball = transform.GetChild(0).gameObject;
+            HandleCanonBall(ball);
         }
 
         if (lives == 0)
@@ -82,6 +88,36 @@ public class EnemyController : MonoBehaviour
             targetPos = fleePos;
         }
 
+    }
+
+    private void HandleCanonBall(GameObject canonball)
+    {
+        Vector2 canon;
+        if (shooting)
+        {
+            canonball.SetActive(true);
+            canon.y = canonball.transform.position.y;
+            if (canonball.transform.position.y > 18f)
+            {
+                canon.y = canonball.transform.position.y + 1f;
+            }
+            else
+            {
+                canon.y += 0.05f;
+                //Debug.Log("SHOOTING");
+            }
+        }
+        else
+        {
+            //Debug.Log("NOT Shooting");
+            canon.y = transform.position.y + 1f;
+            
+            canonball.SetActive(false);
+        }
+
+        canon.x = transform.position.x + 2f;
+        Vector2 movement = new Vector2(canon.x, canon.y);
+        canonball.transform.position = movement;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

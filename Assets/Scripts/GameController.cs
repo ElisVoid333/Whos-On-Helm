@@ -118,7 +118,7 @@ public class GameController : MonoBehaviour
             //Helm Role
             if (TimerOn)
             {
-                if (TimeLeft > 0)
+                if (TimeLeft > 0f)
                 {
                     TimeLeft -= Time.deltaTime;
                     if (player.occupied && player.currentJob == helm)
@@ -128,7 +128,7 @@ public class GameController : MonoBehaviour
                 }
                 else
                 {
-                    TimeLeft = 0;
+                    TimeLeft = 0f;
                     TimerOn = false;
                 }
             }
@@ -190,7 +190,25 @@ public class GameController : MonoBehaviour
             happinessMeter.fillAmount = total_happiness / MAX_HAPPINESS;
             healthMeter.fillAmount = total_health / MAX_HEALTH;
 
+            if (!enemy.attacking)
+            {
+                if(TimeLeft % 2f < 0.02f)
+                {
+                    /*
+                    Debug.Log("Random Event?");
+                    float rnd = Random.Range(0f, 100.0f);
+                    if (rnd < 95f && rnd > 90f)
+                    {
+                        Debug.Log("ATTACK!!!!");
+                        enemy.SetTarget("attack");
+                    }*/
 
+                    Debug.Log("ATTACK!!!!");
+                    enemy.SetTarget("attack");
+
+                }
+
+            }
         }
     }
 
@@ -268,11 +286,5 @@ public class GameController : MonoBehaviour
     {
         captain = PlayerPrefs.GetInt(name);
         return captain;
-    }
-
-    public void StartEvent()
-    {
-        Random rnd = new Random();
-        int month = rnd.Next(1, 13);
     }
 }
