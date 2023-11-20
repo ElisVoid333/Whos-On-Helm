@@ -8,7 +8,6 @@ public class FirstMateController : MonoBehaviour
     private Vector2 cleaningTask;
     private Vector2 repairTask;
     private Vector2 canonTask;
-    private Vector2 helmTask;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +16,6 @@ public class FirstMateController : MonoBehaviour
         repairTask = new Vector2(5.1f, 0.90f);
         cleaningTask = new Vector2(-2.09f, 1.66f);
         canonTask = new Vector2(1.38f, -1.20f);
-        helmTask = new Vector2(-6.14f, 0.16f);
     }
 
     // Update is called once per frame

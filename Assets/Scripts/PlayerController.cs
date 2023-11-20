@@ -195,13 +195,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && occupied)
         {
-            //Debug.Log("MOOOOOOOOOVVVVVVVEEEEEEE");
-            //Interact with role
-            if (moveable)
-            {
-                Debug.Log("Interacting with role");
-                moveable = false;
-            }
             if (moveable == false)
             {
                 Debug.Log("Leaving role");
@@ -232,6 +225,7 @@ public class PlayerController : MonoBehaviour
         {
             //position = canonTask;
             position = game.canon.GetComponent<Transform>().position;
+            position.x = position.x - 0.5f;
             transform.position = position;
             ChangeAnimationState(CAP_INTERACT);
         }
