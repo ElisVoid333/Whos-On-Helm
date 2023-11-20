@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class RoleController : MonoBehaviour
 {
-    //Canon Role Variables
+    //Role Variables
     public bool inRange;
     private bool interact;
     public bool crewInRange;
+    public GameObject occupant;
     public GameObject ball;
     public bool shooting;
-    public TextMeshProUGUI instructions;
+    public GameObject instructions;
 
-    private float y;
-    //private float x;
+    public float y;
+    public float x;
 
 
 
@@ -23,58 +24,44 @@ public class RoleController : MonoBehaviour
     {
         inRange = false;
         interact = false;
+        shooting = false;
+
+        occupant = ball;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (shooting)
-        {
-            ball.SetActive(true);
-            if (ball.transform.localPosition.y > 10)
-            {
-                y = 0;
-            }
-            else
-            {
-                y += 0.005f;
-            }
-
-            Vector2 movement = new Vector2(0, y);
-            ball.transform.position = movement;
-        }
-        else
-        {
-            ball.SetActive(false);
-            y = 0;
-        }
 
         if (Input.GetKeyDown(KeyCode.E) && interact)
         {
-            //Debug.Log("EEEEEEEEEEEEEEEEEEEEEEEEE");
-            //inRange = true;
             if (inRange)
             {
                 inRange = false;
+                
             }
             else
             {
                 inRange = true;
+                
             }
+
+            occupant = ball;
         }
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //Debug.Log(collision.gameObject.tag);
-
         if (collision.gameObject.tag == "Player")
         {
+            if(collision.gameObject.GetComponent<PlayerController>().moveable == true)
+            {
+                instructions.gameObject.SetActive(true);
+                interact = true;
+            }
+
             //Debug.Log("Write Instructions");
-            //Debug.Log("Interact: " + interact);
-            //Debug.Log("inRange: " + inRange);
-            instructions.gameObject.SetActive(true);
-            interact = true;
         }
         else if (collision.gameObject.tag == "Crew")
         {
@@ -86,18 +73,31 @@ public class RoleController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            //Debug.Log("All cleaned up");
             inRange = false;
             interact = false;
             instructions.gameObject.SetActive(false);
+
+
         } else if (collision.gameObject.tag == "Crew")
         {
-            crewInRange = false;
+            if (collision.gameObject == occupant.gameObject)
+            {
+                crewInRange = false;
+
+                occupant = ball;
+            }
+
         }
     }
 
     public void setRange(bool setter)
     {
         inRange = setter;
+    }
+
+    public void SetOccupant(GameObject worker)
+    {
+        occupant = worker;
+
     }
 }
