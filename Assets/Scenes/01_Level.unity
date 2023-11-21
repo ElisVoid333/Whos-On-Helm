@@ -8778,6 +8778,7 @@ MonoBehaviour:
   TimeLeft: 120
   TimerOn: 1
   TimerText: {fileID: 1181612696}
+  Score: 0
   cleaner: {fileID: 597187545}
   canon: {fileID: 1187077685}
   repair: {fileID: 2085186585}
@@ -8785,6 +8786,9 @@ MonoBehaviour:
   helm: {fileID: 584776627}
   rock: {fileID: 1652852373}
   enemy: {fileID: 879100047}
+  poopRemoveTimer: 0
+  bird: {fileID: 0}
+  poopList: []
 --- !u!4 &1670624685
 Transform:
   m_ObjectHideFlags: 0
@@ -11332,12 +11336,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  rateOfUnhappy: 2
+  poopUnhappy: 10
   spawnRate: 8
   timer: 0
   randomTime: 0
   numOfPoops: 0
   poopObject: {fileID: 7538687851232325678, guid: 7f8515ac65bb1914291aff7bf62b0ce2, type: 3}
+  gameController: {fileID: 1670624684}
 --- !u!114 &2865420213807036702
 MonoBehaviour:
   m_ObjectHideFlags: 0

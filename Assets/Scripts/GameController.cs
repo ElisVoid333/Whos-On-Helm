@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
     public float TimeLeft;
     public bool TimerOn;
     public Text TimerText;
+    public float Score;
 
     //Controller Variables
     public RoleController cleaner;
@@ -32,9 +33,14 @@ public class GameController : MonoBehaviour
     private int captain;
 
     /*-- RANDOM EVENTS --*/
-    //Random Rocks
+    //Rocks
     public RockController rock;
+    //Enemy
     public EnemyController enemy;
+    //Bird
+    public float poopRemoveTimer;
+    public BirdController bird;
+    public GameObject[] poopList;
 
     // Start is called before the first frame update
     void Start()
@@ -102,7 +108,6 @@ public class GameController : MonoBehaviour
             {
                 total_happiness += 0.05f;
             }
-
             total_happiness -= 0.01f;
 
             //Repair Role
@@ -144,9 +149,30 @@ public class GameController : MonoBehaviour
             }
 
             /*-- Random Events --*/
+            //Rock
             if (rock.inflictDamage)
             {
                 InflictShipDamage(2f);
+            }
+
+            //Bird
+            //PoopCleaning
+            if (cleaner.crewInRange || cleaner.inRange)
+            {
+                poopRemoveTimer += Time.deltaTime;
+
+                poopList = GameObject.FindGameObjectsWithTag("Poop");
+                if (poopRemoveTimer >= 3f)
+                {
+                    Debug.Log("Cleaning Poop");
+                    if (bird.numOfPoops > 0) 
+                    {
+                        Destroy(poopList[poopList.Length]);
+                        bird.numOfPoops -= 1;
+                        Debug.Log("Poop Removed");
+                    }
+                    poopRemoveTimer = 0f;
+                }
             }
 
 
