@@ -39,6 +39,11 @@ public class DontDestroy : MonoBehaviour
         {
             SceneManager.LoadScene("07_LoseScene");
         }
+
+        else if (i == 4)
+        {
+            SceneManager.LoadScene("tutorial");
+        }
     }
 
     public void SetCaptain(int i)

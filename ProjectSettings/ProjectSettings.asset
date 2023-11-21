@@ -683,8 +683,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Whos_On_Helm
-  metroPackageVersion: 
+  metroPackageName: WhosOnHelm
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -692,7 +692,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Whos_On_Helm
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Whos_On_Helm
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

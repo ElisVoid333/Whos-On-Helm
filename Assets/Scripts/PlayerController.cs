@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+       
 
         inputX = 0; inputY = 0;
         speed = 1.5f;
@@ -47,9 +48,19 @@ public class PlayerController : MonoBehaviour
 
         position = new Vector2(0, 0);
 
-        //captainSelected = game.getCaptain("Captain");
-        captainSelected = GameObject.FindGameObjectWithTag("DontDestroy").GetComponent<DontDestroy>().GetCaptain();
+        //captainSelected = GameObject.FindGameObjectWithTag("DontDestroy").GetComponent<DontDestroy>().GetCaptain();
+        captainSelected = 0;
+
         Debug.Log("The Capatain: " + captainSelected);
+
+
+        GameObject captainGameObject = GameObject.Find("Captain");
+        if (captainGameObject != null)
+        {
+            // Get the Animator component from the GameObject
+            animator = captainGameObject.GetComponent<Animator>();
+        }
+    
 
         //Animation & Captain selection
         if (captainSelected == 0)
