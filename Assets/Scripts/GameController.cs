@@ -160,14 +160,14 @@ public class GameController : MonoBehaviour
             if (cleaner.crewInRange || cleaner.inRange)
             {
                 poopRemoveTimer += Time.deltaTime;
-
                 poopList = GameObject.FindGameObjectsWithTag("Poop");
+
                 if (poopRemoveTimer >= 3f)
                 {
                     Debug.Log("Cleaning Poop");
                     if (bird.numOfPoops > 0) 
                     {
-                        Destroy(poopList[poopList.Length]);
+                        Destroy(poopList[poopList.Length-1]);
                         bird.numOfPoops -= 1;
                         Debug.Log("Poop Removed");
                     }
