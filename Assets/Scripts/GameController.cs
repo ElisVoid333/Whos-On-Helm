@@ -43,8 +43,11 @@ public class GameController : MonoBehaviour
         total_happiness = MAX_HAPPINESS;
         total_health = MAX_HEALTH;
 
-        canon.y = canon.ball.transform.position.y;
-        canon.x = canon.ball.transform.position.x;
+        if(canon != null)
+        {
+            canon.y = canon.ball.transform.position.y;
+            canon.x = canon.ball.transform.position.x;
+        }
 
         //Countdown Timer Variables Initialize
         TimeLeft = 240.0f; //4 minutes
@@ -61,9 +64,13 @@ public class GameController : MonoBehaviour
             PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
             //Handle most of the Captain role behaviour
-            if(canon.occupant == null) {
+            if (canon != null)
+            {
+                if (canon.occupant == canon.ball)
+                {
 
-                canon.shooting = false;
+                    canon.shooting = false;
+                }
             }
 
             if (player.occupied)
@@ -71,24 +78,24 @@ public class GameController : MonoBehaviour
                 if (player.currentJob == cleaner)
                 {
                     total_happiness += 0.05f;
-                }else if (player.currentJob == repair)
+                }
+                else if (player.currentJob == repair)
                 {
-                    total_health += 0.05f;
-                }else if (player.currentJob == canon)
+                    total_health += 0.07f;
+                }
+                else if (player.currentJob == canon)
                 {
                     canon.shooting = true;
                 }
-                
+
             }
-            
 
             /*-- Roles --*/
 
             //Canon Role
             //Enable the Radial menu
-            
-            if (canon != null) {
-
+            if( canon != null )
+            {
                 HandleCanonBall(canon);
 
                 ShowMenu(0, canon);
@@ -98,7 +105,6 @@ public class GameController : MonoBehaviour
                     canon.shooting = true;
                 }
             }
-            
 
             //Cleaning Role
             //Enable the Radial menu
@@ -117,7 +123,7 @@ public class GameController : MonoBehaviour
 
             if (repair.crewInRange)
             {
-                total_health += 0.05f;
+                total_health += 0.07f;
                 //repair.inRange = false;
             }
 
@@ -153,26 +159,6 @@ public class GameController : MonoBehaviour
             if (rock.inflictDamage)
             {
                 InflictShipDamage(2f);
-            }
-
-            //Bird
-            //PoopCleaning
-            if (cleaner.crewInRange || cleaner.inRange)
-            {
-                poopRemoveTimer += Time.deltaTime;
-                poopList = GameObject.FindGameObjectsWithTag("Poop");
-
-                if (poopRemoveTimer >= 3f)
-                {
-                    Debug.Log("Cleaning Poop");
-                    if (bird.numOfPoops > 0)
-                    {
-                        Destroy(poopList[poopList.Length - 1]);
-                        bird.numOfPoops -= 1;
-                        Debug.Log("Poop Removed");
-                    }
-                    poopRemoveTimer = 0f;
-                }
             }
 
 
@@ -216,25 +202,6 @@ public class GameController : MonoBehaviour
             happinessMeter.fillAmount = total_happiness / MAX_HAPPINESS;
             healthMeter.fillAmount = total_health / MAX_HEALTH;
 
-            if (!enemy.attacking && enemy != null)
-            {
-                if(TimeLeft % 2f < 0.02f)
-                {
-                    /*
-                    Debug.Log("Random Event?");
-                    float rnd = Random.Range(0f, 100.0f);
-                    if (rnd < 95f && rnd > 90f)
-                    {
-                        Debug.Log("ATTACK!!!!");
-                        enemy.SetTarget("attack");
-                    }*/
-
-                    Debug.Log("ATTACK!!!!");
-                    enemy.SetTarget("attack");
-
-                }
-
-            }
         }
     }
 
@@ -243,24 +210,43 @@ public class GameController : MonoBehaviour
         total_health -= 0.02f * damage;
     }
 
-    private void ShowMenu(int step, RoleController role) 
+    private void ShowMenu(int step, RoleController role)
     {
-        if (role.inRange)
+        if (canon != null)
         {
-            role.transform.GetChild(step).gameObject.SetActive(true);
+            Debug.Log("Role: " + role);
+            if (role.inRange)
+            {
+                role.transform.GetChild(step).gameObject.SetActive(true);
+            }
+            else
+            {
+                role.transform.GetChild(step).gameObject.SetActive(false);
+                role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
+                role.transform.GetChild(step).GetChild(1).GetChild(2).gameObject.SetActive(false);
+            }
         }
         else
         {
-            role.transform.GetChild(step).gameObject.SetActive(false);
-            role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
-            role.transform.GetChild(step).GetChild(1).GetChild(2).gameObject.SetActive(false);
+            Debug.Log("Role: " + role);
+            if (role.inRange)
+            {
+                role.transform.GetChild(step).gameObject.SetActive(true);
+            }
+            else
+            {
+                role.transform.GetChild(step).gameObject.SetActive(false);
+                role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
+            }
         }
+
     }
 
     private void HandleCanonBall(RoleController canon)
     {
 
-        if (canon.shooting) {
+        if (canon.shooting)
+        {
             canon.ball.SetActive(true);
             canon.y = canon.ball.transform.position.y;
             if (canon.ball.transform.position.y < -10f)
@@ -272,7 +258,8 @@ public class GameController : MonoBehaviour
                 canon.y -= 0.05f;
                 //Debug.Log("SHOOTING");
             }
-        }else
+        }
+        else
         {
             //Debug.Log("NOT Shooting");
             canon.y = canon.transform.position.y - 0.5f;
@@ -285,8 +272,9 @@ public class GameController : MonoBehaviour
 
     public void setScene(int i)
     {
-        if (i == 0) { 
-            SceneManager.LoadScene("01_Level"); 
+        if (i == 0)
+        {
+            SceneManager.LoadScene("01_Level");
         }
         else if (i == 1)
         {

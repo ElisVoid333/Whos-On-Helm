@@ -63,6 +63,7 @@ public class RoleController : MonoBehaviour
                 }
                 
                 interact = true;
+                Debug.Log("Write Instructions");
             }
 
             //Debug.Log("Write Instructions");
@@ -79,8 +80,13 @@ public class RoleController : MonoBehaviour
         {
             inRange = false;
             interact = false;
-            instructions.gameObject.SetActive(false);
 
+            collision.GetComponent<PlayerController>().occupied = false;
+            
+            if (instructions != null)
+            {
+                instructions.gameObject.SetActive(false);
+            }
 
         } else if (collision.gameObject.tag == "Crew")
         {

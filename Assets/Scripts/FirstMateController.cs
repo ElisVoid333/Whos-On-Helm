@@ -5,12 +5,10 @@ using UnityEngine;
 public class FirstMateController : MonoBehaviour
 {
     private Vector2 position;
-    private Vector2 cleaningTask;
-    private Vector2 repairTask;
-    private Vector2 canonTask;
 
     //Player Animation
     public Animator animator;
+    public GameController game;
     string currState;
     public string CREW_STATIC;
     public string CREW_INTERACT;
@@ -22,9 +20,6 @@ public class FirstMateController : MonoBehaviour
         if (firsm8GameObject != null)
         { animator = firsm8GameObject.GetComponent<Animator>(); };
         position = new Vector2(0, 0);
-        repairTask = new Vector2(5.1f, 0.90f);
-        cleaningTask = new Vector2(-2.09f, 1.66f);
-        canonTask = new Vector2(1.38f, -1.20f);
         ChangeAnimationState(CREW_STATIC);
     }
 
@@ -48,19 +43,20 @@ public class FirstMateController : MonoBehaviour
     {
         if (role == "cleaner")
         {
-            position = cleaningTask;
+            position = game.cleaner.GetComponent<Transform>().position;
             transform.position = position;
             ChangeAnimationState(CREW_INTERACT);
         }
         else if (role == "repair")
         {
-            position = repairTask;
+            position = game.repair.GetComponent<Transform>().position;
             transform.position = position;
             ChangeAnimationState(CREW_INTERACT);
         }
         else if (role == "canon")
         {
-            position = canonTask;
+            position = game.canon.GetComponent<Transform>().position;
+            position.x = position.x - 0.5f;
             transform.position = position;
             ChangeAnimationState(CREW_INTERACT);
         }
