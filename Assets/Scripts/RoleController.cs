@@ -68,9 +68,11 @@ public class RoleController : MonoBehaviour
 
             //Debug.Log("Write Instructions");
         }
-        else if (collision.gameObject.tag == "Crew")
+        if (collision.gameObject.tag == "Crew")
         {
-            if (collision == occupant)
+            //crewInRange = true;
+            Debug.Log("Collision: " + collision.gameObject.name + "Occupant: " + occupant.gameObject.name);
+            if (collision.gameObject.name == occupant.gameObject.name)
             {
                 crewInRange = true;
             }
@@ -91,14 +93,17 @@ public class RoleController : MonoBehaviour
                 instructions.gameObject.SetActive(false);
             }
 
-        } else if (collision.gameObject.tag == "Crew")
+        }
+        if (collision.gameObject.tag == "Crew")
         {
+            crewInRange = false;
+            /*
             if (collision == occupant)
             {
                 crewInRange = false;
 
                 occupant = ball;
-            }
+            }*/
         }
     }
 
