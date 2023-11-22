@@ -122,7 +122,7 @@ public class TiltController : MonoBehaviour
         {
             for (int i = 0; i < roles.Length; i++)
             {
-                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y + 0.6f, initial_positions[i].z);
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y + (0.3f * moveSpeed), initial_positions[i].z);
             }
         }
         //Neutral
@@ -138,7 +138,7 @@ public class TiltController : MonoBehaviour
         {
             for (int i = 0; i < roles.Length; i++)
             {
-                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y - 0.2f, initial_positions[i].z);
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y - (0.1f * moveSpeed), initial_positions[i].z);
             }
         }
 

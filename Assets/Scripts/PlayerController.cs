@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -206,7 +207,7 @@ public class PlayerController : MonoBehaviour
         */
         // BORDERS END~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        if (Input.GetKeyDown(KeyCode.E) && occupied)
+        if (Input.GetKeyDown(KeyCode.E) && occupied && SceneManager.GetActiveScene().name != "01_Level")
         {
             if (moveable == false)
             {

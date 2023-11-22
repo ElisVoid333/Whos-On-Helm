@@ -1194,7 +1194,7 @@ MonoBehaviour:
   tiltForce: 30
   tiltDirection: 0
   rb: {fileID: 1096069405}
-  moveSpeed: 5
+  moveSpeed: 2
   canMove: 0
   boundaryTag: Border
 --- !u!1 &368022293
@@ -9034,7 +9034,6 @@ MonoBehaviour:
   TimeLeft: 120
   TimerOn: 1
   TimerText: {fileID: 1181612696}
-  Score: 0
   cleaner: {fileID: 597187545}
   canon: {fileID: 1187077685}
   repair: {fileID: 2085186585}
@@ -9042,9 +9041,6 @@ MonoBehaviour:
   helm: {fileID: 584776627}
   rock: {fileID: 1652852373}
   enemy: {fileID: 879100047}
-  poopRemoveTimer: 0
-  bird: {fileID: 0}
-  poopList: []
 --- !u!4 &1670624685
 Transform:
   m_ObjectHideFlags: 0
