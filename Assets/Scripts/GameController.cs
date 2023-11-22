@@ -22,7 +22,6 @@ public class GameController : MonoBehaviour
     public float TimeLeft;
     public bool TimerOn;
     public Text TimerText;
-    public float Score;
 
     //Controller Variables
     public RoleController cleaner;
@@ -33,14 +32,9 @@ public class GameController : MonoBehaviour
     private int captain;
 
     /*-- RANDOM EVENTS --*/
-    //Rocks
+    //Random Rocks
     public RockController rock;
-    //Enemy
     public EnemyController enemy;
-    //Bird
-    public float poopRemoveTimer;
-    public BirdController bird;
-    public GameObject[] poopList;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +61,7 @@ public class GameController : MonoBehaviour
             PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
             //Handle most of the Captain role behaviour
-            if(canon.occupant == canon.ball) {
+            if(canon.occupant == null) {
 
                 canon.shooting = false;
             }
@@ -79,26 +73,32 @@ public class GameController : MonoBehaviour
                     total_happiness += 0.05f;
                 }else if (player.currentJob == repair)
                 {
-                    total_health += 0.07f;
+                    total_health += 0.05f;
                 }else if (player.currentJob == canon)
                 {
                     canon.shooting = true;
                 }
                 
             }
-
-            HandleCanonBall(canon);
+            
 
             /*-- Roles --*/
 
             //Canon Role
             //Enable the Radial menu
-            ShowMenu(0, canon);
+            
+            if (canon != null) {
 
-            if (canon.crewInRange)
-            {
-                canon.shooting = true;
+                HandleCanonBall(canon);
+
+                ShowMenu(0, canon);
+
+                if (canon.crewInRange)
+                {
+                    canon.shooting = true;
+                }
             }
+            
 
             //Cleaning Role
             //Enable the Radial menu
@@ -108,6 +108,7 @@ public class GameController : MonoBehaviour
             {
                 total_happiness += 0.05f;
             }
+
             total_happiness -= 0.01f;
 
             //Repair Role
@@ -116,7 +117,7 @@ public class GameController : MonoBehaviour
 
             if (repair.crewInRange)
             {
-                total_health += 0.07f;
+                total_health += 0.05f;
                 //repair.inRange = false;
             }
 
@@ -149,7 +150,6 @@ public class GameController : MonoBehaviour
             }
 
             /*-- Random Events --*/
-            //Rock
             if (rock.inflictDamage)
             {
                 InflictShipDamage(2f);
@@ -165,9 +165,9 @@ public class GameController : MonoBehaviour
                 if (poopRemoveTimer >= 3f)
                 {
                     Debug.Log("Cleaning Poop");
-                    if (bird.numOfPoops > 0) 
+                    if (bird.numOfPoops > 0)
                     {
-                        Destroy(poopList[poopList.Length-1]);
+                        Destroy(poopList[poopList.Length - 1]);
                         bird.numOfPoops -= 1;
                         Debug.Log("Poop Removed");
                     }
@@ -216,6 +216,25 @@ public class GameController : MonoBehaviour
             happinessMeter.fillAmount = total_happiness / MAX_HAPPINESS;
             healthMeter.fillAmount = total_health / MAX_HEALTH;
 
+            if (!enemy.attacking && enemy != null)
+            {
+                if(TimeLeft % 2f < 0.02f)
+                {
+                    /*
+                    Debug.Log("Random Event?");
+                    float rnd = Random.Range(0f, 100.0f);
+                    if (rnd < 95f && rnd > 90f)
+                    {
+                        Debug.Log("ATTACK!!!!");
+                        enemy.SetTarget("attack");
+                    }*/
+
+                    Debug.Log("ATTACK!!!!");
+                    enemy.SetTarget("attack");
+
+                }
+
+            }
         }
     }
 

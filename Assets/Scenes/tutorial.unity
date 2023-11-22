@@ -1203,7 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39109d6f65a67d34fa39897a2965a904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiltForce: 50
+  tiltForce: 5
   tiltDirection: 0
   rb: {fileID: 1038267344}
   moveSpeed: 5
@@ -1954,6 +1954,7 @@ GameObject:
   - component: {fileID: 584776626}
   - component: {fileID: 584776625}
   - component: {fileID: 584776627}
+  - component: {fileID: 584776628}
   m_Layer: 0
   m_Name: ship wheel
   m_TagString: Role
@@ -2108,7 +2109,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584776621}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c923ec64406b504e892c164fda3b7d1, type: 3}
   m_Name: 
@@ -2118,6 +2119,26 @@ MonoBehaviour:
   occupant: {fileID: 0}
   ball: {fileID: 0}
   shooting: 0
+  y: 0
+  x: 0
+--- !u!114 &584776628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584776621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e9d5941fbefe7244853b4654e2979e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inRange: 0
+  crewInRange: 0
+  occupant: {fileID: 0}
+  ball: {fileID: 0}
+  shooting: 0
+  instructions: {fileID: 0}
   y: 0
   x: 0
 --- !u!1 &597187539
@@ -2133,6 +2154,7 @@ GameObject:
   - component: {fileID: 597187544}
   - component: {fileID: 597187543}
   - component: {fileID: 597187545}
+  - component: {fileID: 597187546}
   m_Layer: 0
   m_Name: broom
   m_TagString: Role
@@ -2288,7 +2310,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597187539}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c923ec64406b504e892c164fda3b7d1, type: 3}
   m_Name: 
@@ -2298,6 +2320,26 @@ MonoBehaviour:
   occupant: {fileID: 0}
   ball: {fileID: 0}
   shooting: 0
+  y: 0
+  x: 0
+--- !u!114 &597187546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597187539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e9d5941fbefe7244853b4654e2979e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inRange: 0
+  crewInRange: 0
+  occupant: {fileID: 0}
+  ball: {fileID: 0}
+  shooting: 0
+  instructions: {fileID: 0}
   y: 0
   x: 0
 --- !u!1 &615331995
@@ -4149,7 +4191,7 @@ MonoBehaviour:
   moveable: 0
   occupied: 0
   currentJob: {fileID: 0}
-  game: {fileID: 1670624684}
+  game: {fileID: 0}
   spriteRenderer: {fileID: 1038267346}
   maleStatic: {fileID: 21300000, guid: 1b3acba538b8ad94fa7a8c77992ff299, type: 3}
   femaleStatic: {fileID: 21300000, guid: 6038a9644711b7f4a8ed98e25e8c10e4, type: 3}
@@ -6380,15 +6422,30 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1670624685}
-  - component: {fileID: 1670624684}
+  - component: {fileID: 1670624686}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1670624684
+  m_IsActive: 1
+--- !u!4 &1670624685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670624683}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.6026337, y: 0.6929885, z: 101.8795}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 733669735}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1670624686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6405,34 +6462,15 @@ MonoBehaviour:
   happinessMeter: {fileID: 1216688717}
   total_happiness: 100
   TimeLeft: 120
-  TimerOn: 1
-  TimerText: {fileID: 1181612696}
-  Score: 0
-  cleaner: {fileID: 0}
+  TimerOn: 0
+  TimerText: {fileID: 0}
+  cleaner: {fileID: 597187546}
   canon: {fileID: 0}
-  repair: {fileID: 0}
+  repair: {fileID: 2085186586}
   repairRate: 15
-  helm: {fileID: 0}
+  helm: {fileID: 584776628}
   rock: {fileID: 1652852373}
   enemy: {fileID: 0}
-  poopRemoveTimer: 0
-  bird: {fileID: 0}
-  poopList: []
---- !u!4 &1670624685
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1670624683}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6026337, y: 0.6929885, z: 101.8795}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 733669735}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1713639585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8028,6 +8066,7 @@ GameObject:
   - component: {fileID: 2085186583}
   - component: {fileID: 2085186584}
   - component: {fileID: 2085186585}
+  - component: {fileID: 2085186586}
   m_Layer: 0
   m_Name: hammerandwood
   m_TagString: Role
@@ -8183,7 +8222,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085186579}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c923ec64406b504e892c164fda3b7d1, type: 3}
   m_Name: 
@@ -8193,6 +8232,26 @@ MonoBehaviour:
   occupant: {fileID: 0}
   ball: {fileID: 0}
   shooting: 0
+  y: 0
+  x: 0
+--- !u!114 &2085186586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085186579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e9d5941fbefe7244853b4654e2979e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inRange: 0
+  crewInRange: 0
+  occupant: {fileID: 0}
+  ball: {fileID: 0}
+  shooting: 0
+  instructions: {fileID: 0}
   y: 0
   x: 0
 --- !u!1660057539 &9223372036854775807

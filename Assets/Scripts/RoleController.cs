@@ -26,7 +26,7 @@ public class RoleController : MonoBehaviour
         interact = false;
         shooting = false;
 
-        occupant = ball;
+        occupant = null;
     }
 
     // Update is called once per frame
@@ -46,7 +46,7 @@ public class RoleController : MonoBehaviour
                 
             }
 
-            occupant = ball;
+            occupant = null;
         }
 
     }
@@ -57,7 +57,11 @@ public class RoleController : MonoBehaviour
         {
             if(collision.gameObject.GetComponent<PlayerController>().moveable == true)
             {
-                instructions.gameObject.SetActive(true);
+                if (instructions != null)
+                {
+                    instructions.gameObject.SetActive(true);
+                }
+                
                 interact = true;
             }
 
@@ -80,13 +84,9 @@ public class RoleController : MonoBehaviour
 
         } else if (collision.gameObject.tag == "Crew")
         {
-            if (collision.gameObject == occupant.gameObject)
-            {
-                crewInRange = false;
+            crewInRange = false;
 
-                occupant = ball;
-            }
-
+            occupant = null;
         }
     }
 
