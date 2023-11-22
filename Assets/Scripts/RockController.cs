@@ -7,7 +7,6 @@ public class RockController : MonoBehaviour
 {
     public float speed;
     public float damageRate = 15f;
-    public HealthController health;
     private float x;
     private float y;
     private float lowerBound;

@@ -8,10 +8,12 @@ public class TiltController : MonoBehaviour
 {
     //Ship Tilt variables
     private float tiltTimer;
+    public float tiltForce;
     //private float tiltStart;
     public float tiltDirection; // 0=Straight, 1=Left/Up, 2=Right/Down
     private GameObject[] roles;
     private GameObject player;
+    public Rigidbody2D rb;
     Vector3[] initial_positions;
 
     public float moveSpeed = 5f;
@@ -26,14 +28,17 @@ public class TiltController : MonoBehaviour
         tiltDirection = 0f;
 
         player = GameObject.FindGameObjectWithTag("Player");
+
         roles = GameObject.FindGameObjectsWithTag("Role");
 
         initial_positions = new Vector3[roles.Length];
         initial_positions = setInitialPositions(roles, initial_positions);
     }
 
+    /*
     void Update()
     {
+        
         canMove = true;
         // Get input for player movement
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -63,7 +68,7 @@ public class TiltController : MonoBehaviour
         }
 
         canMove = true;
-    }
+    }*/
 
     // Update is called once per frame
     void FixedUpdate()
@@ -75,29 +80,33 @@ public class TiltController : MonoBehaviour
         {
             tiltTimer = 0f;
         }
-        //Debug.Log(tiltTimer);
         tiltDirection = setTilt(tiltTimer);
 
-        //Debug.Log(initial_positions);
         //Player Move tilt Directions
         //Tilt Left/Up
-        //Tilt Left/Up
-
-
-        if (canMove == true)
+        if (tiltDirection == 1f)
         {
-            if (tiltDirection == 1f)
-            {
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
-
-            }
-            //Tilt Right/Down
-            if (tiltDirection == 3f)
-            {
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
-            }
-
+            //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
+            rb.AddForce(new Vector2(0f, tiltForce));
         }
+        if (tiltDirection == 2f)
+        {
+            //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
+            rb.AddForce(new Vector2(0f, -tiltForce / 2));
+        }
+
+        //Tilt Right/Down
+        if (tiltDirection == 3f)
+        {
+            //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
+            rb.AddForce(new Vector2(0f, -tiltForce));
+        }
+        if (tiltDirection == 0f)
+        {
+            //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
+            rb.AddForce(new Vector2(0f, tiltForce / 2));
+        }
+
 
 
         // Roles tilt positions
@@ -113,7 +122,7 @@ public class TiltController : MonoBehaviour
         {
             for (int i = 0; i < roles.Length; i++)
             {
-                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y + 0.2f, initial_positions[i].z);
+                roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y + 0.6f, initial_positions[i].z);
             }
         }
         //Neutral
@@ -159,7 +168,7 @@ public class TiltController : MonoBehaviour
         {
             phase = 3f;
         }
-        //Debug.Log(phase);
+        
         return phase;
     }
 

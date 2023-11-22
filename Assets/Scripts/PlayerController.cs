@@ -10,15 +10,13 @@ public class PlayerController : MonoBehaviour
     private float speed;
     private float inputX;
     private float inputY;
-    private bool moveable;
+    public bool moveable;
+    public bool occupied;
+    public RoleController currentJob;
 
     //public Collider2D playableArea;
 
     private Vector2 position;
-    private Vector2 cleaningTask;
-    private Vector2 repairTask;
-    private Vector2 canonTask;
-    private Vector2 helmTask;
 
     private int captainSelected;
     public GameController game;
@@ -34,20 +32,35 @@ public class PlayerController : MonoBehaviour
     string CAP_WALK = "";
     string CAP_INTERACT = "";
 
+    //RigidBody
+    private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+       
+
         inputX = 0; inputY = 0;
-        speed = 0.005f;
+        speed = 1.5f;
         moveable = true;
+        occupied = false;
 
         position = new Vector2(0, 0);
-        repairTask = new Vector2(5.47f, 0.08f);
-        cleaningTask = new Vector2(-2.46f, 1.64f);
-        canonTask = new Vector2(1.24f, -1.6f);
-        helmTask = new Vector2(-6.14f, 0.16f);
 
-        captainSelected = game.getCaptain("Captain");
+        //captainSelected = GameObject.FindGameObjectWithTag("DontDestroy").GetComponent<DontDestroy>().GetCaptain();
+        captainSelected = 0;
+
+        Debug.Log("The Capatain: " + captainSelected);
+
+
+        GameObject captainGameObject = GameObject.Find("Captain");
+        if (captainGameObject != null)
+        {
+            // Get the Animator component from the GameObject
+            animator = captainGameObject.GetComponent<Animator>();
+        }
+    
 
         //Animation & Captain selection
         if (captainSelected == 0)
@@ -91,56 +104,64 @@ public class PlayerController : MonoBehaviour
     {
         if (moveable)
         {
-            speed = 0.005f;
+            speed = 1.5f;
         }
         if (moveable == false)
         {
             speed = 0f;
         }
 
-        if (Input.GetKey(KeyCode.W))
+        if (moveable == true)
         {
-            inputY += speed;
-            ChangeAnimationState(CAP_WALK);
-            //if tilt is up, speed up
-            //get tiltDirection from other script???
+            if (Input.GetKey(KeyCode.W))
+            {
+                inputY = speed;
+                ChangeAnimationState(CAP_WALK);
+                //if tilt is up, speed up
+                //get tiltDirection from other script???
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                inputY = -speed;
+                ChangeAnimationState(CAP_WALK);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                inputX = -speed;
+                ChangeAnimationState(CAP_WALK);
+                spriteRenderer.flipX = true;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                inputX = speed;
+                ChangeAnimationState(CAP_WALK);
+                spriteRenderer.flipX = false;
+            }
+            //Key Up - change back to static animation
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                inputY = 0f;
+                ChangeAnimationState(CAP_STATIC);
+            }
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                inputY = 0f;
+                ChangeAnimationState(CAP_STATIC);
+            }
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                inputX = 0f;
+                ChangeAnimationState(CAP_STATIC);
+                spriteRenderer.flipX = false;
+            }
+            if (Input.GetKeyUp(KeyCode.D))
+            {
+                inputX = 0f;
+                ChangeAnimationState(CAP_STATIC);
+                spriteRenderer.flipX = false;
+            }
         }
-        if (Input.GetKey(KeyCode.S))
-        {
-            inputY -= speed;
-            ChangeAnimationState(CAP_WALK);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            inputX -= speed;
-            ChangeAnimationState(CAP_WALK);
-            spriteRenderer.flipX = true;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            inputX += speed;
-            ChangeAnimationState(CAP_WALK);
-            spriteRenderer.flipX = false;
-        }
-        //Key Up - change back to static animation
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            ChangeAnimationState(CAP_STATIC);
-        }
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            ChangeAnimationState(CAP_STATIC);
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            ChangeAnimationState(CAP_STATIC);
-            spriteRenderer.flipX = false;
-        }
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            ChangeAnimationState(CAP_STATIC);
-            spriteRenderer.flipX = false;
-        }
+        
 
 
         //Vector2 movement = new Vector2(inputX, inputY);
@@ -150,16 +171,15 @@ public class PlayerController : MonoBehaviour
 
         // inputX = 0;
         //inputY = 0;
-
-
-
-        // BORDERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        // transform.position = newPosition;
-
-
-
         float horizontalInput = inputX;
         float verticalInput = inputY;
+
+        rb.velocity = new Vector2(horizontalInput * speed, verticalInput * speed);
+        //rb.drag = 500f;
+
+        /*
+        // BORDERS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // transform.position = newPosition;
 
         // Calculate the player's new position
         Vector3 newPosition = transform.position + new Vector3(horizontalInput, verticalInput, 0) * speed * Time.deltaTime;
@@ -183,9 +203,18 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = newPosition;
         }
-
+        */
         // BORDERS END~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+        if (Input.GetKeyDown(KeyCode.E) && occupied)
+        {
+            if (moveable == false)
+            {
+                Debug.Log("Leaving role");
+                moveable = true;
+                occupied = false;
+            }
+        }
 
     }
 
@@ -193,52 +222,54 @@ public class PlayerController : MonoBehaviour
     {
         if (role == "cleaner")
         {
-            position = cleaningTask;
+            //position = cleaningTask;
+            position = game.cleaner.GetComponent<Transform>().position;
             transform.position = position;
             ChangeAnimationState(CAP_INTERACT);
         }
         else if (role == "repair")
         {
-            position = repairTask;
+            //position = repairTask;
+            position = game.repair.GetComponent<Transform>().position;
             transform.position = position;
             ChangeAnimationState(CAP_INTERACT);
         }
         else if (role == "canon")
         {
-            position = canonTask;
+            //position = canonTask;
+            position = game.canon.GetComponent<Transform>().position;
+            position.x = position.x - 0.5f;
             transform.position = position;
             ChangeAnimationState(CAP_INTERACT);
         }
         else if (role == "helm")
         {
-            position = helmTask;
+            //position = helmTask;
+            position = game.helm.GetComponent<Transform>().position;
+            position.x = position.x - 0.7f;
             transform.position = position;
             ChangeAnimationState(CAP_INTERACT);
         }
     }
 
+    public void SetMoveable(bool input)
+    {
+        moveable = input;
+    }
 
+    public void SetOccupied(RoleController job)
+    {
+        currentJob = job;
+
+        occupied = true;
+    }
 
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Role") 
         {
-            /*if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log(collision.gameObject.tag);
-                //Interact with role
-                if (moveable)
-                {
-                    Debug.Log("Interacting with role");
-                    moveable = false;
-                }
-                if (moveable == false)
-                {
-                    Debug.Log("Leaving role");
-                    moveable = true;
-                }
-            }*/
+            
         }
     }
 }
