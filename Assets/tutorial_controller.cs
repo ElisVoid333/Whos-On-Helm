@@ -130,8 +130,7 @@ public class tutorial_controller : MonoBehaviour
         {
             popUps[popUpIndex].SetActive(true);
             yield return new WaitForSeconds(5f);
-            popUps[popUpIndex].SetActive(false);
-            popUpIndex++;
+
             Debug.Log("Next popup");
         }
 
