@@ -44,12 +44,14 @@ public class FirstMateController : MonoBehaviour
         if (role == "cleaner")
         {
             position = game.cleaner.GetComponent<Transform>().position;
+            position.y = position.y + 0.5f;
             transform.position = position;
             ChangeAnimationState(CREW_INTERACT);
         }
         else if (role == "repair")
         {
             position = game.repair.GetComponent<Transform>().position;
+            position.y = position.y + 0.5f;
             transform.position = position;
             ChangeAnimationState(CREW_INTERACT);
         }
@@ -72,6 +74,7 @@ public class FirstMateController : MonoBehaviour
         animator.Play(newState);
         currState = newState;
     }
+
 }
 
 
