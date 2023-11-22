@@ -6407,6 +6407,7 @@ MonoBehaviour:
   TimeLeft: 120
   TimerOn: 1
   TimerText: {fileID: 1181612696}
+  Score: 0
   cleaner: {fileID: 0}
   canon: {fileID: 0}
   repair: {fileID: 0}
@@ -6414,6 +6415,9 @@ MonoBehaviour:
   helm: {fileID: 0}
   rock: {fileID: 1652852373}
   enemy: {fileID: 0}
+  poopRemoveTimer: 0
+  bird: {fileID: 0}
+  poopList: []
 --- !u!4 &1670624685
 Transform:
   m_ObjectHideFlags: 0
