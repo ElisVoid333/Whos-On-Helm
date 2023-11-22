@@ -1166,7 +1166,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365180146}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 9318d40f6d3fe6c46b334666b1f6a3a2, type: 2}
   m_CullingMode: 0
@@ -7986,6 +7986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  game: {fileID: 0}
   CREW_STATIC: 
   CREW_INTERACT: 
 --- !u!1 &1550268745
@@ -9465,6 +9466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1799898958}
+  game: {fileID: 1670624684}
   CREW_STATIC: crewmate1_idle
   CREW_INTERACT: crewmate1_interact
 --- !u!61 &1799898957
@@ -9837,6 +9839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1860512482}
+  game: {fileID: 1670624684}
   CREW_STATIC: crewmate2_idle
   CREW_INTERACT: crewmate2_interact
 --- !u!212 &1860512481

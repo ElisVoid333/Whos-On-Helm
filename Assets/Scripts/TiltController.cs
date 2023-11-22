@@ -76,7 +76,7 @@ public class TiltController : MonoBehaviour
         //Tilt Timing Controls
         tiltTimer += Time.deltaTime;
 
-        if (tiltTimer > 4f)
+        if (tiltTimer > 8f)
         {
             tiltTimer = 0f;
         }
@@ -84,27 +84,67 @@ public class TiltController : MonoBehaviour
 
         //Player Move tilt Directions
         //Tilt Left/Up
-        if (tiltDirection == 1f)
+        if (tiltDirection == 0f)
         {
+            this.transform.position = new Vector3(0f, 0f, 0f);
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
             rb.AddForce(new Vector2(0f, tiltForce));
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, tiltForce / 80));
+            Debug.Log("Up");
         }
-        if (tiltDirection == 2f)
+        if (tiltDirection == 1f)
         {
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
             rb.AddForce(new Vector2(0f, -tiltForce / 2));
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -tiltForce / 80));
         }
 
-        //Tilt Right/Down
-        if (tiltDirection == 3f)
+        //Tilt Right/Down ////Get back to center
+        if (tiltDirection == 2f)
         {
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
             rb.AddForce(new Vector2(0f, -tiltForce));
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -tiltForce / 80));
+            Debug.Log("Down");
         }
-        if (tiltDirection == 0f)
+        if (tiltDirection == 3f)
         {
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
             rb.AddForce(new Vector2(0f, tiltForce / 2));
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, tiltForce / 80));
+            //this.transform.position = new Vector3(0f, 0f, 0f);
+        }
+
+        //Player Move tilt Directions
+        //Tilt Right/Down
+        if (tiltDirection == 4f)
+        {
+            //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
+            rb.AddForce(new Vector2(0f, tiltForce));
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -tiltForce / 80));
+            Debug.Log("Up");
+        }
+        if (tiltDirection == 5f)
+        {
+            //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
+            rb.AddForce(new Vector2(0f, -tiltForce / 2));
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, tiltForce / 80));
+        }
+
+        //Tilt Left/Up ////Get back to center
+        if (tiltDirection == 6f)
+        {
+            //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
+            rb.AddForce(new Vector2(0f, -tiltForce));
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, tiltForce / 80));
+            Debug.Log("Down");
+        }
+        if (tiltDirection == 7f)
+        {
+            //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
+            rb.AddForce(new Vector2(0f, tiltForce / 2));
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -tiltForce / 80));
+            //this.transform.position = new Vector3(0f, 0f, 0f);
         }
 
 
@@ -168,7 +208,24 @@ public class TiltController : MonoBehaviour
         {
             phase = 3f;
         }
-        
+
+        if (seconds >= 4f)
+        {
+            phase = 4f;
+        }
+        if (seconds >= 5f)
+        {
+            phase = 5f;
+        }
+        if (seconds >= 6f)
+        {
+            phase = 6f;
+        }
+        if (seconds >= 7f)
+        {
+            phase = 7f;
+        }
+
         return phase;
     }
 

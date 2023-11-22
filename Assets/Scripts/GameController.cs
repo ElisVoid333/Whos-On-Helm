@@ -214,7 +214,7 @@ public class GameController : MonoBehaviour
     {
         if (canon != null)
         {
-            Debug.Log("Role: " + role);
+            //Debug.Log("Role: " + role);
             if (role.inRange)
             {
                 role.transform.GetChild(step).gameObject.SetActive(true);
@@ -228,7 +228,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Role: " + role);
+            //Debug.Log("Role: " + role);
             if (role.inRange)
             {
                 role.transform.GetChild(step).gameObject.SetActive(true);
