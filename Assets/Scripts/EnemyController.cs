@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         //ship.enabled = false;
-        initialPos = new Vector2(-13.3f, -5.3f);
+        initialPos = new Vector2(-15.59f, -5.3f);
         currentPos = initialPos;
         targetPos = currentPos;
 
@@ -45,7 +45,15 @@ public class EnemyController : MonoBehaviour
         fire = false;
         lives = 3;
 
-        ball = ship.transform.GetChild(0).gameObject;
+        ball = GameObject.Find("Canonball_enemy");
+        if (ball != null)
+        {
+            Debug.Log("Found Canonball_enemy: " + ball.name);
+        }
+        else
+        {
+            Debug.LogError("Canonball_enemy not found in the scene!");
+        }
         ball.gameObject.GetComponent<BallController>().damage = damage;
 
         timer = 0f;
