@@ -5,7 +5,7 @@ using UnityEngine;
 public class BirdController : MonoBehaviour
 {
     public float speed = 1f;
-    public float rateOfUnhappy = 2f;
+    public float poopUnhappy = 10f;
     public float spawnRate = 10f; //Bird Spawning Timer
     public float timer; //Time.deltaTime
     public float randomTime; //Random Range for spawning Poop
@@ -19,6 +19,7 @@ public class BirdController : MonoBehaviour
     public int numOfPoops;
     //protected GameObject[] poopList;
     public GameObject poopObject;
+    public GameController gameController;
 
     //public CleanUpController happiness;
 
@@ -64,8 +65,8 @@ public class BirdController : MonoBehaviour
     private void spawnPoop(float current_position)
     {
         //Create New Poop Instance at bird location
+        gameController.total_happiness -= poopUnhappy;
         Instantiate(poopObject, new Vector3(current_position, y, 0), Quaternion.identity);
-        //total
     }
 
 }

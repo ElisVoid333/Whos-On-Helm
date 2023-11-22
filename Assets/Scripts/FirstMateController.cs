@@ -18,6 +18,9 @@ public class FirstMateController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject firsm8GameObject = GameObject.Find("firsm8");
+        if (firsm8GameObject != null)
+        { animator = firsm8GameObject.GetComponent<Animator>(); };
         position = new Vector2(0, 0);
         repairTask = new Vector2(5.1f, 0.90f);
         cleaningTask = new Vector2(-2.09f, 1.66f);
