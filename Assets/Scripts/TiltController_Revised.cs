@@ -8,8 +8,7 @@ public class TiltController_Revised : MonoBehaviour
 {
     //Ship Tilt variables
     //private float tiltTimer;
-    public float playerTiltForce = 0.5f;
-    private float crewTiltForce = 0.5f;
+    public float playerTiltForce = 1f;
     //public float tiltDirection;
 
     //Sin Wave Variables
@@ -24,6 +23,7 @@ public class TiltController_Revised : MonoBehaviour
 
     //Positional Variables
     Vector3 shipStartPos;
+    Vector3 playerStartPos;
     Vector3[] role_initial_positions;
     //Vector3[] role_movement_positions;
     Vector3[] crew_initial_positions;
@@ -46,7 +46,9 @@ public class TiltController_Revised : MonoBehaviour
 
         //Initiliaze Starting Position
         shipStartPos = transform.position;
-        
+
+        playerStartPos = player.transform.position;
+
         role_initial_positions = new Vector3[roles.Length];
         role_initial_positions = setInitialPositions(roles, role_initial_positions);
         //role_movement_positions = new Vector3[roles.Length];
@@ -67,21 +69,34 @@ public class TiltController_Revised : MonoBehaviour
         addForceForGameObjects(crew, frequency, magnitude);
         addForceForGameObjects(roles, frequency, magnitude);*/
 
+        //Generate Sin Value
+        float shipSinWave = generateSinValue(frequency, magnitude);
+        float playerSinWave = generateSinValue(playerTiltForce, magnitude);
+
         //Ship Tilt
         //Debug.Log(shipStartPos * Mathf.Sin(Time.time * frequency) * magnitude);
-        transform.position += shipStartPos * Mathf.Sin(Time.time * frequency) * magnitude;
+        transform.position += shipStartPos * shipSinWave;
 
         //Player Tilt
+        playerStartPos = player.transform.position;
+        player.transform.position += playerStartPos * playerSinWave;
 
         //Crew Tilt
         crew = GameObject.FindGameObjectsWithTag("Crew");
-        addTiltToGameObjects(crew, crew_initial_positions);
+        addForceForGameObjects(crew, playerSinWave);
 
         //Role Tilt
-        addTiltToGameObjects(roles, role_initial_positions);
+        addTiltToGameObjects(roles, role_initial_positions, shipSinWave);
     }
     
+    //Generates SinWave value
+    private float generateSinValue(float frequency, float magnitude)
+    {
+        float sinValue = Mathf.Sin(Time.time * frequency) * magnitude;
+        return sinValue;
+    }
 
+    //Sets initial positions for roles
     private Vector3[] setInitialPositions(GameObject[] roles, Vector3[] role_initial_positions)
     {
         for (int i = 0; i < roles.Length; i++)
@@ -91,6 +106,28 @@ public class TiltController_Revised : MonoBehaviour
         return role_initial_positions;
     }
 
+    //Adds tilt to GameObjects by adding force
+    public void addForceForGameObjects(GameObject[] array, float sinWave)
+    {
+        for (int i = 0; i < array.Length; i++)
+        {
+            Rigidbody2D item = array[i].GetComponent<Rigidbody2D>();
+            item.AddForce(new Vector2(0f, item.transform.position.y) * sinWave);
+        }
+    }
+
+    //Adds tilt to GameObjects by manpulating position
+    public void addTiltToGameObjects(GameObject[] array, Vector3[] startingPos, float sinWave)
+    {
+        for (int i = 0; i < array.Length; i++)
+        {
+            Vector3 movement = startingPos[i];
+            movement = startingPos[i] * sinWave;
+            array[i].transform.position = new Vector3(startingPos[i].x, startingPos[i].y + movement.y, startingPos[i].z);
+        }
+    }
+
+    //Function to move Crew around ship once role button pressed
     public void SetCrewPosition(GameObject crewMate)
     {
         for (int i = 0; i < crew.Length; i++)
@@ -102,24 +139,4 @@ public class TiltController_Revised : MonoBehaviour
             //crew[i].transform.position = new Vector3(crew_initial_positions[i].x, crew_initial_positions[i].y + (0.15f * moveSpeed), crew_initial_positions[i].z);
         }
     }
-
-    public void addForceForGameObjects(GameObject[] array)
-    {
-        for (int i = 0; i < array.Length; i++)
-        {
-            Rigidbody2D item = array[i].GetComponent<Rigidbody2D>();
-            item.AddForce(new Vector2(0f, item.transform.position.y) * Mathf.Sin(Time.time * frequency) * magnitude * playerTiltForce);
-        }
-    }
-
-    public void addTiltToGameObjects(GameObject[] array, Vector3[] startingPos)
-    {
-        for (int i = 0; i < array.Length; i++)
-        {
-            Vector3 movement = startingPos[i];
-            movement = startingPos[i] * Mathf.Sin(Time.time * frequency) * magnitude;
-            array[i].transform.position = new Vector3(startingPos[i].x, startingPos[i].y + movement.y, startingPos[i].z);
-        }
-    }
-
 }
