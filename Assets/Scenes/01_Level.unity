@@ -2811,7 +2811,6 @@ GameObject:
   m_Component:
   - component: {fileID: 584776622}
   - component: {fileID: 584776623}
-  - component: {fileID: 584776626}
   - component: {fileID: 584776625}
   - component: {fileID: 584776627}
   m_Layer: 0
@@ -2935,33 +2934,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.7810767, y: 2.2875814}
   m_EdgeRadius: 0
---- !u!50 &584776626
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584776621}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &584776627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2993,7 +2965,6 @@ GameObject:
   - component: {fileID: 597187540}
   - component: {fileID: 597187541}
   - component: {fileID: 597187544}
-  - component: {fileID: 597187543}
   - component: {fileID: 597187545}
   m_Layer: 0
   m_Name: broom
@@ -3071,33 +3042,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &597187543
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597187539}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &597187544
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4647,7 +4591,6 @@ GameObject:
   - component: {fileID: 923324211}
   - component: {fileID: 923324209}
   - component: {fileID: 923324212}
-  - component: {fileID: 923324213}
   m_Layer: 0
   m_Name: ship_under
   m_TagString: Ship
@@ -4756,35 +4699,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTiltForce: 0.5
-  frequency: 0.1
+  frequency: 2
   magnitude: 0.1
---- !u!50 &923324213
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923324206}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &938833704
 GameObject:
   m_ObjectHideFlags: 0
@@ -7384,7 +7300,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1187077681}
   - component: {fileID: 1187077682}
-  - component: {fileID: 1187077684}
   - component: {fileID: 1187077683}
   - component: {fileID: 1187077685}
   m_Layer: 0
@@ -7508,33 +7423,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.51, y: 1.5}
   m_EdgeRadius: 0
---- !u!50 &1187077684
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1187077680}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &1187077685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10432,7 +10320,6 @@ GameObject:
   - component: {fileID: 1799898956}
   - component: {fileID: 1799898957}
   - component: {fileID: 1799898958}
-  - component: {fileID: 1799898959}
   m_Layer: 0
   m_Name: firsm8
   m_TagString: Crew
@@ -10589,33 +10476,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &1799898959
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799898953}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1825783672
 GameObject:
   m_ObjectHideFlags: 0
@@ -10840,7 +10700,6 @@ GameObject:
   - component: {fileID: 1860512480}
   - component: {fileID: 1860512479}
   - component: {fileID: 1860512482}
-  - component: {fileID: 1860512483}
   m_Layer: 0
   m_Name: secondm8
   m_TagString: Crew
@@ -10997,33 +10856,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &1860512483
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1860512477}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1880348496
 GameObject:
   m_ObjectHideFlags: 0
@@ -12211,7 +12043,6 @@ GameObject:
   - component: {fileID: 2085186580}
   - component: {fileID: 2085186581}
   - component: {fileID: 2085186583}
-  - component: {fileID: 2085186584}
   - component: {fileID: 2085186585}
   m_Layer: 0
   m_Name: hammerandwood
@@ -12334,33 +12165,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.81}
   m_EdgeRadius: 0
---- !u!50 &2085186584
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2085186579}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &2085186585
 MonoBehaviour:
   m_ObjectHideFlags: 0
