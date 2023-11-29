@@ -72,21 +72,22 @@ public class TiltController_Revised : MonoBehaviour
         //Generate Sin Value
         float shipSinWave = generateSinValue(frequency, magnitude);
         float playerSinWave = generateSinValue(playerTiltForce, magnitude);
+        float perlinValue = generatePerlinNoise(frequency);
 
         //Ship Tilt
         //Debug.Log(shipStartPos * Mathf.Sin(Time.time * frequency) * magnitude);
-        transform.position += shipStartPos * shipSinWave;
+        transform.position = new Vector3(0f, shipStartPos.y + (perlinValue), 0f);
 
         //Player Tilt
-        playerStartPos = player.transform.position;
-        player.transform.position += playerStartPos * playerSinWave;
+        //playerStartPos = player.transform.position;
+        //player.transform.position += playerStartPos * playerSinWave;
 
         //Crew Tilt
-        crew = GameObject.FindGameObjectsWithTag("Crew");
-        addForceForGameObjects(crew, playerSinWave);
+        //crew = GameObject.FindGameObjectsWithTag("Crew");
+        //addForceForGameObjects(crew, playerSinWave);
 
         //Role Tilt
-        addTiltToGameObjects(roles, role_initial_positions, shipSinWave);
+        //addTiltToGameObjects(roles, role_initial_positions, shipSinWave);
     }
     
     //Generates SinWave value
@@ -94,6 +95,12 @@ public class TiltController_Revised : MonoBehaviour
     {
         float sinValue = Mathf.Sin(Time.time * frequency) * magnitude;
         return sinValue;
+    }
+    //Generate PerlinValue
+    private float generatePerlinNoise(float number)
+    {
+        float perlinNoise = Mathf.PerlinNoise(Time.time, frequency);
+        return perlinNoise;
     }
 
     //Sets initial positions for roles
