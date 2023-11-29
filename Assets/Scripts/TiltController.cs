@@ -92,17 +92,17 @@ public class TiltController : MonoBehaviour
         //Tilt Left/Up
         if (tiltDirection == 0f)
         {
-            this.transform.position = new Vector3(0f, 0f, 0f);
+            //this.transform.position = new Vector3(0f, 0f, 0f);
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
             rb.AddForce(new Vector2(0f, tiltForce));
-            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, tiltForce / 80));
+            //this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, tiltForce / 80));
             //Debug.Log("Up");
         }
         if (tiltDirection == 1f)
         {
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
             //rb.AddForce(new Vector2(0f, -tiltForce / 2));
-            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -tiltForce / 80));
+            //this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -tiltForce / 80));
             
             for (int i = 0; i < roles.Length; i++)
             {
@@ -120,14 +120,14 @@ public class TiltController : MonoBehaviour
         {
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
             rb.AddForce(new Vector2(0f, -tiltForce));
-            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -tiltForce / 80));
+            //this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -tiltForce / 80));
             //Debug.Log("Down");
         }
         if (tiltDirection == 3f)
         {
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
             //rb.AddForce(new Vector2(0f, tiltForce / 2));
-            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, tiltForce / 80));
+            //this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, tiltForce / 80));
 
             for (int i = 0; i < roles.Length; i++)
             {
@@ -146,14 +146,14 @@ public class TiltController : MonoBehaviour
         {
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z);
             rb.AddForce(new Vector2(0f, -tiltForce));
-            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -tiltForce / 80));
+            //this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -tiltForce / 80));
             //Debug.Log("Up");
         }
         if (tiltDirection == 5f)
         {
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
             //rb.AddForce(new Vector2(0f, tiltForce / 2));
-            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, tiltForce / 80));
+            //this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, tiltForce / 80));
 
             for (int i = 0; i < roles.Length; i++)
             {
@@ -171,14 +171,14 @@ public class TiltController : MonoBehaviour
         {
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
             rb.AddForce(new Vector2(0f, tiltForce));
-            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, tiltForce / 80));
+            //this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, tiltForce / 80));
             //Debug.Log("Down");
         }
         if (tiltDirection == 7f)
         {
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z);
             //rb.AddForce(new Vector2(0f, -tiltForce / 2));
-            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -tiltForce / 80));
+            //this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -tiltForce / 80));
             for (int i = 0; i < roles.Length; i++)
             {
                 roles[i].transform.position = new Vector3(initial_positions[i].x, initial_positions[i].y, initial_positions[i].z);

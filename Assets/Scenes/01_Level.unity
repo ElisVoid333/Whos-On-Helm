@@ -1093,8 +1093,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 365180153}
-        m_TargetAssemblyTypeName: TiltController, Assembly-CSharp
+      - m_Target: {fileID: 365180154}
+        m_TargetAssemblyTypeName: TiltController_Revised, Assembly-CSharp
         m_MethodName: SetCrewPosition
         m_Mode: 2
         m_Arguments:
@@ -1205,9 +1205,10 @@ GameObject:
   m_Component:
   - component: {fileID: 365180147}
   - component: {fileID: 365180148}
+  - component: {fileID: 365180154}
   - component: {fileID: 365180150}
-  - component: {fileID: 365180151}
   - component: {fileID: 365180153}
+  - component: {fileID: 365180155}
   m_Layer: 0
   m_Name: ship_nobg
   m_TagString: Ship
@@ -1227,7 +1228,10 @@ Transform:
   m_LocalPosition: {x: -0, y: 2, z: 0}
   m_LocalScale: {x: 46.54499, y: 46.102486, z: 41.190228}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1416206213}
+  - {fileID: 1433274748}
+  - {fileID: 786714539}
   m_Father: {fileID: 1534942414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &365180148
@@ -1327,7 +1331,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 16.42577, y: 5.3201036}
   m_EdgeRadius: 0
---- !u!50 &365180151
+--- !u!114 &365180153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365180146}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39109d6f65a67d34fa39897a2965a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiltForce: 30
+  tiltDirection: 0
+  rb: {fileID: 1096069405}
+  moveSpeed: 2
+  canMove: 0
+  boundaryTag: Border
+--- !u!114 &365180154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365180146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ef91d37aaa74a4bbad2345af4320ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTiltForce: 0.5
+  frequency: 1
+  magnitude: 0.5
+--- !u!50 &365180155
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -1353,25 +1390,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &365180153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365180146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39109d6f65a67d34fa39897a2965a904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tiltForce: 30
-  tiltDirection: 0
-  rb: {fileID: 1096069405}
-  moveSpeed: 2
-  canMove: 0
-  boundaryTag: Border
+  m_Constraints: 5
 --- !u!1 &368022293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,8 +1669,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 365180153}
-        m_TargetAssemblyTypeName: TiltController, Assembly-CSharp
+      - m_Target: {fileID: 365180154}
+        m_TargetAssemblyTypeName: TiltController_Revised, Assembly-CSharp
         m_MethodName: SetCrewPosition
         m_Mode: 2
         m_Arguments:
@@ -2730,7 +2749,6 @@ GameObject:
   m_Component:
   - component: {fileID: 584776622}
   - component: {fileID: 584776623}
-  - component: {fileID: 584776626}
   - component: {fileID: 584776625}
   - component: {fileID: 584776627}
   m_Layer: 0
@@ -2854,33 +2872,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.7810767, y: 2.2875814}
   m_EdgeRadius: 0
---- !u!50 &584776626
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584776621}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &584776627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2912,7 +2903,6 @@ GameObject:
   - component: {fileID: 597187540}
   - component: {fileID: 597187541}
   - component: {fileID: 597187544}
-  - component: {fileID: 597187543}
   - component: {fileID: 597187545}
   m_Layer: 0
   m_Name: broom
@@ -2990,33 +2980,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &597187543
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597187539}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &597187544
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3801,20 +3764,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786714538}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.021484591, y: 0.021690806, z: 0.024277603}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2085186580}
   - {fileID: 584776622}
   - {fileID: 597187540}
   - {fileID: 1187077681}
-  m_Father: {fileID: 1534942414}
+  m_Father: {fileID: 365180147}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.043381605}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &789509625
@@ -4518,9 +4481,8 @@ GameObject:
   m_Component:
   - component: {fileID: 923324207}
   - component: {fileID: 923324211}
-  - component: {fileID: 923324210}
   - component: {fileID: 923324209}
-  - component: {fileID: 923324208}
+  - component: {fileID: 923324212}
   m_Layer: 0
   m_Name: ship_under
   m_TagString: Ship
@@ -4543,24 +4505,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1534942414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &923324208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923324206}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39109d6f65a67d34fa39897a2965a904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tiltForce: 30
-  tiltDirection: 0
-  rb: {fileID: 1096069405}
-  moveSpeed: 2
-  canMove: 0
-  boundaryTag: Border
 --- !u!95 &923324209
 Animator:
   serializedVersion: 5
@@ -4582,51 +4526,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &923324210
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923324206}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.009688854, y: 0.040654182}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 10.8}
-    newSize: {x: 19.2, y: 10.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 16.42577, y: 5.3201036}
-  m_EdgeRadius: 0
 --- !u!212 &923324211
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4679,6 +4578,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &923324212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923324206}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ef91d37aaa74a4bbad2345af4320ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTiltForce: 0.5
+  frequency: 10
+  magnitude: 1
 --- !u!1 &938833704
 GameObject:
   m_ObjectHideFlags: 0
@@ -7254,7 +7168,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1187077681}
   - component: {fileID: 1187077682}
-  - component: {fileID: 1187077684}
   - component: {fileID: 1187077683}
   - component: {fileID: 1187077685}
   m_Layer: 0
@@ -7378,33 +7291,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.51, y: 1.5}
   m_EdgeRadius: 0
---- !u!50 &1187077684
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1187077680}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &1187077685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7867,11 +7753,11 @@ Transform:
   m_GameObject: {fileID: 1416206212}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17, y: 2, z: 0}
-  m_LocalScale: {x: 46.54499, y: 46.102486, z: 41.190228}
+  m_LocalPosition: {x: -0.36523798, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1534942414}
+  m_Father: {fileID: 365180147}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1416206214
 SpriteRenderer:
@@ -8083,14 +7969,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433274747}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.043381605, z: -110.626045}
+  m_LocalScale: {x: 1.0877677, y: 1.0982084, z: 1.2291783}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1799898955}
   - {fileID: 1860512478}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 365180147}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1465329482
 GameObject:
@@ -8704,8 +8590,6 @@ RectTransform:
   - {fileID: 712109349}
   - {fileID: 789509626}
   - {fileID: 1591962401}
-  - {fileID: 786714539}
-  - {fileID: 1416206213}
   - {fileID: 2123052039}
   - {fileID: 1016206672}
   - {fileID: 1706367367}
@@ -12027,7 +11911,6 @@ GameObject:
   - component: {fileID: 2085186580}
   - component: {fileID: 2085186581}
   - component: {fileID: 2085186583}
-  - component: {fileID: 2085186584}
   - component: {fileID: 2085186585}
   m_Layer: 0
   m_Name: hammerandwood
@@ -12150,33 +12033,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.81}
   m_EdgeRadius: 0
---- !u!50 &2085186584
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2085186579}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &2085186585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13437,7 +13293,6 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1096069402}
-  - {fileID: 1433274748}
   - {fileID: 1534942414}
   - {fileID: 419030329}
   - {fileID: 733669735}
