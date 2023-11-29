@@ -114,6 +114,6 @@ public class RoleController : MonoBehaviour
     public void SetOccupant(GameObject worker)
     {
         occupant = worker;
-
+        setRange(false);
     }
 }

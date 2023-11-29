@@ -36,6 +36,12 @@ public class PlayerController : MonoBehaviour
     //RigidBody
     private Rigidbody2D rb;
 
+    private void Awake()
+    {
+        captainSelected = GameObject.FindGameObjectWithTag("DontDestroy").GetComponent<DontDestroy>().GetCaptain();
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +56,7 @@ public class PlayerController : MonoBehaviour
         position = new Vector2(0, 0);
 
         //captainSelected = GameObject.FindGameObjectWithTag("DontDestroy").GetComponent<DontDestroy>().GetCaptain();
-        captainSelected = 0;
+        //captainSelected = 0;
 
         Debug.Log("The Capatain: " + captainSelected);
 
@@ -86,6 +92,8 @@ public class PlayerController : MonoBehaviour
             CAP_INTERACT = "CapN_Interact";
         }
         animator = gameObject.GetComponent<Animator>();
+
+        ChangeAnimationState(CAP_STATIC);
     }
 
     //Change Animation

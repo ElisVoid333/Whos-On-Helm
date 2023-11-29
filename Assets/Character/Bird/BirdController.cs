@@ -50,7 +50,8 @@ public class BirdController : MonoBehaviour
             randomTime = 100f;
         }
 
-        transform.Translate(0.01f, 0, 0);
+        //transform.Translate(0.01f, 0, 0);
+        transform.Translate(speed * Time.deltaTime, 0, 0);
     }
 
     private void spawnBird()

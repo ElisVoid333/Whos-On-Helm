@@ -79,8 +79,10 @@ public class EnemyController : MonoBehaviour
             if (targetPos.x > currentPos.x)
             {
                 currentPos.x = currentPos.x + shipSpeed;
-                ship.transform.position = new Vector3(currentPos.x, currentPos.y, 0f);
-            }else if (currentPos.x >= fleePos.x)
+                //ship.transform.position = new Vector3(currentPos.x, currentPos.y, 0f);
+                transform.Translate(shipSpeed * Time.deltaTime, 0, 0);
+            }
+            else if (currentPos.x >= fleePos.x)
             {
                 ResetShip();
             }
@@ -126,22 +128,25 @@ public class EnemyController : MonoBehaviour
             }
             //Debug.Log("Enemy CanonBall");
             canonball.SetActive(true);
-            ballPos.y = canonball.transform.position.y;
-            if (canonball.transform.localPosition.y > 50f)
+            
+            if (canonball.transform.position.y > 20f)
             {
                 ballPos.y = initialPos.y + 0.5f;
+                ballPos.x = ship.transform.position.x + 2f;
+                Vector2 movement = new Vector2(ballPos.x, ballPos.y);
+                //Debug.Log("Move : " + movement);
+                canonball.transform.position = movement;
                 fire = false;
             }
-            else
-            {
-                ballPos.y += 0.025f;
-                //Debug.Log("SHOOTING");
-            }
+            ballPos.y = canonball.transform.position.y;
+
+            canonball.transform.Translate(0, -3f * Time.deltaTime, 0);
         }
         else
         {
             //Debug.Log("NOT Shooting");
             ballPos.y = transform.position.y + 1f;
+
             ballPos.x = ship.transform.position.x + 2f;
 
             fire = false;
@@ -149,9 +154,7 @@ public class EnemyController : MonoBehaviour
             canonball.SetActive(false);
         }
         
-        Vector2 movement = new Vector2(ballPos.x, ballPos.y);
-        //Debug.Log("Move : " + movement);
-        canonball.transform.position = movement;
+        
     }
 
     private void ResetShip()
