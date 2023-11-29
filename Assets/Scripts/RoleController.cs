@@ -71,7 +71,7 @@ public class RoleController : MonoBehaviour
         if (collision.gameObject.tag == "Crew")
         {
             //crewInRange = true;
-            Debug.Log("Collision: " + collision.gameObject.name + "Occupant: " + occupant.gameObject.name);
+            //Debug.Log("Collision: " + collision.gameObject.name + "Occupant: " + occupant.gameObject.name);
             if (collision.gameObject.name == occupant.gameObject.name)
             {
                 crewInRange = true;
@@ -115,6 +115,6 @@ public class RoleController : MonoBehaviour
     public void SetOccupant(GameObject worker)
     {
         occupant = worker;
-
+        setRange(false);
     }
 }

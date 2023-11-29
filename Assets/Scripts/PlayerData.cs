@@ -9,9 +9,16 @@ public class DontDestroy : MonoBehaviour
 
     private void Awake()
     {
+        /*
         GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
 
         if (objs.Length > 1)
+        {
+            Debug.Log("Destroy");
+            Destroy(this.gameObject);
+        }*/
+
+        if (SceneManager.GetActiveScene().name == "07_LoseScene" || SceneManager.GetActiveScene().name == "06_WinScene")
         {
             Debug.Log("Destroy");
             Destroy(this.gameObject);
@@ -19,6 +26,17 @@ public class DontDestroy : MonoBehaviour
 
         Debug.Log("Don't Destroy");
         DontDestroyOnLoad(this.gameObject);
+    }
+    public void SetCaptain(int i)
+    {
+        captain = i;
+        Debug.Log(i);
+    }
+
+    public int GetCaptain()
+    {
+        Debug.Log("OLO: " + captain);
+        return captain;
     }
 
     public void setScene(int i)
@@ -43,15 +61,5 @@ public class DontDestroy : MonoBehaviour
         {
             SceneManager.LoadScene("tutorial");
         }
-    }
-
-    public void SetCaptain(int i)
-    {
-        captain = i;
-    }
-
-    public int GetCaptain()
-    {
-        return captain;
     }
 }

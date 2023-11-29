@@ -10,6 +10,7 @@ public class RockController : MonoBehaviour
     private float x;
     private float y;
     private float lowerBound;
+    public float spawnRate;
 
     public bool inflictDamage;
     RectTransform myRectTransform;
@@ -17,29 +18,27 @@ public class RockController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lowerBound = -600f;
+        lowerBound = -10f;
 
         inflictDamage = false;
 
         myRectTransform = GetComponent<RectTransform>();
-        myRectTransform.localPosition += Vector3.right;
+        myRectTransform.position += Vector3.right;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (myRectTransform.localPosition.x < lowerBound)
+        if (myRectTransform.position.x < lowerBound * spawnRate)
         {
-            x = 10.0f;
+            x = 13.0f;
             y = Random.Range(-6.0f, 6.0f);
-        }
-        else
-        {
-            x -= speed;
+            Vector2 movement = new Vector2(x, y);
+            transform.position = movement;
         }
 
-        Vector2 movement = new Vector2(x, y);
-        transform.position = movement;
+        x = myRectTransform.position.x;
+        transform.Translate(-speed * Time.deltaTime, 0, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

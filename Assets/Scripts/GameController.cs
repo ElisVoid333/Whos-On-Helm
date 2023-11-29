@@ -28,9 +28,9 @@ public class GameController : MonoBehaviour
     public RoleController cleaner;
     public RoleController canon;
     public RoleController repair;
-    public float repairRate = 15f;
+    public float repairRate;
     public RoleController helm;
-    private int captain;
+    public TiltController ship;
 
     /*-- RANDOM EVENTS --*/
     //Random Rocks
@@ -61,6 +61,50 @@ public class GameController : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        if (SceneManager.GetActiveScene().name != "00_IntroScene" && SceneManager.GetActiveScene().name != "06_WinScene" && SceneManager.GetActiveScene().name != "07_LoseScene")
+        {
+            /*-- Outputable Variables --*/
+            //Happiness
+            if (total_happiness > MAX_HAPPINESS)
+            {
+                total_happiness = MAX_HAPPINESS;
+            }
+            else if (total_happiness < 0f)
+            {
+                total_happiness = 0f;
+            }
+            else if (total_happiness == 0f)
+            {
+                //Mutany
+                setScene(3);
+            }
+
+            //Health
+            if (total_health > MAX_HEALTH)
+            {
+                total_health = MAX_HEALTH;
+            }
+            else if (total_health < 0)
+            {
+                total_health = 0;
+            }
+            else if (total_health == 0)
+            {
+                //Sinks
+                setScene(3);
+            }
+
+
+            //Timer Countdown
+            if (TimerOn == false)
+            {
+                setScene(2);
+            }
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -72,7 +116,7 @@ public class GameController : MonoBehaviour
             //Handle most of the Captain role behaviour
             if (canon != null)
             {
-                if (canon.occupant == canon.ball)
+                if (canon.occupant == null)
                 {
 
                     canon.shooting = false;
@@ -173,59 +217,26 @@ public class GameController : MonoBehaviour
             //PoopCleaning
             if (cleaner.crewInRange || cleaner.inRange)
             {
-                poopRemoveTimer += Time.deltaTime;
                 poopList = GameObject.FindGameObjectsWithTag("Poop");
-
-                if (poopRemoveTimer >= 3f)
+                if (bird != null)
                 {
-                    Debug.Log("Cleaning Poop");
-                    if (bird.numOfPoops > 0)
+                    poopRemoveTimer += Time.deltaTime;
+
+                    if (poopRemoveTimer >= 3f)
                     {
-                        Destroy(poopList[poopList.Length - 1]);
-                        bird.numOfPoops -= 1;
-                        Debug.Log("Poop Removed");
+                        Debug.Log("Cleaning Poop");
+                        if (bird.numOfPoops > 0)
+                        {
+                            Destroy(poopList[poopList.Length - 1]);
+                            bird.numOfPoops -= 1;
+                            Debug.Log("Poop Removed");
+                        }
+                        poopRemoveTimer = 0f;
                     }
-                    poopRemoveTimer = 0f;
                 }
             }
 
-
-            /*-- Outputable Variables --*/
-            //Happiness
-            if (total_happiness > MAX_HAPPINESS)
-            {
-                total_happiness = MAX_HAPPINESS;
-            }
-            else if (total_happiness < 0f)
-            {
-                total_happiness = 0f;
-            }
-            else if (total_happiness == 0f)
-            {
-                //Mutany
-                setScene(3);
-            }
-
-            //Health
-            if (total_health > MAX_HEALTH)
-            {
-                total_health = MAX_HEALTH;
-            }
-            else if (total_health < 0)
-            {
-                total_health = 0;
-            }
-            else if (total_health == 0)
-            {
-                //Sinks
-                setScene(3);
-            }
-
-            //Timer Countdown
-            if (TimerOn == false)
-            {
-                setScene(2);
-            }
+            
             TimerText.text = "Countdown: " + TimeLeft.ToString("F0");
             happinessMeter.fillAmount = total_happiness / MAX_HAPPINESS;
             healthMeter.fillAmount = total_health / MAX_HEALTH;
@@ -318,15 +329,10 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void setCaptain(int num)
+    /*
+    public void AssignCrewmate(RoleController role, FirstMateController crewM8)
     {
-        PlayerPrefs.SetInt("Captain", num);
-
-    }
-
-    public int getCaptain(string name)
-    {
-        captain = PlayerPrefs.GetInt(name);
-        return captain;
-    }
+        crewM8.moveCrewmate(role.gameObject.name);
+        role.SetOccupant(crewM8.gameObject);
+    }*/
 }
