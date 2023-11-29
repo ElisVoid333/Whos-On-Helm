@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour
         }
 
         //Countdown Timer Variables Initialize
-        TimeLeft = 240.0f; //4 minutes
+        //TimeLeft = 240.0f; //4 minutes
         TimerOn = true;
 
     }

@@ -46,7 +46,7 @@ public class RoleController : MonoBehaviour
                 
             }
 
-            occupant = null;
+            occupant = ball;
         }
 
     }
@@ -96,14 +96,13 @@ public class RoleController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Crew")
         {
-            crewInRange = false;
-            /*
-            if (collision == occupant)
+            
+            if (collision.gameObject.name == occupant.gameObject.name)
             {
                 crewInRange = false;
 
                 occupant = ball;
-            }*/
+            }
         }
     }
 
