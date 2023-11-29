@@ -1272,8 +1272,8 @@ GameObject:
   - component: {fileID: 365180148}
   - component: {fileID: 365180154}
   - component: {fileID: 365180150}
-  - component: {fileID: 365180151}
   - component: {fileID: 365180153}
+  - component: {fileID: 365180155}
   m_Layer: 0
   m_Name: ship_nobg
   m_TagString: Ship
@@ -1294,6 +1294,8 @@ Transform:
   m_LocalScale: {x: 46.54499, y: 46.102486, z: 41.190228}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1416206213}
+  - {fileID: 1433274748}
   - {fileID: 786714539}
   m_Father: {fileID: 1534942414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1394,33 +1396,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 16.42577, y: 5.3201036}
   m_EdgeRadius: 0
---- !u!50 &365180151
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365180146}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &365180153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1454,6 +1429,33 @@ MonoBehaviour:
   playerTiltForce: 0.5
   frequency: 1
   magnitude: 0.5
+--- !u!50 &365180155
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365180146}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 5
 --- !u!1 &368022293
 GameObject:
   m_ObjectHideFlags: 0
@@ -7886,11 +7888,11 @@ Transform:
   m_GameObject: {fileID: 1416206212}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17, y: 2, z: 0}
-  m_LocalScale: {x: 46.54499, y: 46.102486, z: 41.190228}
+  m_LocalPosition: {x: -0.36523798, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1534942414}
+  m_Father: {fileID: 365180147}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1416206214
 SpriteRenderer:
@@ -8102,14 +8104,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433274747}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.043381605, z: -110.626045}
+  m_LocalScale: {x: 1.0877677, y: 1.0982084, z: 1.2291783}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1799898955}
   - {fileID: 1860512478}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 365180147}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1465329482
 GameObject:
@@ -8723,7 +8725,6 @@ RectTransform:
   - {fileID: 712109349}
   - {fileID: 789509626}
   - {fileID: 1591962401}
-  - {fileID: 1416206213}
   - {fileID: 2123052039}
   - {fileID: 1016206672}
   - {fileID: 1706367367}
@@ -10320,7 +10321,6 @@ GameObject:
   - component: {fileID: 1799898956}
   - component: {fileID: 1799898957}
   - component: {fileID: 1799898958}
-  - component: {fileID: 1799898959}
   m_Layer: 0
   m_Name: firsm8
   m_TagString: Crew
@@ -10477,33 +10477,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &1799898959
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799898953}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1825783672
 GameObject:
   m_ObjectHideFlags: 0
@@ -10728,7 +10701,6 @@ GameObject:
   - component: {fileID: 1860512480}
   - component: {fileID: 1860512479}
   - component: {fileID: 1860512482}
-  - component: {fileID: 1860512483}
   m_Layer: 0
   m_Name: secondm8
   m_TagString: Crew
@@ -10885,33 +10857,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &1860512483
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1860512477}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1880348496
 GameObject:
   m_ObjectHideFlags: 0
@@ -13481,7 +13426,6 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1096069402}
-  - {fileID: 1433274748}
   - {fileID: 1534942414}
   - {fileID: 419030329}
   - {fileID: 733669735}

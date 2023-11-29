@@ -41,23 +41,23 @@ public class TiltController_Revised : MonoBehaviour
         //rb = GetComponent<Rigidbody2D>(); //Ship itself
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         //Gameobjects
-        roles = GameObject.FindGameObjectsWithTag("Role");
-        crew = GameObject.FindGameObjectsWithTag("Crew");
+        //roles = GameObject.FindGameObjectsWithTag("Role");
+        //crew = GameObject.FindGameObjectsWithTag("Crew");
 
         //Initiliaze Starting Position
         shipStartPos = transform.position;
+        playerTiltForce = 150f;
+        //playerStartPos = player.transform.position;
 
-        playerStartPos = player.transform.position;
+    //role_initial_positions = new Vector3[roles.Length];
+    //role_initial_positions = setInitialPositions(roles, role_initial_positions);
+    //role_movement_positions = new Vector3[roles.Length];
+    //role_movement_positions = setInitialPositions(roles, role_movement_positions);
 
-        role_initial_positions = new Vector3[roles.Length];
-        role_initial_positions = setInitialPositions(roles, role_initial_positions);
-        //role_movement_positions = new Vector3[roles.Length];
-        //role_movement_positions = setInitialPositions(roles, role_movement_positions);
-
-        crew_initial_positions = new Vector3[crew.Length];
-        crew_initial_positions = setInitialPositions(crew, crew_initial_positions);
-        //crew_movement_positions = new Vector3[crew.Length];
-        //crew_movement_positions = setInitialPositions(crew, crew_movement_positions);
+    //crew_initial_positions = new Vector3[crew.Length];
+    //crew_initial_positions = setInitialPositions(crew, crew_initial_positions);
+    //crew_movement_positions = new Vector3[crew.Length];
+    //crew_movement_positions = setInitialPositions(crew, crew_movement_positions);
     }
 
     // Update is called once per frame
@@ -70,18 +70,19 @@ public class TiltController_Revised : MonoBehaviour
         addForceForGameObjects(roles, frequency, magnitude);*/
 
         //Generate Sin Value
-        float shipSinWave = generateSinValue(frequency, magnitude);
+        float sinWave = generateSinValue(frequency, magnitude);
         float playerSinWave = generateSinValue(playerTiltForce, magnitude);
         float perlinValue = generatePerlinNoise(frequency);
 
         //Ship Tilt
         //Debug.Log(shipStartPos * Mathf.Sin(Time.time * frequency) * magnitude);
-        transform.position = new Vector3(0f, shipStartPos.y + (perlinValue), 0f);
+        transform.position = new Vector3(0f, shipStartPos.y + (sinWave * perlinValue), 0f);
 
         //Player Tilt
-        //playerStartPos = player.transform.position;
-        //player.transform.position += playerStartPos * playerSinWave;
-
+        playerStartPos = player.transform.position;
+        Debug.Log(playerTiltForce* sinWave* perlinValue);
+        player.AddForce(new Vector2(0f, playerTiltForce * sinWave * perlinValue));
+            
         //Crew Tilt
         //crew = GameObject.FindGameObjectsWithTag("Crew");
         //addForceForGameObjects(crew, playerSinWave);
