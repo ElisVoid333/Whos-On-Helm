@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     public RoleController repair;
     public float repairRate;
     public RoleController helm;
-    public TiltController ship;
+    public TiltController_Revised ship;
 
     /*-- RANDOM EVENTS --*/
     //Random Rocks
@@ -215,24 +215,22 @@ public class GameController : MonoBehaviour
             //Bird
 
             //PoopCleaning
-            if (cleaner.crewInRange || cleaner.inRange)
+            if (cleaner.occupant != null)
             {
                 poopList = GameObject.FindGameObjectsWithTag("Poop");
-                if (bird != null)
-                {
-                    poopRemoveTimer += Time.deltaTime;
 
-                    if (poopRemoveTimer >= 3f)
+                poopRemoveTimer += Time.deltaTime;
+
+                if (poopRemoveTimer >= 3f)
+                {
+                    Debug.Log("Cleaning Poop");
+                    if (bird.numOfPoops > 0)
                     {
-                        Debug.Log("Cleaning Poop");
-                        if (bird.numOfPoops > 0)
-                        {
-                            Destroy(poopList[poopList.Length - 1]);
-                            bird.numOfPoops -= 1;
-                            Debug.Log("Poop Removed");
-                        }
-                        poopRemoveTimer = 0f;
+                        Destroy(poopList[poopList.Length - 1]);
+                        bird.numOfPoops -= 1;
+                        Debug.Log("Poop Removed");
                     }
+                    poopRemoveTimer = 0f;
                 }
             }
 
@@ -327,12 +325,10 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene("07_LoseScene");
         }
+        else if (i == 4)
+        {
+            SceneManager.LoadScene("tutorial");
+        }
     }
 
-    /*
-    public void AssignCrewmate(RoleController role, FirstMateController crewM8)
-    {
-        crewM8.moveCrewmate(role.gameObject.name);
-        role.SetOccupant(crewM8.gameObject);
-    }*/
 }

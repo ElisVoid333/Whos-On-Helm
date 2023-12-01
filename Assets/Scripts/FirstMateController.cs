@@ -17,10 +17,19 @@ public class FirstMateController : MonoBehaviour
     void Start()
     {
         GameObject firsm8GameObject = GameObject.Find("firsm8");
-        if (firsm8GameObject != null)
-        { animator = firsm8GameObject.GetComponent<Animator>(); };
-        position = new Vector2(0, 0);
-        ChangeAnimationState(CREW_STATIC);
+        if (firsm8GameObject != null) { 
+            animator = firsm8GameObject.GetComponent<Animator>();
+            position = new Vector2(0, 0);
+            moveCrewmate("stand");
+        }
+
+        GameObject secondm8GameObject = GameObject.Find("secondm8");
+        if (secondm8GameObject != null)
+        {
+            animator = secondm8GameObject.GetComponent<Animator>();
+            position = new Vector2(0, 0);
+            moveCrewmate("standBy");
+        }
     }
 
     // Update is called once per frame
@@ -61,6 +70,18 @@ public class FirstMateController : MonoBehaviour
             position.x = position.x - 0.5f;
             transform.position = position;
             ChangeAnimationState(CREW_INTERACT);
+        }
+        else if (role == "stand")
+        {
+            position = GameObject.Find("StandBy_1").GetComponent<Transform>().position;
+            transform.position = position;
+            ChangeAnimationState(CREW_STATIC);
+        }
+        else if (role == "standBy")
+        {
+            position = GameObject.Find("StandBy_2").GetComponent<Transform>().position;
+            transform.position = position;
+            ChangeAnimationState(CREW_STATIC);
         }
     }
 

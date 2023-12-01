@@ -23,6 +23,7 @@ public class RoleController : MonoBehaviour
     void Start()
     {
         inRange = false;
+        crewInRange = false;
         interact = false;
         shooting = false;
 
@@ -71,10 +72,11 @@ public class RoleController : MonoBehaviour
         if (collision.gameObject.tag == "Crew")
         {
             //crewInRange = true;
-            //Debug.Log("Collision: " + collision.gameObject.name + "Occupant: " + occupant.gameObject.name);
+            Debug.Log("Collision: " + collision.gameObject.name + "Occupant: " + occupant.gameObject.name);
             if (collision.gameObject.name == occupant.gameObject.name)
             {
                 crewInRange = true;
+                Debug.Log("Occupant: " + occupant.gameObject.name);
             }
         }
     }
