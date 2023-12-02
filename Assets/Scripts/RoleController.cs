@@ -27,7 +27,7 @@ public class RoleController : MonoBehaviour
         interact = false;
         shooting = false;
 
-        occupant = null;
+        occupant = ball;
     }
 
     // Update is called once per frame
@@ -72,11 +72,12 @@ public class RoleController : MonoBehaviour
         if (collision.gameObject.tag == "Crew")
         {
             //crewInRange = true;
-            Debug.Log("Collision: " + collision.gameObject.name + "Occupant: " + occupant.gameObject.name);
+            Debug.Log("Caught Crewmate");
+            //Debug.Log("Collision: " + collision.gameObject.name + "Occupant: " + occupant.gameObject.name);
             if (collision.gameObject.name == occupant.gameObject.name)
             {
                 crewInRange = true;
-                Debug.Log("Occupant: " + occupant.gameObject.name);
+                //Debug.Log("Occupant: " + occupant.gameObject.name);
             }
         }
     }

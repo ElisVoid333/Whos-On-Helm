@@ -218,19 +218,22 @@ public class GameController : MonoBehaviour
             if (cleaner.occupant != null)
             {
                 poopList = GameObject.FindGameObjectsWithTag("Poop");
-
-                poopRemoveTimer += Time.deltaTime;
-
-                if (poopRemoveTimer >= 3f)
+                //Debug.Log(poopList.ToString());
+                if (poopList.Length > 0)
                 {
-                    Debug.Log("Cleaning Poop");
-                    if (bird.numOfPoops > 0)
+                    poopRemoveTimer += Time.deltaTime;
+
+                    if (poopRemoveTimer >= 3f)
                     {
-                        Destroy(poopList[poopList.Length - 1]);
-                        bird.numOfPoops -= 1;
-                        Debug.Log("Poop Removed");
+                        Debug.Log("Cleaning Poop");
+                        if (bird.numOfPoops > 0)
+                        {
+                            Destroy(poopList[poopList.Length - 1]);
+                            bird.numOfPoops -= 1;
+                            Debug.Log("Poop Removed");
+                        }
+                        poopRemoveTimer = 0f;
                     }
-                    poopRemoveTimer = 0f;
                 }
             }
 

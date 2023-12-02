@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FirstMateController : MonoBehaviour
 {
-    private Vector2 position;
+    private Vector3 position;
 
     //Player Animation
     public Animator animator;
@@ -16,37 +16,26 @@ public class FirstMateController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject firsm8GameObject = GameObject.Find("firsm8");
-        if (firsm8GameObject != null) { 
-            animator = firsm8GameObject.GetComponent<Animator>();
-            position = new Vector2(0, 0);
-            moveCrewmate("stand");
+        position = new Vector3(0, 0, 0);
+
+        //GameObject firsm8GameObject = GameObject.Find("firsm8");
+        if (this.gameObject.name == "firsm8") {
+
+            Debug.Log("Found Firstmate!");
+            animator = this.GetComponent<Animator>();
+            moveCrewmate("standby_1");
         }
 
-        GameObject secondm8GameObject = GameObject.Find("secondm8");
-        if (secondm8GameObject != null)
+        //GameObject secondm8GameObject = GameObject.Find("secondm8");
+        if (this.gameObject.name == "secondm8")
         {
-            animator = secondm8GameObject.GetComponent<Animator>();
-            position = new Vector2(0, 0);
-            moveCrewmate("standBy");
+
+            Debug.Log("Found Secondmate!");
+            animator = this.GetComponent<Animator>();
+            moveCrewmate("standby_2");
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            position = repairTask;
-            transform.position = position;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            position = cleaningTask;
-            transform.position = position;
-        }*/
-    }
 
     public void moveCrewmate(string role)
     {
@@ -71,15 +60,15 @@ public class FirstMateController : MonoBehaviour
             transform.position = position;
             ChangeAnimationState(CREW_INTERACT);
         }
-        else if (role == "stand")
+        else if (role == "standby_1")
         {
-            position = GameObject.Find("StandBy_1").GetComponent<Transform>().position;
+            position = GameObject.Find("Standby_1").GetComponent<Transform>().position;
             transform.position = position;
             ChangeAnimationState(CREW_STATIC);
         }
-        else if (role == "standBy")
+        else if (role == "standby_2")
         {
-            position = GameObject.Find("StandBy_2").GetComponent<Transform>().position;
+            position = GameObject.Find("Standby_2").GetComponent<Transform>().position;
             transform.position = position;
             ChangeAnimationState(CREW_STATIC);
         }
