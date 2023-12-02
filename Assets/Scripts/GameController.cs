@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     public RoleController repair;
     public float repairRate;
     public RoleController helm;
-    public TiltController ship;
+    public TiltController_Revised ship;
 
     /*-- RANDOM EVENTS --*/
     //Random Rocks
@@ -215,10 +215,11 @@ public class GameController : MonoBehaviour
             //Bird
 
             //PoopCleaning
-            if (cleaner.crewInRange || cleaner.inRange)
+            if (cleaner.occupant != null)
             {
                 poopList = GameObject.FindGameObjectsWithTag("Poop");
-                if (bird != null)
+                //Debug.Log(poopList.ToString());
+                if (poopList.Length > 0)
                 {
                     poopRemoveTimer += Time.deltaTime;
 
@@ -327,12 +328,10 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene("07_LoseScene");
         }
+        else if (i == 4)
+        {
+            SceneManager.LoadScene("tutorial");
+        }
     }
 
-    /*
-    public void AssignCrewmate(RoleController role, FirstMateController crewM8)
-    {
-        crewM8.moveCrewmate(role.gameObject.name);
-        role.SetOccupant(crewM8.gameObject);
-    }*/
 }

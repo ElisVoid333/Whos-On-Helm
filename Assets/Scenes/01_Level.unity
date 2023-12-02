@@ -254,18 +254,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 365180153}
-        m_TargetAssemblyTypeName: TiltController, Assembly-CSharp
-        m_MethodName: SetCrewPosition
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1860512477}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &71061029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +471,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.576087, y: 2.179357}
   m_EdgeRadius: 0
+--- !u!1 &106570190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 106570191}
+  m_Layer: 5
+  m_Name: Standby_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &106570191
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106570190}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 786714539}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -165.9, y: 36}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &123508719
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,7 +831,7 @@ Transform:
   m_GameObject: {fileID: 252511477}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 338.25757, y: -186.34549, z: -4557.3623}
+  m_LocalPosition: {x: 338.25757, y: -186.34549, z: 0}
   m_LocalScale: {x: 38.063725, y: 38.063725, z: 38.063725}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1093,18 +1116,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 365180154}
-        m_TargetAssemblyTypeName: TiltController_Revised, Assembly-CSharp
-        m_MethodName: SetCrewPosition
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1860512477}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!212 &357757272
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1207,7 +1218,6 @@ GameObject:
   - component: {fileID: 365180148}
   - component: {fileID: 365180154}
   - component: {fileID: 365180150}
-  - component: {fileID: 365180153}
   - component: {fileID: 365180155}
   m_Layer: 0
   m_Name: ship_nobg
@@ -1230,8 +1240,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1416206213}
-  - {fileID: 1433274748}
   - {fileID: 786714539}
+  - {fileID: 1433274748}
   m_Father: {fileID: 1534942414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &365180148
@@ -1331,24 +1341,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 16.42577, y: 5.3201036}
   m_EdgeRadius: 0
---- !u!114 &365180153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365180146}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39109d6f65a67d34fa39897a2965a904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tiltForce: 30
-  tiltDirection: 0
-  rb: {fileID: 1096069405}
-  moveSpeed: 2
-  canMove: 0
-  boundaryTag: Border
 --- !u!114 &365180154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,7 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ef91d37aaa74a4bbad2345af4320ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTiltForce: 0.5
+  playerTiltForce: 150
   frequency: 1
   magnitude: 0.5
 --- !u!50 &365180155
@@ -1660,18 +1652,6 @@ MonoBehaviour:
       - m_Target: {fileID: 597187545}
         m_TargetAssemblyTypeName: RoleController, Assembly-CSharp
         m_MethodName: SetOccupant
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1799898953}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 365180154}
-        m_TargetAssemblyTypeName: TiltController_Revised, Assembly-CSharp
-        m_MethodName: SetCrewPosition
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1799898953}
@@ -3461,7 +3441,7 @@ Transform:
   m_GameObject: {fileID: 733669734}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5871781, y: 0.13620473, z: 246.50883}
+  m_LocalPosition: {x: -1.5871781, y: 0.13620473, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3766,13 +3746,15 @@ RectTransform:
   m_GameObject: {fileID: 786714538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.021484591, y: 0.021690806, z: 0.024277603}
+  m_LocalScale: {x: 0.02148459, y: 0.021690805, z: 0.024277603}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2085186580}
   - {fileID: 584776622}
   - {fileID: 597187540}
   - {fileID: 1187077681}
+  - {fileID: 106570191}
+  - {fileID: 1780569432}
   m_Father: {fileID: 365180147}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5861,18 +5843,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 365180153}
-        m_TargetAssemblyTypeName: TiltController, Assembly-CSharp
-        m_MethodName: SetCrewPosition
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1799898953}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!212 &1053389201
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5996,6 +5966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ebe0ef22b4a0f4c84d4efab56b6e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tiltY: 0
   moveable: 0
   occupied: 0
   currentJob: {fileID: 0}
@@ -6065,7 +6036,7 @@ Transform:
   m_GameObject: {fileID: 1096069399}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.22, y: 1.13, z: 0}
+  m_LocalPosition: {x: -6.2200003, y: 1.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6309,18 +6280,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 365180153}
-        m_TargetAssemblyTypeName: TiltController, Assembly-CSharp
-        m_MethodName: SetCrewPosition
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1799898953}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!212 &1108395541
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6546,18 +6505,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1187077685}
         m_TargetAssemblyTypeName: RoleController, Assembly-CSharp
         m_MethodName: SetOccupant
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1860512477}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 365180153}
-        m_TargetAssemblyTypeName: TiltController, Assembly-CSharp
-        m_MethodName: SetCrewPosition
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1860512477}
@@ -7970,8 +7917,8 @@ Transform:
   m_GameObject: {fileID: 1433274747}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.043381605, z: -110.626045}
-  m_LocalScale: {x: 1.0877677, y: 1.0982084, z: 1.2291783}
+  m_LocalPosition: {x: 0, y: -0.043381605, z: 0}
+  m_LocalScale: {x: 1.0881139, y: 1.098558, z: 1.2295696}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1799898955}
@@ -8225,7 +8172,7 @@ Transform:
   m_GameObject: {fileID: 1490629875}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -14.106099, y: -4.451577, z: 166.9389}
+  m_LocalPosition: {x: -14.106099, y: -4.451577, z: 0}
   m_LocalScale: {x: 0.6222926, y: 0.62229264, z: 0.6222926}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8504,7 +8451,6 @@ GameObject:
   - component: {fileID: 1534942413}
   - component: {fileID: 1534942412}
   - component: {fileID: 1534942411}
-  - component: {fileID: 1534942415}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -8608,22 +8554,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1534942415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1534942410}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9959d6a495f54a347828e3c27ec55a2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  game: {fileID: 0}
-  CREW_STATIC: 
-  CREW_INTERACT: 
 --- !u!1 &1550268745
 GameObject:
   m_ObjectHideFlags: 0
@@ -9595,7 +9525,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652852370}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4556.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 80.37185, y: 80.37185, z: 80.37185}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9761,7 +9691,7 @@ MonoBehaviour:
   repair: {fileID: 2085186585}
   repairRate: 15
   helm: {fileID: 584776627}
-  ship: {fileID: 0}
+  ship: {fileID: 365180154}
   rock: {fileID: 1652852373}
   enemy: {fileID: 879100047}
   poopRemoveTimer: 0
@@ -10175,6 +10105,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1780569431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1780569432}
+  m_Layer: 5
+  m_Name: Standby_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1780569432
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780569431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 786714539}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -189.5, y: -35.1}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1799898953
 GameObject:
   m_ObjectHideFlags: 0
@@ -10188,6 +10153,7 @@ GameObject:
   - component: {fileID: 1799898956}
   - component: {fileID: 1799898957}
   - component: {fileID: 1799898958}
+  - component: {fileID: 1799898959}
   m_Layer: 0
   m_Name: firsm8
   m_TagString: Crew
@@ -10344,6 +10310,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &1799898959
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799898953}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1825783672
 GameObject:
   m_ObjectHideFlags: 0
@@ -10568,6 +10561,7 @@ GameObject:
   - component: {fileID: 1860512480}
   - component: {fileID: 1860512479}
   - component: {fileID: 1860512482}
+  - component: {fileID: 1860512483}
   m_Layer: 0
   m_Name: secondm8
   m_TagString: Crew
@@ -10724,6 +10718,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &1860512483
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860512477}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1880348496
 GameObject:
   m_ObjectHideFlags: 0
@@ -11893,7 +11914,7 @@ Transform:
   m_GameObject: {fileID: 2064127571}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 341.7, y: 208.5, z: -4556.25}
+  m_LocalPosition: {x: 341.7, y: 208.5, z: 0}
   m_LocalScale: {x: 57.58594, y: 50.625, z: 50.625}
   m_ConstrainProportionsScale: 0
   m_Children:

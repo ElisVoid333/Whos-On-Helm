@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private float speed;
     private float inputX;
     private float inputY;
+    public float tiltY;
     public bool moveable;
     public bool occupied;
     public RoleController currentJob;
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 position;
 
-    private int captainSelected;
+    private int captainSelected = 0;
     public GameController game;
     public SpriteRenderer spriteRenderer;
     public Sprite maleStatic;
@@ -36,12 +37,6 @@ public class PlayerController : MonoBehaviour
     //RigidBody
     private Rigidbody2D rb;
 
-    private void Awake()
-    {
-        captainSelected = GameObject.FindGameObjectWithTag("DontDestroy").GetComponent<DontDestroy>().GetCaptain();
-
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -55,18 +50,10 @@ public class PlayerController : MonoBehaviour
 
         position = new Vector2(0, 0);
 
-        //captainSelected = GameObject.FindGameObjectWithTag("DontDestroy").GetComponent<DontDestroy>().GetCaptain();
+        captainSelected = GameObject.FindGameObjectWithTag("DontDestroy").GetComponent<DontDestroy>().GetCaptain();
         //captainSelected = 0;
 
         Debug.Log("The Capatain: " + captainSelected);
-
-
-        GameObject captainGameObject = GameObject.Find("Captain");
-        if (captainGameObject != null)
-        {
-            // Get the Animator component from the GameObject
-            animator = captainGameObject.GetComponent<Animator>();
-        }
     
 
         //Animation & Captain selection
@@ -91,7 +78,14 @@ public class PlayerController : MonoBehaviour
             CAP_WALK = "CapN_Walk";
             CAP_INTERACT = "CapN_Interact";
         }
-        animator = gameObject.GetComponent<Animator>();
+        //animator = gameObject.GetComponent<Animator>();
+
+        GameObject captainGameObject = GameObject.Find("Captain");
+        if (captainGameObject != null)
+        {
+            // Get the Animator component from the GameObject
+            animator = captainGameObject.GetComponent<Animator>();
+        }
 
         ChangeAnimationState(CAP_STATIC);
     }

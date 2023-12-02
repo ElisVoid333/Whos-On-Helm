@@ -23,7 +23,7 @@ public class TiltController_Revised : MonoBehaviour
 
     //Positional Variables
     Vector3 shipStartPos;
-    //Vector3 playerStartPos;
+    Vector3 playerStartPos;
     //Vector3[] role_initial_positions;
     //Vector3[] role_movement_positions;
     Vector3[] crew_initial_positions;
@@ -46,7 +46,7 @@ public class TiltController_Revised : MonoBehaviour
 
         //Initiliaze Starting Position
         shipStartPos = transform.position;
-        playerTiltForce = 150f;
+        //playerTiltForce = 150f;
         //playerStartPos = player.transform.position;
 
         //role_initial_positions = new Vector3[roles.Length];
@@ -79,10 +79,11 @@ public class TiltController_Revised : MonoBehaviour
         transform.position = new Vector3(0f, shipStartPos.y + (sinWave * perlinValue), 0f);
 
         //Player Tilt
-        //playerStartPos = player.transform.position;
-        //Debug.Log(playerTiltForce* sinWave* perlinValue);
-        player.AddForce(new Vector2(0f, playerTiltForce * sinWave * perlinValue));
-            
+        playerStartPos = player.transform.position;
+        Debug.Log(playerTiltForce* sinWave* perlinValue);
+        player.AddForce(new Vector2(0f, playerTiltForce * playerSinWave * perlinValue));
+        //player.GetComponent<PlayerController>().tiltY = playerSinWave * perlinValue;
+
         //Crew Tilt
         //crew = GameObject.FindGameObjectsWithTag("Crew");
         //addForceForGameObjects(crew, playerSinWave);

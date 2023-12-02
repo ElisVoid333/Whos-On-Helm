@@ -5,22 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class DontDestroy : MonoBehaviour
 {
-    public int captain;
+    static int captain;
 
     private void Awake()
     {
         /*
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
-
-        if (objs.Length > 1)
+        if (SceneManager.GetActiveScene().name == "07_LoseScene" || SceneManager.GetActiveScene().name == "06_WinScene")
         {
             Debug.Log("Destroy");
             Destroy(this.gameObject);
         }*/
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
 
-        if (SceneManager.GetActiveScene().name == "07_LoseScene" || SceneManager.GetActiveScene().name == "06_WinScene")
+        if (objs.Length > 1)
         {
-            Debug.Log("Destroy");
             Destroy(this.gameObject);
         }
 
@@ -30,12 +28,12 @@ public class DontDestroy : MonoBehaviour
     public void SetCaptain(int i)
     {
         captain = i;
-        Debug.Log(i);
+        Debug.Log("Set: " + i);
     }
 
     public int GetCaptain()
     {
-        Debug.Log("OLO: " + captain);
+        Debug.Log("Get: " + captain);
         return captain;
     }
 
