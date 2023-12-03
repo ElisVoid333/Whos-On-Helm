@@ -36,9 +36,14 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
-        Total_score = 0f;
+        Total_score = 10f;
         Total_count = 0f;
         bank = 0f;
+
+        duration = 0;
+        happyVal = 0f;
+        healthVal = 0f;
+
     }
 
 
@@ -77,6 +82,15 @@ public class PlayerData : MonoBehaviour
         {
             SceneManager.LoadScene("tutorial");
         }
+        //// score, buy, acheivment
+        else if (i == 5)
+        {
+            SceneManager.LoadScene("03_Score");
+        }
+        else if (i == 6)
+        {
+            SceneManager.LoadScene("04_BuyPhase");
+        }
     }
 
     public void LogPlayerData(float time, float happy, float health, int count, int loot)
@@ -86,18 +100,67 @@ public class PlayerData : MonoBehaviour
         healthVal = health;
         kills = count;
         purse = loot;
+
+        ProcessData();
     }
 
     public void ProcessData()
     {
         GameObject game = GameObject.Find("GameController");
-        score = (game.GetComponent<GameController>().TimeLeft - duration) + healthVal + happyVal;
+        //score = (game.GetComponent<GameController>().TimeLeft - duration) + healthVal + happyVal;
+        // total = duration, health, happy
 
         bank = (score * 0.5f) + purse;
 
         Total_score =+ score;
         Total_count =+ kills;
     }
+
+    public float GetPlayerFloat(string name)
+    {
+        //example Scoreboard asks for "string _duration_"
+
+        // score for time taken: duration
+        //score for total crew happiness at the end: happyVal
+        //score for total ship health at the end: healthVal
+
+        if (name != null)
+        {
+            if(name == "duration")
+            {
+                return duration;
+
+            }
+            if(name == "happiness")
+            {
+                return happyVal;
+                
+            }
+            if(name == "health")
+            {
+                return healthVal;
+
+            }
+            if (name == "total")
+            {
+                return Total_score;
+
+            }
+
+        }
+        return 0.0f;
+
+    }
+
+    public int GetKillData()
+    {
+
+        //score for total navy kills: Total_count
+        int navy = kills;
+        return navy;
+
+    }
+
 
     public void Kill()
     {
