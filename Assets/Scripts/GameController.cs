@@ -42,6 +42,8 @@ public class GameController : MonoBehaviour
     public BirdController bird;
     public GameObject[] poopList;
 
+    public GameObject objs;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +51,10 @@ public class GameController : MonoBehaviour
         total_happiness = MAX_HAPPINESS;
         total_health = MAX_HEALTH;
 
-        if(canon != null)
+       objs = GameObject.FindGameObjectWithTag("DontDestroy");
+  
+
+        if (canon != null)
         {
             canon.y = canon.ball.transform.position.y;
             canon.x = canon.ball.transform.position.x;
@@ -100,7 +105,10 @@ public class GameController : MonoBehaviour
             //Timer Countdown
             if (TimerOn == false)
             {
-                setScene(2);
+                //LogPlayerData(float time, float happy, float health, int count, int loot)
+                objs.GetComponent<PlayerData>().LogPlayerData(0f, total_happiness, total_health, 1001, 500);
+                Debug.Log("Wrote down the player score values for the level!");
+                setScene(5);
             }
         }
     }
@@ -109,7 +117,7 @@ public class GameController : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (SceneManager.GetActiveScene().name != "00_IntroScene" && SceneManager.GetActiveScene().name != "06_WinScene" && SceneManager.GetActiveScene().name != "07_LoseScene")
+        if (SceneManager.GetActiveScene().name != "00_IntroScene" && SceneManager.GetActiveScene().name != "06_WinScene" && SceneManager.GetActiveScene().name != "07_LoseScene" && SceneManager.GetActiveScene().name != "03_Score")
         {
             PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
@@ -335,6 +343,14 @@ public class GameController : MonoBehaviour
         else if (i == 4)
         {
             SceneManager.LoadScene("tutorial");
+        }
+        else if (i == 5)
+        {
+            SceneManager.LoadScene("03_Score");
+        }
+        else if (i == 6)
+        {
+            SceneManager.LoadScene("04_BuyPhase");
         }
     }
 }
