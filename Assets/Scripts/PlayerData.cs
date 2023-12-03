@@ -3,28 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DontDestroy : MonoBehaviour
+public class PlayerData : MonoBehaviour
 {
+    //Which captain has been chosen 
     static int captain;
+
+    static float duration;
+    static float happyVal;
+    static float healthVal;
+    static float score;
+    static int kills;
+    static int purse;
+
+    static float Total_score;
+    static float Total_count;
+    static float bank;
 
     private void Awake()
     {
-        /*
-        if (SceneManager.GetActiveScene().name == "07_LoseScene" || SceneManager.GetActiveScene().name == "06_WinScene")
-        {
-            Debug.Log("Destroy");
-            Destroy(this.gameObject);
-        }*/
         GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
 
+        /*
         if (objs.Length > 1)
         {
             Destroy(this.gameObject);
         }
+        */
 
         Debug.Log("Don't Destroy");
         DontDestroyOnLoad(this.gameObject);
     }
+
+    private void Start()
+    {
+        Total_score = 0f;
+        Total_count = 0f;
+        bank = 0f;
+    }
+
+
     public void SetCaptain(int i)
     {
         captain = i;
@@ -45,6 +62,7 @@ public class DontDestroy : MonoBehaviour
         }
         else if (i == 1)
         {
+            Kill();
             SceneManager.LoadScene("00_IntroScene");
         }
         else if (i == 2)
@@ -59,5 +77,30 @@ public class DontDestroy : MonoBehaviour
         {
             SceneManager.LoadScene("tutorial");
         }
+    }
+
+    public void LogPlayerData(float time, float happy, float health, int count, int loot)
+    {
+        duration = time;
+        happyVal = happy;
+        healthVal = health;
+        kills = count;
+        purse = loot;
+    }
+
+    public void ProcessData()
+    {
+        GameObject game = GameObject.Find("GameController");
+        score = (game.GetComponent<GameController>().TimeLeft - duration) + healthVal + happyVal;
+
+        bank = (score * 0.5f) + purse;
+
+        Total_score =+ score;
+        Total_count =+ kills;
+    }
+
+    public void Kill()
+    {
+        Destroy(this.gameObject);
     }
 }

@@ -116,7 +116,7 @@ public class GameController : MonoBehaviour
             //Handle most of the Captain role behaviour
             if (canon != null)
             {
-                if (canon.occupant == null)
+                if (canon.occupant == canon.ball)
                 {
 
                     canon.shooting = false;
@@ -165,7 +165,7 @@ public class GameController : MonoBehaviour
                 total_happiness += 0.05f;
             }
 
-            total_happiness -= 0.01f;
+            total_happiness -= 0.0075f;
 
             //Repair Role
             //Enable the Radial menu
@@ -215,7 +215,7 @@ public class GameController : MonoBehaviour
             //Bird
 
             //PoopCleaning
-            if (cleaner.occupant != null)
+            if (cleaner.occupant != cleaner.ball)
             {
                 poopList = GameObject.FindGameObjectsWithTag("Poop");
                 //Debug.Log(poopList.ToString());
@@ -318,6 +318,8 @@ public class GameController : MonoBehaviour
         }
         else if (i == 1)
         {
+            GameObject objs = GameObject.FindGameObjectWithTag("DontDestroy");
+            objs.GetComponent<PlayerData>().Kill();
             SceneManager.LoadScene("00_IntroScene");
         }
         else if (i == 2)
@@ -326,6 +328,8 @@ public class GameController : MonoBehaviour
         }
         else if (i == 3)
         {
+            GameObject objs = GameObject.FindGameObjectWithTag("DontDestroy");
+            objs.GetComponent<PlayerData>().Kill();
             SceneManager.LoadScene("07_LoseScene");
         }
         else if (i == 4)
@@ -333,5 +337,4 @@ public class GameController : MonoBehaviour
             SceneManager.LoadScene("tutorial");
         }
     }
-
 }
