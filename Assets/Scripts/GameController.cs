@@ -324,8 +324,6 @@ public class GameController : MonoBehaviour
         }
         else if (i == 2)
         {
-            GameObject objs = GameObject.FindGameObjectWithTag("DontDestroy");
-            objs.GetComponent<PlayerData>().Kill();
             SceneManager.LoadScene("06_WinScene");
         }
         else if (i == 3)
@@ -339,5 +337,4 @@ public class GameController : MonoBehaviour
             SceneManager.LoadScene("tutorial");
         }
     }
-
 }
