@@ -8,11 +8,13 @@ public class BirdController : MonoBehaviour
     public float poopUnhappy = 10f;
     public float spawnRate = 10f; //Bird Spawning Timer
     public float timer; //Time.deltaTime
+    public float timerPoop; //Time.deltaTime
     public float randomTime; //Random Range for spawning Poop
 
     private float x;
     private float y;
-    private float x_start = -10;
+    private float x_start_min = -20;
+    private float x_start_max = -10;
     private float y_start_min = -2;
     private float y_start_max = 2;
 
@@ -35,14 +37,25 @@ public class BirdController : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+
         if (timer >= spawnRate)
         {
             spawnBird();
             timer = 0f;
-            randomTime = Random.Range(2f, 8f);
+            randomTime = Random.Range(2f, 6f);
         }
 
-        if (timer >= randomTime)
+        if (transform.position.x >= -8)
+        {
+            if(transform.position.x >= 6)
+            {
+                timerPoop = 0f;
+            }
+
+            timerPoop += Time.deltaTime;
+        }
+
+        if (timerPoop >= randomTime)
         {
             Debug.Log("Im pooping!");
             numOfPoops++;
@@ -56,7 +69,7 @@ public class BirdController : MonoBehaviour
 
     private void spawnBird()
     {
-        x = x_start;
+        x = Random.Range(x_start_min, x_start_max);
         y = Random.Range(y_start_min, y_start_max);
 
         transform.position = new Vector3(x, y, 0);

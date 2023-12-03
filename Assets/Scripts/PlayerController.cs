@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
         position = new Vector2(0, 0);
 
-        captainSelected = GameObject.FindGameObjectWithTag("DontDestroy").GetComponent<DontDestroy>().GetCaptain();
+        captainSelected = GameObject.FindGameObjectWithTag("DontDestroy").GetComponent<PlayerData>().GetCaptain();
         //captainSelected = 0;
 
         Debug.Log("The Capatain: " + captainSelected);

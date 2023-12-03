@@ -56,7 +56,7 @@ public class FirstMateController : MonoBehaviour
         else if (role == "canon")
         {
             position = game.canon.GetComponent<Transform>().position;
-            position.x = position.x - 0.5f;
+            position.x = position.x + 0.5f;
             transform.position = position;
             ChangeAnimationState(CREW_INTERACT);
         }
