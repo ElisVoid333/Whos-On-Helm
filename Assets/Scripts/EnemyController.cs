@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     public GameObject ship;
 
     public bool attacking;
+    public int attacks;
     public bool hit;
     public bool shooting;
     public bool fire;
@@ -38,7 +39,7 @@ public class EnemyController : MonoBehaviour
         targetPos = currentPos;
 
         attackPos = new Vector2(0.58f, -5.3f);
-        fleePos = new Vector2(13f, -5.3f);
+        fleePos = new Vector2(20f, -5.3f);
 
         attacking = false;
         shooting = false;
@@ -166,6 +167,7 @@ public class EnemyController : MonoBehaviour
         lives = 3;
         shooting = false;
         timer = 0f;
+        attacks++;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -111,7 +111,7 @@ public class PlayerData : MonoBehaviour
     public void ProcessData()
     {
         GameObject game = GameObject.Find("GameController");
-        //score = (game.GetComponent<GameController>().TimeLeft - duration) + healthVal + happyVal;
+        score = duration + healthVal + happyVal;
         // total = duration, health, happy
 
         bank = (score * 0.5f) + purse;

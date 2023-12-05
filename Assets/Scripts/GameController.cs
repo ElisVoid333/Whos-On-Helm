@@ -20,6 +20,8 @@ public class GameController : MonoBehaviour
 
     //Helm Variables
     public float TimeLeft;
+    public float TimeOriginal;
+    public float TimeActual;
     public bool TimerOn;
     public Text TimerText;
     public float Score;
@@ -64,6 +66,10 @@ public class GameController : MonoBehaviour
         //TimeLeft = 240.0f; //4 minutes
         TimerOn = true;
 
+        if(TimeLeft != 0f)
+        {
+            TimeOriginal = TimeLeft;
+        }
     }
 
     void Update()
@@ -106,7 +112,7 @@ public class GameController : MonoBehaviour
             if (TimerOn == false)
             {
                 //LogPlayerData(float time, float happy, float health, int count, int loot)
-                objs.GetComponent<PlayerData>().LogPlayerData(0f, total_happiness, total_health, 1001, 500);
+                objs.GetComponent<PlayerData>().LogPlayerData(TimeOriginal - TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 500);
                 Debug.Log("Wrote down the player score values for the level!");
                 setScene(5);
             }
@@ -201,6 +207,8 @@ public class GameController : MonoBehaviour
                     TimeLeft = 0f;
                     TimerOn = false;
                 }
+
+                TimeActual =+ Time.deltaTime;
             }
 
             //Enable the Radial menu on helm
