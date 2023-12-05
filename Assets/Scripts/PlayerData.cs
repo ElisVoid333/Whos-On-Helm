@@ -91,6 +91,10 @@ public class PlayerData : MonoBehaviour
         {
             SceneManager.LoadScene("04_BuyPhase");
         }
+        else if (i == 7)
+        {
+            SceneManager.LoadScene("00a_Achievements");
+        }
     }
 
     public void LogPlayerData(float time, float happy, float health, int count, int loot)
