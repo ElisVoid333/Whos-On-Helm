@@ -34,6 +34,14 @@ public class FirstMateController : MonoBehaviour
             animator = this.GetComponent<Animator>();
             moveCrewmate("standby_2");
         }
+
+        if (this.gameObject.name == "thirdm8")
+        {
+
+            Debug.Log("Found Thirdmate!");
+            animator = this.GetComponent<Animator>();
+            moveCrewmate("standby_3");
+        }
     }
 
 
@@ -69,6 +77,12 @@ public class FirstMateController : MonoBehaviour
         else if (role == "standby_2")
         {
             position = GameObject.Find("Standby_2").GetComponent<Transform>().position;
+            transform.position = position;
+            ChangeAnimationState(CREW_STATIC);
+        }
+        else if (role == "standby_3")
+        {
+            position = GameObject.Find("Standby_3").GetComponent<Transform>().position;
             transform.position = position;
             ChangeAnimationState(CREW_STATIC);
         }

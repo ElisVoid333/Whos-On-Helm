@@ -93,7 +93,11 @@ public class PlayerData : MonoBehaviour
         }
         else if (i == 7)
         {
-            SceneManager.LoadScene("00a_Achievements");
+            SceneManager.LoadScene("08_Achievements");
+        }
+        else if (i == 8)
+        {
+            SceneManager.LoadScene("02_Level");
         }
     }
 

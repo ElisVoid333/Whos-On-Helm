@@ -71,7 +71,7 @@ public class TiltController_Revised : MonoBehaviour
 
         //Generate Sin Value
         float sinWave = generateSinValue(frequency, magnitude);
-        float playerSinWave = generateSinValue(playerTiltForce, magnitude);
+        float playerSinWave = generateSinValue(playerTiltForce, magnitude * 60);
         float perlinValue = generatePerlinNoise(frequency);
 
         //Ship Tilt

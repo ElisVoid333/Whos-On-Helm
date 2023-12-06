@@ -123,7 +123,7 @@ public class GameController : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (SceneManager.GetActiveScene().name != "00_IntroScene" && SceneManager.GetActiveScene().name != "06_WinScene" && SceneManager.GetActiveScene().name != "07_LoseScene" && SceneManager.GetActiveScene().name != "03_Score")
+        if (SceneManager.GetActiveScene().name == "01_Level" || SceneManager.GetActiveScene().name == "02_Level" || SceneManager.GetActiveScene().name == "tutorial")
         {
             PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
@@ -359,6 +359,14 @@ public class GameController : MonoBehaviour
         else if (i == 6)
         {
             SceneManager.LoadScene("04_BuyPhase");
+        }
+        else if (i == 7)
+        {
+            SceneManager.LoadScene("08_Achievements");
+        }
+        else if (i == 8)
+        {
+            SceneManager.LoadScene("02_Level");
         }
     }
 }
