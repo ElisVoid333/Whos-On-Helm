@@ -2796,7 +2796,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 548afaaddfee4fc45a9a59535fba7ec1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5820e2694d933a946a05108121f77618, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2870,6 +2870,8 @@ MonoBehaviour:
   ball: {fileID: 712109348}
   shooting: 0
   instructions: {fileID: 92272356}
+  baseRole: {fileID: 21300000, guid: 5820e2694d933a946a05108121f77618, type: 3}
+  highlightRole: {fileID: 21300000, guid: 548afaaddfee4fc45a9a59535fba7ec1, type: 3}
   y: 0
   x: 0
 --- !u!1 &597187539
@@ -2949,7 +2951,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: a1eccd2bcd98040409feed77ea2ac13e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 404363f2f1a1175488ac057ae9b9c269, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3023,6 +3025,8 @@ MonoBehaviour:
   ball: {fileID: 712109348}
   shooting: 0
   instructions: {fileID: 92272356}
+  baseRole: {fileID: 21300000, guid: 404363f2f1a1175488ac057ae9b9c269, type: 3}
+  highlightRole: {fileID: 21300000, guid: a1eccd2bcd98040409feed77ea2ac13e, type: 3}
   y: 0
   x: 0
 --- !u!1 &619394800
@@ -5213,6 +5217,8 @@ MonoBehaviour:
   ball: {fileID: 712109348}
   shooting: 0
   instructions: {fileID: 0}
+  baseRole: {fileID: 0}
+  highlightRole: {fileID: 0}
   y: 0
   x: 0
 --- !u!61 &1016206674
@@ -6731,6 +6737,8 @@ MonoBehaviour:
   ball: {fileID: 712109348}
   shooting: 0
   instructions: {fileID: 0}
+  baseRole: {fileID: 0}
+  highlightRole: {fileID: 0}
   y: 0
   x: 0
 --- !u!1 &1156016929
@@ -7184,7 +7192,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 295faf1908ea2ec4fb7ba033a3bd2070, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cac95a7302256ba4199bd2c039fd3ff0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7258,6 +7266,8 @@ MonoBehaviour:
   ball: {fileID: 712109348}
   shooting: 0
   instructions: {fileID: 92272356}
+  baseRole: {fileID: 21300000, guid: cac95a7302256ba4199bd2c039fd3ff0, type: 3}
+  highlightRole: {fileID: 21300000, guid: 295faf1908ea2ec4fb7ba033a3bd2070, type: 3}
   y: 0
   x: 0
 --- !u!1 &1216688715
@@ -9870,6 +9880,8 @@ MonoBehaviour:
   ball: {fileID: 712109348}
   shooting: 0
   instructions: {fileID: 0}
+  baseRole: {fileID: 0}
+  highlightRole: {fileID: 0}
   y: 0
   x: 0
 --- !u!61 &1706367369
@@ -10176,7 +10188,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: de29414e8a2684d46ac24eaba590537c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -10660,7 +10672,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: f1f64275b60a5474f9f8e8ace6079b64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11973,7 +11985,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 8acdbf8e2cc5afa4798cc52489254fd0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd4c8a66f2883b94ab2e093969dcc814, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12047,6 +12059,8 @@ MonoBehaviour:
   ball: {fileID: 712109348}
   shooting: 0
   instructions: {fileID: 92272356}
+  baseRole: {fileID: 21300000, guid: bd4c8a66f2883b94ab2e093969dcc814, type: 3}
+  highlightRole: {fileID: 21300000, guid: 8acdbf8e2cc5afa4798cc52489254fd0, type: 3}
   y: 0
   x: 0
 --- !u!1 &2112799608

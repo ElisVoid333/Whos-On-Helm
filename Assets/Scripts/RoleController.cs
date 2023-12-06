@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using TMPro;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ public class RoleController : MonoBehaviour
     public GameObject ball;
     public bool shooting;
     public GameObject instructions;
+    public Sprite baseRole;
+    public Sprite highlightRole;
 
     public float y;
     public float x;
@@ -33,6 +36,13 @@ public class RoleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (occupant != ball)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = highlightRole;
+        } else
+        {
+            this.GetComponent<SpriteRenderer>().sprite = baseRole;
+        }
 
         if (Input.GetKeyDown(KeyCode.E) && interact)
         {
