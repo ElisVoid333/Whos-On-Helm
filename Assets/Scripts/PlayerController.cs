@@ -117,12 +117,14 @@ public class PlayerController : MonoBehaviour
             speed = 0f;
         }
 
+        //Poop Slipped
         if (slipped)
         {
             moveable = false;
             timerSlipt += Time.deltaTime;
             if (timerSlipt >= 3f)
             {
+                //Play Sound
                 slipped = false;
                 moveable = true;
                 timerSlipt = 0f;
