@@ -63,12 +63,6 @@ public class TiltController_Revised : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        /*rb.AddForce(new Vector2(0f, rb.transform.position.y) * Mathf.Sin(Time.time * frequency) * magnitude);
-        player.AddForce(new Vector2(0f, player.transform.position.y) * Mathf.Sin(Time.time * frequency) * playerTiltForce);
-
-        addForceForGameObjects(crew, frequency, magnitude);
-        addForceForGameObjects(roles, frequency, magnitude);*/
-
         //Generate Sin Value
         float sinWave = generateSinValue(frequency, magnitude);
         float playerSinWave = generateSinValue(playerTiltForce, magnitude * 60);
@@ -80,7 +74,7 @@ public class TiltController_Revised : MonoBehaviour
 
         //Player Tilt
         playerStartPos = player.transform.position;
-        Debug.Log(playerTiltForce* sinWave* perlinValue);
+        //Debug.Log(playerTiltForce* sinWave* perlinValue);
         player.AddForce(new Vector2(0f, playerTiltForce * playerSinWave * perlinValue));
         //player.GetComponent<PlayerController>().tiltY = playerSinWave * perlinValue;
 

@@ -112,7 +112,7 @@ public class GameController : MonoBehaviour
             if (TimerOn == false)
             {
                 //LogPlayerData(float time, float happy, float health, int count, int loot)
-                objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 500);
+                objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 25);
                 Debug.Log("Wrote down the player score values for the level!");
                 setScene(5);
             }
