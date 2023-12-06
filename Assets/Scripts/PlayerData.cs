@@ -19,6 +19,12 @@ public class PlayerData : MonoBehaviour
     static float Total_count;
     static float bank;
 
+    static int trips_completed;
+
+    //Crew mates
+    static int firstM8_chosen;
+    static int secondM8_chosen;
+    static int thirdM8_chosen;
     private void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
@@ -36,11 +42,9 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
-        Total_score = 10f;
-        Total_count = 0f;
         bank = 0f;
 
-        duration = 0;
+        duration = 0f;
         happyVal = 0f;
         healthVal = 0f;
 
@@ -115,13 +119,15 @@ public class PlayerData : MonoBehaviour
     public void ProcessData()
     {
         GameObject game = GameObject.Find("GameController");
-        score = duration + healthVal + happyVal;
+        score = (120 - duration) + healthVal + happyVal;
         // total = duration, health, happy
 
         bank = (score * 0.5f) + purse;
 
-        Total_score =+ score;
-        Total_count =+ kills;
+        trips_completed++;
+
+        Total_score += score;
+        Total_count += kills;
     }
 
     public float GetPlayerFloat(string name)
@@ -173,5 +179,36 @@ public class PlayerData : MonoBehaviour
     public void Kill()
     {
         Destroy(this.gameObject);
+    }
+
+    public void SetFirstM8(int skin)
+    {
+
+    }
+
+    public void SetSecondM8(int skin)
+    {
+
+    }
+
+    public void SetThirdM8(int skin)
+    {
+
+    }
+
+
+    public void GetFirstM8(int skin)
+    {
+
+    }
+
+    public void GetSecondM8(int skin)
+    {
+
+    }
+
+    public void GetThirdM8(int skin)
+    {
+
     }
 }
