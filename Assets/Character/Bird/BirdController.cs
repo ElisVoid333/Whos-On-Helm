@@ -31,6 +31,7 @@ public class BirdController : MonoBehaviour
         timer = 0f;
         numOfPoops = 0;
         randomTime = Random.Range(1f, 2f);
+
     }
 
     // Update is called once per frame
@@ -60,6 +61,7 @@ public class BirdController : MonoBehaviour
             Debug.Log("Im pooping!");
             numOfPoops++;
             spawnPoop(transform.position.x);
+            //poop.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
             randomTime = 100f;
         }
 
@@ -80,7 +82,11 @@ public class BirdController : MonoBehaviour
     {
         //Create New Poop Instance at bird location
         gameController.total_happiness -= poopUnhappy;
-        Instantiate(poopObject, new Vector3(current_position, y, 0), Quaternion.identity);
+        GameObject poop = Instantiate(poopObject, GameObject.Find("ship_nobg").transform);
+        poop.transform.position = new Vector3(current_position, y, 0);
+
+        //poop.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
+        //return poop;
     }
 
 }

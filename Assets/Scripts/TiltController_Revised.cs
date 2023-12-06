@@ -21,6 +21,8 @@ public class TiltController_Revised : MonoBehaviour
     //private GameObject[] roles;
     private GameObject[] crew;
 
+    private GameObject[] poop_list;
+
     //Positional Variables
     Vector3 shipStartPos;
     Vector3 playerStartPos;
@@ -84,6 +86,16 @@ public class TiltController_Revised : MonoBehaviour
 
         //Role Tilt
         //addTiltToGameObjects(roles, role_initial_positions, shipSinWave);
+
+        //Poop Tilt
+        /*poop_list = GameObject.FindGameObjectsWithTag("Poop");
+        for (int i = 0; i < poop_list.Length; i++)
+        {
+            Vector3 poopPos = poop_list[i].gameObject.transform.position;
+            poop_list[i].transform.position = new Vector3(poopPos.x, poopPos.y + (sinWave * perlinValue)/50f, poopPos.z);
+        }*/
+
+
     }
     
     //Generates SinWave value
