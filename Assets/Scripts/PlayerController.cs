@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public bool moveable;
     public bool occupied;
     public RoleController currentJob;
+    private bool slipped;
+    private float timerSlipt;
 
     //public Collider2D playableArea;
 
@@ -41,12 +43,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-       
 
         inputX = 0; inputY = 0;
         speed = 1.5f;
         moveable = true;
         occupied = false;
+        slipped = false;
+        timerSlipt = 0f;
 
         position = new Vector2(0, 0);
 
@@ -54,7 +57,7 @@ public class PlayerController : MonoBehaviour
         //captainSelected = 0;
 
         Debug.Log("The Capatain: " + captainSelected);
-    
+
 
         //Animation & Captain selection
         if (captainSelected == 0)
@@ -112,6 +115,22 @@ public class PlayerController : MonoBehaviour
         if (moveable == false)
         {
             speed = 0f;
+        }
+
+        //Poop Slipped
+        if (slipped)
+        {
+            moveable = false;
+            timerSlipt += Time.deltaTime;
+            if (timerSlipt >= 3f)
+            {
+                //Play Sound
+                slipped = false;
+                moveable = true;
+                timerSlipt = 0f;
+                inputX = 0f;
+                inputY = 0f;
+            }
         }
 
         if (moveable == true)
@@ -267,12 +286,14 @@ public class PlayerController : MonoBehaviour
         occupied = true;
     }
 
-
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Role") 
+        if (collision.gameObject.tag == "Poop")
         {
-            
+            Destroy(collision.gameObject);
+
+            Debug.Log("Captain slipped on poopy!");
+            slipped = true;
         }
     }
 }
