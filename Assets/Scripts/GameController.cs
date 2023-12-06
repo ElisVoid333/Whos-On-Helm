@@ -89,7 +89,7 @@ public class GameController : MonoBehaviour
             else if (total_happiness == 0f)
             {
                 //Mutany
-                setScene(3);
+                setScene(7);
             }
 
             //Health
@@ -104,7 +104,7 @@ public class GameController : MonoBehaviour
             else if (total_health == 0)
             {
                 //Sinks
-                setScene(3);
+                setScene(7);
             }
 
 
@@ -114,7 +114,7 @@ public class GameController : MonoBehaviour
                 //LogPlayerData(float time, float happy, float health, int count, int loot)
                 objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 500);
                 Debug.Log("Wrote down the player score values for the level!");
-                setScene(5);
+                setScene(6);
             }
         }
     }
@@ -327,6 +327,7 @@ public class GameController : MonoBehaviour
 
     public void setScene(int i)
     {
+        /*
         if (i == 0)
         {
             SceneManager.LoadScene("01_Level");
@@ -367,5 +368,52 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene("02_Level");
         }
+        */
+
+        
+        if (i == 0)
+        {
+            objs = GameObject.FindGameObjectWithTag("DontDestroy");
+            objs.GetComponent<PlayerData>().Kill();
+            SceneManager.LoadScene("00_IntroScene");
+        }
+        else if (i == 1)
+        {
+            objs = GameObject.FindGameObjectWithTag("DontDestroy");
+            objs.GetComponent<PlayerData>().Kill();
+            SceneManager.LoadScene("01_Level");
+        }
+        else if (i == 2)
+        {
+            SceneManager.LoadScene("02_Level");
+        }
+        else if (i == 3)
+        {
+            SceneManager.LoadScene("tutorial");
+        
+        }
+        else if (i == 4)
+        {
+            SceneManager.LoadScene("04_BuyPhase");
+        }
+        else if (i == 5)
+        {
+            SceneManager.LoadScene("05_Score");
+        }
+        else if (i == 6)
+        {
+            SceneManager.LoadScene("06_WinScene");
+        }
+        else if (i == 7)
+        {
+            objs = GameObject.FindGameObjectWithTag("DontDestroy");
+            objs.GetComponent<PlayerData>().Kill();
+            SceneManager.LoadScene("07_LoseScene");
+        }
+        else if (i == 8)
+        {
+            SceneManager.LoadScene("08_Achievements");
+        }
+         
     }
 }
