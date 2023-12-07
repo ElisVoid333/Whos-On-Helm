@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
     public RoleController cleaner;
     public RoleController canon;
     public RoleController repair;
+    public RoleController fish;
     public float repairRate;
     public RoleController helm;
     public TiltController_Revised ship;
@@ -44,7 +45,8 @@ public class GameController : MonoBehaviour
     public BirdController bird;
     public GameObject[] poopList;
 
-    public GameObject objs;
+    public GameObject objs; //temp val to hold PlayerData
+    private bool PhysicsEnabled; //the case that determines if the scene is a playable one
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +56,8 @@ public class GameController : MonoBehaviour
         total_health = MAX_HEALTH;
 
         objs = GameObject.FindGameObjectWithTag("DontDestroy");
-  
+
+        PhysicsEnabled = false;
 
         if (canon != null)
         {
@@ -70,11 +73,54 @@ public class GameController : MonoBehaviour
         {
             TimeOriginal = TimeLeft;
         }
+
+
+        //Determine if the scene needs physics
+        if (SceneManager.GetActiveScene().name == "01_Level_V1")
+        {
+            PhysicsEnabled = true;
+        }
+        else if (SceneManager.GetActiveScene().name == "01_Level_V2")
+        {
+            PhysicsEnabled = true;
+        }
+        else if (SceneManager.GetActiveScene().name == "02_Level_V1")
+        {
+            PhysicsEnabled = true;
+        }
+        else if (SceneManager.GetActiveScene().name == "02_Level_V2")
+        {
+            PhysicsEnabled = true;
+        }
+        else if (SceneManager.GetActiveScene().name == "03_Level_V1")
+        {
+            PhysicsEnabled = true;
+        }
+        else if (SceneManager.GetActiveScene().name == "03_Level_V2")
+        {
+            PhysicsEnabled = true;
+        }
+        else if (SceneManager.GetActiveScene().name == "tutorial")
+        {
+            PhysicsEnabled = true;
+        }
+        else if (SceneManager.GetActiveScene().name == "01_Level")
+        {
+            PhysicsEnabled = true;
+        }
+        else if (SceneManager.GetActiveScene().name == "03_Level")
+        {
+            PhysicsEnabled = true;
+        }
+        else
+        {
+            PhysicsEnabled = false;
+        }
     }
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().name != "00_IntroScene" && SceneManager.GetActiveScene().name != "06_WinScene" && SceneManager.GetActiveScene().name != "07_LoseScene")
+        if (PhysicsEnabled == true)
         {
             /*-- Outputable Variables --*/
             //Happiness
@@ -89,7 +135,7 @@ public class GameController : MonoBehaviour
             else if (total_happiness == 0f)
             {
                 //Mutany
-                setScene(3);
+                setScene(7);
             }
 
             //Health
@@ -104,7 +150,7 @@ public class GameController : MonoBehaviour
             else if (total_health == 0)
             {
                 //Sinks
-                setScene(3);
+                setScene(7);
             }
 
 
@@ -112,7 +158,15 @@ public class GameController : MonoBehaviour
             if (TimerOn == false)
             {
                 //LogPlayerData(float time, float happy, float health, int count, int loot)
-                objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 25);
+                if (enemy != null)
+                {
+                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 500);
+
+                }else
+                {
+                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, 0, 500);
+
+                }
                 Debug.Log("Wrote down the player score values for the level!");
                 setScene(5);
             }
@@ -122,8 +176,10 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
 
-        if (SceneManager.GetActiveScene().name == "01_Level" || SceneManager.GetActiveScene().name == "02_Level" || SceneManager.GetActiveScene().name == "tutorial")
+
+        if (PhysicsEnabled == true)
         {
             PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
@@ -151,6 +207,10 @@ public class GameController : MonoBehaviour
                 {
                     canon.shooting = true;
                 }
+                else if (player.currentJob == fish)
+                {
+                    total_happiness += 0.025f;
+                }
 
             }
 
@@ -174,12 +234,19 @@ public class GameController : MonoBehaviour
             //Enable the Radial menu
             ShowMenu(0, cleaner);
 
+            //Fishing Role
+            //Enable the Radial menu
+            if(fish != null)
+            {
+                ShowMenu(0, fish);
+            }
+
             if (cleaner.crewInRange)
             {
                 total_happiness += 0.05f;
             }
 
-            total_happiness -= 0.0075f;
+            total_happiness -= 0.01f;
 
             //Repair Role
             //Enable the Radial menu
@@ -280,6 +347,18 @@ public class GameController : MonoBehaviour
                 role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
                 role.transform.GetChild(step).GetChild(1).GetChild(2).gameObject.SetActive(false);
             }
+        } else if (objs.GetComponent<PlayerData>().GetUpgrade() != 0)
+        {
+            //Debug.Log("Role: " + role);
+            if (role.inRange)
+            {
+                role.transform.GetChild(step).gameObject.SetActive(true);
+            }
+            else
+            {
+                role.transform.GetChild(step).gameObject.SetActive(false);
+                role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
+            }
         }
         else
         {
@@ -291,7 +370,7 @@ public class GameController : MonoBehaviour
             else
             {
                 role.transform.GetChild(step).gameObject.SetActive(false);
-                role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
+                
             }
         }
 
@@ -327,45 +406,79 @@ public class GameController : MonoBehaviour
 
     public void setScene(int i)
     {
+
         if (i == 0)
-        {
-            SceneManager.LoadScene("01_Level");
-        }
-        else if (i == 1)
         {
             GameObject objs = GameObject.FindGameObjectWithTag("DontDestroy");
             objs.GetComponent<PlayerData>().Kill();
             SceneManager.LoadScene("00_IntroScene");
         }
+        else if (i == 1)
+        {
+            GameObject objs = GameObject.FindGameObjectWithTag("DontDestroy");
+            int status = objs.GetComponent<PlayerData>().GetUpgrade();
+            if (status == 0)
+            {
+                SceneManager.LoadScene("01_Level_V1");
+                //SceneManager.LoadScene("03_Level");
+            }
+            else if (status == 1)
+            {
+                SceneManager.LoadScene("01_Level_V2");
+            }
+            else if (status == 2)
+            {
+                SceneManager.LoadScene("02_Level_V1");
+            }
+            else if (status == 3)
+            {
+                SceneManager.LoadScene("02_Level_V2");
+            }
+            else if (status == 4)
+            {
+                SceneManager.LoadScene("03_Level_V1");
+            }
+            else if (status == 5)
+            {
+                SceneManager.LoadScene("03_Level_V2");
+
+            }
+            else
+            {
+                SceneManager.LoadScene("06_WinScene");
+            }
+        }
         else if (i == 2)
+        {
+            SceneManager.LoadScene("02_Level");
+        }
+        else if (i == 3)
+        {
+            SceneManager.LoadScene("tutorial");
+
+        }
+        else if (i == 4)
+        {
+            SceneManager.LoadScene("04_BuyPhase");
+        }
+        else if (i == 5)
+        {
+            SceneManager.LoadScene("05_Score");
+        }
+        else if (i == 6)
         {
             SceneManager.LoadScene("06_WinScene");
         }
-        else if (i == 3)
+        else if (i == 7)
         {
             GameObject objs = GameObject.FindGameObjectWithTag("DontDestroy");
             objs.GetComponent<PlayerData>().Kill();
             SceneManager.LoadScene("07_LoseScene");
         }
-        else if (i == 4)
-        {
-            SceneManager.LoadScene("tutorial");
-        }
-        else if (i == 5)
-        {
-            SceneManager.LoadScene("03_Score");
-        }
-        else if (i == 6)
-        {
-            SceneManager.LoadScene("04_BuyPhase");
-        }
-        else if (i == 7)
+        else if (i == 8)
         {
             SceneManager.LoadScene("08_Achievements");
         }
-        else if (i == 8)
-        {
-            SceneManager.LoadScene("02_Level");
-        }
+
     }
 }
