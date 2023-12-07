@@ -108,6 +108,10 @@ public class GameController : MonoBehaviour
         {
             PhysicsEnabled = true;
         }
+        else if (SceneManager.GetActiveScene().name == "03_Level")
+        {
+            PhysicsEnabled = true;
+        }
         else
         {
             PhysicsEnabled = false;
@@ -154,7 +158,15 @@ public class GameController : MonoBehaviour
             if (TimerOn == false)
             {
                 //LogPlayerData(float time, float happy, float health, int count, int loot)
-                objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 500);
+                if (enemy != null)
+                {
+                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 500);
+
+                }else
+                {
+                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, 0, 500);
+
+                }
                 Debug.Log("Wrote down the player score values for the level!");
                 setScene(5);
             }
@@ -335,6 +347,18 @@ public class GameController : MonoBehaviour
                 role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
                 role.transform.GetChild(step).GetChild(1).GetChild(2).gameObject.SetActive(false);
             }
+        } else if (objs.GetComponent<PlayerData>().GetUpgrade() != 0)
+        {
+            //Debug.Log("Role: " + role);
+            if (role.inRange)
+            {
+                role.transform.GetChild(step).gameObject.SetActive(true);
+            }
+            else
+            {
+                role.transform.GetChild(step).gameObject.SetActive(false);
+                role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
+            }
         }
         else
         {
@@ -346,7 +370,7 @@ public class GameController : MonoBehaviour
             else
             {
                 role.transform.GetChild(step).gameObject.SetActive(false);
-                role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
+                
             }
         }
 
@@ -382,21 +406,23 @@ public class GameController : MonoBehaviour
 
     public void setScene(int i)
     {
+
         if (i == 0)
         {
-            objs = GameObject.FindGameObjectWithTag("DontDestroy");
+            GameObject objs = GameObject.FindGameObjectWithTag("DontDestroy");
             objs.GetComponent<PlayerData>().Kill();
             SceneManager.LoadScene("00_IntroScene");
         }
         else if (i == 1)
         {
-            objs = GameObject.FindGameObjectWithTag("DontDestroy");
+            GameObject objs = GameObject.FindGameObjectWithTag("DontDestroy");
             int status = objs.GetComponent<PlayerData>().GetUpgrade();
-            if(status == 0)
+            if (status == 0)
             {
                 SceneManager.LoadScene("01_Level_V1");
+                //SceneManager.LoadScene("03_Level");
             }
-            else if(status == 1)
+            else if (status == 1)
             {
                 SceneManager.LoadScene("01_Level_V2");
             }
@@ -417,6 +443,11 @@ public class GameController : MonoBehaviour
                 SceneManager.LoadScene("03_Level_V2");
 
             }
+            else
+            {
+                SceneManager.LoadScene("06_WinScene");
+            }
+        }
         else if (i == 2)
         {
             SceneManager.LoadScene("02_Level");
@@ -424,7 +455,7 @@ public class GameController : MonoBehaviour
         else if (i == 3)
         {
             SceneManager.LoadScene("tutorial");
-        
+
         }
         else if (i == 4)
         {
@@ -440,7 +471,7 @@ public class GameController : MonoBehaviour
         }
         else if (i == 7)
         {
-            objs = GameObject.FindGameObjectWithTag("DontDestroy");
+            GameObject objs = GameObject.FindGameObjectWithTag("DontDestroy");
             objs.GetComponent<PlayerData>().Kill();
             SceneManager.LoadScene("07_LoseScene");
         }
@@ -448,6 +479,6 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene("08_Achievements");
         }
-         
+
     }
 }
