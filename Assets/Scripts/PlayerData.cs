@@ -72,6 +72,10 @@ public class PlayerData : MonoBehaviour
         happyVal = 0f;
         healthVal = 0f;
         fishWorth = 25;
+        if (SceneManager.GetActiveScene().name == "08_achievements")
+        {
+            displayAchievements();
+        }
     }
 
 
@@ -219,6 +223,57 @@ public class PlayerData : MonoBehaviour
 
     public void displayAchievements()
     {
+        //Get all trophies
+        broomTrophy = GameObject.FindGameObjectWithTag("BroomTrophy");
+        canonTrophy = GameObject.FindGameObjectWithTag("CanonTrophy");
+        crownTrophy = GameObject.FindGameObjectWithTag("KingTrophy");
+        helmTrophy = GameObject.FindGameObjectWithTag("HelmTrophy");
+        fishTrophy = GameObject.FindGameObjectWithTag("FishTrophy");
+
+        if (broomTrophyCompleted)
+        {
+            broomTrophy.SetActive(true);
+        }
+        else
+        {
+            broomTrophy.SetActive(false);
+        }
+
+        if (canonTrophyCompleted)
+        {
+            canonTrophy.SetActive(true);
+        }
+        else
+        {
+            canonTrophy.SetActive(false);
+        }
+
+        if (helmTrophyCompleted)
+        {
+            helmTrophy.SetActive(true);
+        }
+        else
+        {
+            helmTrophy.SetActive(false);
+        }
+
+        if (crownTrophyCompleted)
+        {
+            crownTrophy.SetActive(true);
+        }
+        else
+        {
+            crownTrophy.SetActive(false);
+        }
+
+        if (fishTrophyCompleted)
+        {
+            fishTrophy.SetActive(true);
+        }
+        else
+        {
+            fishTrophy.SetActive(false);
+        }
 
     }
 
