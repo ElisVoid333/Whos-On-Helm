@@ -129,7 +129,6 @@ public class EnemyController : MonoBehaviour
             }
             //Debug.Log("Enemy CanonBall");
             canonball.SetActive(true);
-            
             if (canonball.transform.position.y > 20f)
             {
                 ballPos.y = initialPos.y + 0.5f;

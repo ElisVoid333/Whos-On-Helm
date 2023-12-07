@@ -82,7 +82,7 @@ public class RoleController : MonoBehaviour
         if (collision.gameObject.tag == "Crew")
         {
             //crewInRange = true;
-            Debug.Log("Caught Crewmate");
+            //Debug.Log("Caught Crewmate");
             //Debug.Log("Collision: " + collision.gameObject.name + "Occupant: " + occupant.gameObject.name);
             if (collision.gameObject.name == occupant.gameObject.name)
             {
