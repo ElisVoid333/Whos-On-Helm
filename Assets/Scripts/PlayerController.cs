@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public bool moveable;
     public bool occupied;
     public RoleController currentJob;
+    private bool slipped;
+    private float timerSlipt;
 
     //public Collider2D playableArea;
 
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     string CAP_STATIC = "";
     string CAP_WALK = "";
     string CAP_INTERACT = "";
+    string CAP_SLIP = "";
 
     //RigidBody
     private Rigidbody2D rb;
@@ -41,12 +44,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-       
 
         inputX = 0; inputY = 0;
         speed = 1.5f;
         moveable = true;
         occupied = false;
+        slipped = false;
+        timerSlipt = 0f;
 
         position = new Vector2(0, 0);
 
@@ -54,7 +58,7 @@ public class PlayerController : MonoBehaviour
         //captainSelected = 0;
 
         Debug.Log("The Capatain: " + captainSelected);
-    
+
 
         //Animation & Captain selection
         if (captainSelected == 0)
@@ -63,6 +67,7 @@ public class PlayerController : MonoBehaviour
             CAP_STATIC = "Cap_Static";
             CAP_WALK = "Cap_Walk";
             CAP_INTERACT = "Cap_Interact";
+            CAP_SLIP = "Cap_Slip";
         }
         else if (captainSelected == 1)
         {
@@ -70,6 +75,7 @@ public class PlayerController : MonoBehaviour
             CAP_STATIC = "CapF_Static";
             CAP_WALK = "CapF_Walk";
             CAP_INTERACT = "CapF_Interact";
+            CAP_SLIP = "CapF_Slip";
         }
         else if (captainSelected == 2)
         {
@@ -77,6 +83,7 @@ public class PlayerController : MonoBehaviour
             CAP_STATIC = "CapN_Static";
             CAP_WALK = "CapN_Walk";
             CAP_INTERACT = "CapN_Interact";
+            CAP_SLIP = "CapN_Slip";
         }
         //animator = gameObject.GetComponent<Animator>();
 
@@ -112,6 +119,24 @@ public class PlayerController : MonoBehaviour
         if (moveable == false)
         {
             speed = 0f;
+        }
+
+        //Poop Slipped
+        if (slipped)
+        {
+            moveable = false;
+            timerSlipt += Time.deltaTime;
+            ChangeAnimationState(CAP_SLIP);
+            if (timerSlipt >= 3f)
+            {
+                //Play Sound
+                slipped = false;
+                moveable = true;
+                timerSlipt = 0f;
+                inputX = 0f;
+                inputY = 0f;
+                ChangeAnimationState(CAP_STATIC);
+            }
         }
 
         if (moveable == true)
@@ -274,12 +299,14 @@ public class PlayerController : MonoBehaviour
         occupied = true;
     }
 
-
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Role") 
+        if (collision.gameObject.tag == "Poop")
         {
-            
+            Destroy(collision.gameObject);
+
+            Debug.Log("Captain slipped on poopy!");
+            slipped = true;
         }
     }
 }

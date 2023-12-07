@@ -21,6 +21,8 @@ public class TiltController_Revised : MonoBehaviour
     //private GameObject[] roles;
     private GameObject[] crew;
 
+    private GameObject[] poop_list;
+
     //Positional Variables
     Vector3 shipStartPos;
     Vector3 playerStartPos;
@@ -63,12 +65,6 @@ public class TiltController_Revised : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        /*rb.AddForce(new Vector2(0f, rb.transform.position.y) * Mathf.Sin(Time.time * frequency) * magnitude);
-        player.AddForce(new Vector2(0f, player.transform.position.y) * Mathf.Sin(Time.time * frequency) * playerTiltForce);
-
-        addForceForGameObjects(crew, frequency, magnitude);
-        addForceForGameObjects(roles, frequency, magnitude);*/
-
         //Generate Sin Value
         float sinWave = generateSinValue(frequency, magnitude);
         float playerSinWave = generateSinValue(playerTiltForce, magnitude * 60);
@@ -90,6 +86,16 @@ public class TiltController_Revised : MonoBehaviour
 
         //Role Tilt
         //addTiltToGameObjects(roles, role_initial_positions, shipSinWave);
+
+        //Poop Tilt
+        /*poop_list = GameObject.FindGameObjectsWithTag("Poop");
+        for (int i = 0; i < poop_list.Length; i++)
+        {
+            Vector3 poopPos = poop_list[i].gameObject.transform.position;
+            poop_list[i].transform.position = new Vector3(poopPos.x, poopPos.y + (sinWave * perlinValue)/50f, poopPos.z);
+        }*/
+
+
     }
     
     //Generates SinWave value

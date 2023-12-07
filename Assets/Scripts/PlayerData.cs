@@ -161,7 +161,7 @@ public class PlayerData : MonoBehaviour
         score = (120 - duration) + healthVal + happyVal;
         // total = duration, health, happy
 
-        bank = (score * 0.5f) + purse;
+        bank += (purse + happyVal/10f + healthVal/10f);
 
         trips_completed++;
 
