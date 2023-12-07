@@ -171,14 +171,17 @@ public class GameController : MonoBehaviour
             if (TimerOn == false)
             {
                 //LogPlayerData(float time, float happy, float health, int count, int loot)
-                if (enemy != null)
+                if (enemy != null && fish != null)
                 {
                     objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 500, fishCaught);
 
-                }else
+                }else if (fish != null)
                 {
                     objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, 0, 500, fishCaught);
 
+                }else
+                {
+                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, 0, 500, 0);
                 }
                 Debug.Log("Wrote down the player score values for the level!");
                 setScene(5);
@@ -266,22 +269,25 @@ public class GameController : MonoBehaviour
 
             //Fishing Role
             //Enable the Radial menu
-            if(fish.crewInRange)
+            if(fish != null)
             {
-                total_happiness += 0.025f;
-                fishTimer += Time.deltaTime;
-                if (fishTimer >= 8.5f)
+                if (fish.crewInRange)
                 {
+                    total_happiness += 0.025f;
+                    fishTimer += Time.deltaTime;
+                    if (fishTimer >= 8.5f)
+                    {
 
+                    }
+                    if (fishTimer >= 10f)
+                    {
+                        fishTimer = 0f;
+                        fishCaught++;
+                        Debug.Log(fishCaught);
+                    }
                 }
-                if (fishTimer >= 10f)
-                {
-                    fishTimer = 0f;
-                    fishCaught++;
-                    Debug.Log(fishCaught);
-                }
+                ShowMenu(0, fish);
             }
-            ShowMenu(0, fish);
 
 
             //Minus Happiness
@@ -373,8 +379,12 @@ public class GameController : MonoBehaviour
 
     private void ShowMenu(int step, RoleController role)
     {
+        Debug.Log("Upgrade Status:" + objs.GetComponent<PlayerData>().GetUpgrade());
+
         if (objs.GetComponent<PlayerData>().GetUpgrade() > 2)
         {
+            Debug.Log("Upgrade Status:" + objs.GetComponent<PlayerData>().GetUpgrade());
+
             if (objs.GetComponent<PlayerData>().GetUpgrade() > 4)
             {
                 if (role.inRange)
@@ -389,21 +399,20 @@ public class GameController : MonoBehaviour
                     role.transform.GetChild(step).GetChild(1).GetChild(3).gameObject.SetActive(false);
                 }
             }
+
+
+            if (role.inRange)
+            {
+                role.transform.GetChild(step).gameObject.SetActive(true);
+            }
             else
             {
-                if (role.inRange)
-                {
-                    role.transform.GetChild(step).gameObject.SetActive(true);
-                }
-                else
-                {
-                    role.transform.GetChild(step).gameObject.SetActive(false);
-                    role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
-                    role.transform.GetChild(step).GetChild(1).GetChild(2).gameObject.SetActive(false);
-                }
+                role.transform.GetChild(step).gameObject.SetActive(false);
+                role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
+                role.transform.GetChild(step).GetChild(1).GetChild(2).gameObject.SetActive(false);
             }
-                //Debug.Log("Role: " + role);
-            
+            //Debug.Log("Role: " + role);
+
 
         } 
         else if (objs.GetComponent<PlayerData>().GetUpgrade() != 0)
