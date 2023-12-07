@@ -26,6 +26,10 @@ public class GameController : MonoBehaviour
     public Text TimerText;
     public float Score;
 
+    //Fish Variables
+    private float fishTimer;
+    private int fishCaught;
+
     //Controller Variables
     public RoleController cleaner;
     public RoleController canon;
@@ -64,6 +68,10 @@ public class GameController : MonoBehaviour
             canon.y = canon.ball.transform.position.y;
             canon.x = canon.ball.transform.position.x;
         }
+
+        //Fishing Initialize
+        fishCaught = 0;
+        fishTimer = 0f;
 
         //Countdown Timer Variables Initialize
         //TimeLeft = 240.0f; //4 minutes
@@ -210,6 +218,13 @@ public class GameController : MonoBehaviour
                 else if (player.currentJob == fish)
                 {
                     total_happiness += 0.025f;
+                    fishTimer += Time.deltaTime;
+                    if (fishTimer >= 10f)
+                    {
+                        fishTimer = 0f;
+                        fishCaught++;
+                        Debug.Log(fishCaught);
+                    }
                 }
 
             }
@@ -232,20 +247,30 @@ public class GameController : MonoBehaviour
 
             //Cleaning Role
             //Enable the Radial menu
-            ShowMenu(0, cleaner);
-
-            //Fishing Role
-            //Enable the Radial menu
-            if(fish != null)
-            {
-                ShowMenu(0, fish);
-            }
-
             if (cleaner.crewInRange)
             {
                 total_happiness += 0.05f;
             }
+            ShowMenu(0, cleaner);
 
+
+            //Fishing Role
+            //Enable the Radial menu
+            if(fish.crewInRange)
+            {
+                total_happiness += 0.025f;
+                fishTimer += Time.deltaTime;
+                if (fishTimer >= 10f)
+                {
+                    fishTimer = 0f;
+                    fishCaught++;
+                    Debug.Log(fishCaught);
+                }
+            }
+            ShowMenu(0, fish);
+
+
+            //Minus Happiness
             total_happiness -= 0.01f;
 
             //Repair Role

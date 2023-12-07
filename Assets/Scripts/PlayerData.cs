@@ -83,8 +83,8 @@ public class PlayerData : MonoBehaviour
             int status = GetUpgrade();
             if (status == 0)
             {
-                SceneManager.LoadScene("01_Level_V1");
-                //SceneManager.LoadScene("03_Level");
+                //SceneManager.LoadScene("01_Level_V1");
+                SceneManager.LoadScene("03_Level_V2");
             }
             else if (status == 1)
             {
