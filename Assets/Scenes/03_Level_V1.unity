@@ -973,6 +973,7 @@ Transform:
   m_Children:
   - {fileID: 1531427275}
   - {fileID: 1496235961}
+  - {fileID: 879854250}
   m_Father: {fileID: 786714539}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.247}
 --- !u!114 &175681856
@@ -6377,12 +6378,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879854249}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 284, y: 95.6, z: 0}
-  m_LocalScale: {x: 50.643276, y: 50.643276, z: 50.643276}
+  m_LocalRotation: {x: -0, y: -0, z: 0.0021531864, w: 0.9999977}
+  m_LocalPosition: {x: -0.30296716, y: 1.1045263, z: 0}
+  m_LocalScale: {x: 1.1525712, y: 1.135932, z: 0.81906337}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1534942414}
+  m_Father: {fileID: 175681855}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &879854251
 SpriteRenderer:
@@ -6424,7 +6425,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: b2e49d79fec279a40a6d51b8f696f0e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11003,6 +11004,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1426301266}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1337028574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12917,7 +12930,6 @@ RectTransform:
   - {fileID: 1143852200}
   - {fileID: 1031935674}
   - {fileID: 123508720}
-  - {fileID: 879854250}
   - {fileID: 923324207}
   - {fileID: 365180147}
   - {fileID: 1652852371}
@@ -14486,6 +14498,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1337028571}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1426301266}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
