@@ -170,18 +170,20 @@ public class GameController : MonoBehaviour
             //Timer Countdown
             if (TimerOn == false)
             {
+                PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+                int poopSlipped = player.poopSlipped;
                 //LogPlayerData(float time, float happy, float health, int count, int loot)
                 if (enemy != null && fish != null)
                 {
-                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 500, fishCaught);
+                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 500, fishCaught, poopSlipped);
 
                 }else if (fish != null)
                 {
-                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, 0, 500, fishCaught);
+                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, 0, 500, fishCaught, poopSlipped);
 
                 }else
                 {
-                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, 0, 500, 0);
+                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, 0, 500, 0, poopSlipped);
                 }
                 Debug.Log("Wrote down the player score values for the level!");
                 setScene(5);
