@@ -110,13 +110,13 @@ public class ShopController : MonoBehaviour
 
     public void SetCost(int status)
     {
-        if (status % 2 == 0 && status != 0)
-        {
-            upgrade_cost = 1000;
-        }
-        else if (status % 2 == 1 || status == 0)
+        if (status % 2 == 0)
         {
             upgrade_cost = 500;
+        }
+        else if (status % 2 == 1)
+        {
+            upgrade_cost = 1000;
         }
         upgrade_txt.text = upgrade_cost.ToString("0.00");
     }
@@ -196,9 +196,9 @@ public class ShopController : MonoBehaviour
             upgrade_icon06.color = Color.white;
             upgrade_icon07.color = Color.white;
             upgrade_icon08.color = Color.white;
-            upgrade_icon09.color = Color.black;
-            upgrade_icon10.color = Color.black;
-            upgrade_icon11.color = Color.black;
+            upgrade_icon09.color = Color.white;
+            upgrade_icon10.color = Color.white;
+            upgrade_icon11.color = Color.white;
             upgrade_icon12.color = Color.black;
         }
         else if (status == 4)

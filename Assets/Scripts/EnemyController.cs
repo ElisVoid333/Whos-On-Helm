@@ -34,7 +34,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         //ship.enabled = false;
-        initialPos = new Vector2(-15.59f, -5.3f);
+        initialPos = new Vector2(-13.617f, -3.53f);
         currentPos = initialPos;
         targetPos = currentPos;
 

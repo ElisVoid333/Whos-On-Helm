@@ -274,7 +274,7 @@ public class PlayerController : MonoBehaviour
         {
             //position = helmTask;
             position = game.helm.GetComponent<Transform>().position;
-            position.x = position.x - 0.7f;
+            position.x = position.x - 0.5f;
             transform.position = position;
             ChangeAnimationState(CAP_INTERACT);
         }
