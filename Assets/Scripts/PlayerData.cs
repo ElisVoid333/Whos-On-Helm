@@ -14,6 +14,7 @@ public class PlayerData : MonoBehaviour
     static float score;
     static int kills;
     static int purse;
+    static int fishWorth;
 
     static float Total_score;
     static int Total_count;
@@ -54,6 +55,7 @@ public class PlayerData : MonoBehaviour
         duration = 0f;
         happyVal = 0f;
         healthVal = 0f;
+        fishWorth = 25;
     }
 
 
@@ -144,13 +146,13 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    public void LogPlayerData(float time, float happy, float health, int count, int loot)
+    public void LogPlayerData(float time, float happy, float health, int count, int loot, int fishCaught)
     {
         duration = time;
         happyVal = happy;
         healthVal = health;
         kills = count;
-        purse = loot;
+        purse = loot + (fishCaught * fishWorth);
 
         ProcessData();
     }
