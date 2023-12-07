@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     string CAP_STATIC = "";
     string CAP_WALK = "";
     string CAP_INTERACT = "";
+    string CAP_SLIP = "";
 
     //RigidBody
     private Rigidbody2D rb;
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
             CAP_STATIC = "Cap_Static";
             CAP_WALK = "Cap_Walk";
             CAP_INTERACT = "Cap_Interact";
+            CAP_SLIP = "Cap_Slip";
         }
         else if (captainSelected == 1)
         {
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour
             CAP_STATIC = "CapF_Static";
             CAP_WALK = "CapF_Walk";
             CAP_INTERACT = "CapF_Interact";
+            CAP_SLIP = "CapF_Slip";
         }
         else if (captainSelected == 2)
         {
@@ -80,6 +83,7 @@ public class PlayerController : MonoBehaviour
             CAP_STATIC = "CapN_Static";
             CAP_WALK = "CapN_Walk";
             CAP_INTERACT = "CapN_Interact";
+            CAP_SLIP = "CapN_Slip";
         }
         //animator = gameObject.GetComponent<Animator>();
 
@@ -122,6 +126,7 @@ public class PlayerController : MonoBehaviour
         {
             moveable = false;
             timerSlipt += Time.deltaTime;
+            ChangeAnimationState(CAP_SLIP);
             if (timerSlipt >= 3f)
             {
                 //Play Sound
@@ -130,6 +135,7 @@ public class PlayerController : MonoBehaviour
                 timerSlipt = 0f;
                 inputX = 0f;
                 inputY = 0f;
+                ChangeAnimationState(CAP_STATIC);
             }
         }
 
