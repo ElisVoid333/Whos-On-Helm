@@ -68,6 +68,12 @@ public class FirstMateController : MonoBehaviour
             transform.position = position;
             ChangeAnimationState(CREW_INTERACT);
         }
+        else if (role == "fish")
+        {
+            position = game.fish.GetComponent<Transform>().position;
+            transform.position = position;
+            ChangeAnimationState(CREW_INTERACT);
+        }
         else if (role == "standby_1")
         {
             position = GameObject.Find("Standby_1").GetComponent<Transform>().position;

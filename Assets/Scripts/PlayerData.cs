@@ -71,45 +71,6 @@ public class PlayerData : MonoBehaviour
 
     public void setScene(int i)
     {
-        /*
-        if (i == 0)
-        {
-            SceneManager.LoadScene("01_Level");
-        }
-        else if (i == 1)
-        {
-            Kill();
-            SceneManager.LoadScene("00_IntroScene");
-        }
-        else if (i == 2)
-        {
-            SceneManager.LoadScene("06_WinScene");
-        }
-        else if (i == 3)
-        {
-            SceneManager.LoadScene("07_LoseScene");
-        }
-        else if (i == 4)
-        {
-            SceneManager.LoadScene("tutorial");
-        }
-        //// score, buy, acheivment
-        else if (i == 5)
-        {
-            SceneManager.LoadScene("03_Score");
-        }
-        else if (i == 6)
-        {
-            SceneManager.LoadScene("04_BuyPhase");
-        }
-        else if (i == 7)
-        {
-            SceneManager.LoadScene("08_Achievements");
-        }
-        else if (i == 8)
-        {
-            SceneManager.LoadScene("02_Level");
-        }*/
 
         if (i == 0)
         {
@@ -119,7 +80,32 @@ public class PlayerData : MonoBehaviour
         }
         else if (i == 1)
         {
-            SceneManager.LoadScene("01_Level");
+            int status = GetUpgrade();
+            if (status == 0)
+            {
+                SceneManager.LoadScene("01_Level_V1");
+            }
+            else if (status == 1)
+            {
+                SceneManager.LoadScene("01_Level_V2");
+            }
+            else if (status == 2)
+            {
+                SceneManager.LoadScene("02_Level_V1");
+            }
+            else if (status == 3)
+            {
+                SceneManager.LoadScene("02_Level_V2");
+            }
+            else if (status == 4)
+            {
+                SceneManager.LoadScene("03_Level_V1");
+            }
+            else if (status == 5)
+            {
+                SceneManager.LoadScene("03_Level_V2");
+
+            }
         }
         else if (i == 2)
         {

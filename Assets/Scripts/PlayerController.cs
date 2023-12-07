@@ -253,6 +253,13 @@ public class PlayerController : MonoBehaviour
             transform.position = position;
             ChangeAnimationState(CAP_INTERACT);
         }
+        else if (role == "fish")
+        {
+            //position = helmTask;
+            position = game.fish.GetComponent<Transform>().position;
+            transform.position = position;
+            ChangeAnimationState(CAP_INTERACT);
+        }
     }
 
     public void SetMoveable(bool input)
