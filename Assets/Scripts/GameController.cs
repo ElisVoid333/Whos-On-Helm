@@ -26,7 +26,8 @@ public class GameController : MonoBehaviour
     public Text TimerText;
     public float Score;
 
-    //Fish Variables
+    //Fish
+    public GameObject fishObj;
     private float fishTimer;
     private int fishCaught;
 
@@ -70,8 +71,12 @@ public class GameController : MonoBehaviour
         }
 
         //Fishing Initialize
-        fishCaught = 0;
-        fishTimer = 0f;
+        if (SceneManager.GetActiveScene().name == "03_Level_V1" || SceneManager.GetActiveScene().name == "03_Level_V2")
+        { 
+            fishObj.SetActive(false);
+            fishCaught = 0;
+            fishTimer = 0f;
+        }
 
         //Countdown Timer Variables Initialize
         //TimeLeft = 240.0f; //4 minutes
@@ -219,9 +224,14 @@ public class GameController : MonoBehaviour
                 {
                     total_happiness += 0.025f;
                     fishTimer += Time.deltaTime;
+                    if (fishTimer >= 8.5f)
+                    {
+                        fishObj.SetActive(true);
+                    }
                     if (fishTimer >= 10f)
                     {
                         fishTimer = 0f;
+                        fishObj.SetActive(false);
                         fishCaught++;
                         Debug.Log(fishCaught);
                     }
@@ -260,6 +270,10 @@ public class GameController : MonoBehaviour
             {
                 total_happiness += 0.025f;
                 fishTimer += Time.deltaTime;
+                if (fishTimer >= 8.5f)
+                {
+
+                }
                 if (fishTimer >= 10f)
                 {
                     fishTimer = 0f;
