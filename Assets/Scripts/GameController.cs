@@ -269,6 +269,7 @@ public class GameController : MonoBehaviour
 
             //Fishing Role
             //Enable the Radial menu
+            //Debug.Log(fish);
             if(fish != null)
             {
                 if (fish.crewInRange)
@@ -277,12 +278,13 @@ public class GameController : MonoBehaviour
                     fishTimer += Time.deltaTime;
                     if (fishTimer >= 8.5f)
                     {
-
+                        fishObj.SetActive(true);
                     }
                     if (fishTimer >= 10f)
                     {
                         fishTimer = 0f;
                         fishCaught++;
+                        fishObj.SetActive(false);
                         Debug.Log(fishCaught);
                     }
                 }
@@ -379,7 +381,7 @@ public class GameController : MonoBehaviour
 
     private void ShowMenu(int step, RoleController role)
     {
-        Debug.Log("Upgrade Status:" + objs.GetComponent<PlayerData>().GetUpgrade());
+        //Debug.Log("Upgrade Status:" + objs.GetComponent<PlayerData>().GetUpgrade());
 
         if (objs.GetComponent<PlayerData>().GetUpgrade() > 2)
         {
