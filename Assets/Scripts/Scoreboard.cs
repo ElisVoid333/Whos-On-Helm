@@ -33,11 +33,11 @@ public class Scoreboard : MonoBehaviour
         int navy = playerdata.GetComponent<PlayerData>().GetKillData();
         float total = playerdata.GetComponent<PlayerData>().GetPlayerFloat("total");
 
-        label1.text = time.ToString();
-        label2.text = happy.ToString();
-        label3.text = health.ToString();
+        label1.text = time.ToString("0.00");
+        label2.text = happy.ToString("0.00");
+        label3.text = health.ToString("0.00");
         label4.text = navy.ToString();
-        label5.text = total.ToString();
+        label5.text = total.ToString("0.00");
     }
 
     // Update is called once per frame

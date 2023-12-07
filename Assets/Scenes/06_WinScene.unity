@@ -1199,6 +1199,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1688112659}
+    - target: {fileID: 7893576798930791612, guid: 315a7d8b6e784034da131876f070e871, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9016526242684227572, guid: 315a7d8b6e784034da131876f070e871, type: 3}
       propertyPath: m_text
       value: Keep Playing

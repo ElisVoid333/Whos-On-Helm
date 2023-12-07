@@ -80,7 +80,7 @@ public class TiltController_Revised : MonoBehaviour
 
         //Player Tilt
         playerStartPos = player.transform.position;
-        Debug.Log(playerTiltForce* sinWave* perlinValue);
+        //Debug.Log(playerTiltForce* sinWave* perlinValue);
         player.AddForce(new Vector2(0f, playerTiltForce * playerSinWave * perlinValue));
         //player.GetComponent<PlayerController>().tiltY = playerSinWave * perlinValue;
 

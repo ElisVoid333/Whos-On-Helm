@@ -8,13 +8,17 @@ public class ShopController : MonoBehaviour
 {
     public GameObject data;
     private int level;
+    private int crewM8_1;
+    private int crewM8_2;
+    private int crewM8_3;
     private float bank;
 
     private int upgrade_cost;
+    private int skin_cost;
 
     public TextMeshProUGUI bank_txt;
-    public TextMeshProUGUI label2;
-    public TextMeshProUGUI label3;
+    public TextMeshProUGUI upgrade_txt;
+    public TextMeshProUGUI skin_txt;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +27,7 @@ public class ShopController : MonoBehaviour
         level = data.GetComponent<PlayerData>().GetUpgrade();
         bank = data.GetComponent<PlayerData>().GetPlayerFloat("bank");
 
-        bank_txt.text = bank.ToString();
+        bank_txt.text = bank.ToString("0.00");
 
         if (level % 2 == 0)
         {
@@ -32,6 +36,7 @@ public class ShopController : MonoBehaviour
         {
             upgrade_cost = 50;
         }
+        bank_txt.text = bank.ToString("0.00");
     }
 
     // Update is called once per frame
@@ -42,9 +47,13 @@ public class ShopController : MonoBehaviour
 
     public void UpgradeShip()
     {
-        level++;
-        data.GetComponent<PlayerData>().SetUpgrade(level);
-        bank -= upgrade_cost;
-        data.GetComponent<PlayerData>().SetPlayerFloat("bank", bank);
+        if (bank >= upgrade_cost)
+        {
+            level++;
+            data.GetComponent<PlayerData>().SetUpgrade(level);
+            bank -= upgrade_cost;
+            data.GetComponent<PlayerData>().SetPlayerFloat("bank", bank);
+        }
+        
     }
 }

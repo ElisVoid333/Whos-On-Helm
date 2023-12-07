@@ -31,9 +31,9 @@ public class PlayerData : MonoBehaviour
      */
 
     //Crew mates
-    static int firstM8_chosen;
-    static int secondM8_chosen;
-    static int thirdM8_chosen;
+    static int firstM8_chosen = 1;
+    static int secondM8_chosen = 2;
+    static int thirdM8_chosen = 3;
     private void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
@@ -283,17 +283,17 @@ public class PlayerData : MonoBehaviour
 
     public void SetFirstM8(int skin)
     {
-
+        firstM8_chosen = skin;
     }
 
     public void SetSecondM8(int skin)
     {
-
+        secondM8_chosen = skin;
     }
 
     public void SetThirdM8(int skin)
     {
-
+        thirdM8_chosen = skin;
     }
 
 
@@ -304,16 +304,16 @@ public class PlayerData : MonoBehaviour
 
     public int GetFirstM8()
     {
-        return 1;
+        return firstM8_chosen;
     }
 
     public int GetSecondM8()
     {
-        return 2;
+        return secondM8_chosen;
     }
 
     public int GetThirdM8()
     {
-        return 3;
+        return thirdM8_chosen;
     }
 }

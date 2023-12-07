@@ -114,7 +114,7 @@ public class GameController : MonoBehaviour
                 //LogPlayerData(float time, float happy, float health, int count, int loot)
                 objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 500);
                 Debug.Log("Wrote down the player score values for the level!");
-                setScene(6);
+                setScene(5);
             }
         }
     }
@@ -380,8 +380,15 @@ public class GameController : MonoBehaviour
         else if (i == 1)
         {
             objs = GameObject.FindGameObjectWithTag("DontDestroy");
-            objs.GetComponent<PlayerData>().Kill();
-            SceneManager.LoadScene("01_Level");
+            int status = objs.GetComponent<PlayerData>().GetUpgrade();
+            if(status == 0)
+            {
+                SceneManager.LoadScene("01_Level");
+            }else if(status == 1)
+            {
+                SceneManager.LoadScene("02_Level");
+            }
+            
         }
         else if (i == 2)
         {
