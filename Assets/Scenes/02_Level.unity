@@ -8867,8 +8867,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
   m_LocalPosition: {x: -14.106099, y: -4.451577, z: 0}
-  m_LocalScale: {x: 0.6222926, y: 0.62229264, z: 0.6222926}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10891,6 +10891,7 @@ MonoBehaviour:
   cleaner: {fileID: 597187545}
   canon: {fileID: 1187077685}
   repair: {fileID: 2085186585}
+  fish: {fileID: 0}
   repairRate: 15
   helm: {fileID: 584776627}
   ship: {fileID: 365180154}

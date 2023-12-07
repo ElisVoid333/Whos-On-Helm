@@ -334,20 +334,40 @@ public class GameController : MonoBehaviour
 
     private void ShowMenu(int step, RoleController role)
     {
-        if (canon != null)
+        if (objs.GetComponent<PlayerData>().GetUpgrade() > 2)
         {
-            //Debug.Log("Role: " + role);
-            if (role.inRange)
+            if (objs.GetComponent<PlayerData>().GetUpgrade() > 4)
             {
-                role.transform.GetChild(step).gameObject.SetActive(true);
+                if (role.inRange)
+                {
+                    role.transform.GetChild(step).gameObject.SetActive(true);
+                }
+                else
+                {
+                    role.transform.GetChild(step).gameObject.SetActive(false);
+                    role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
+                    role.transform.GetChild(step).GetChild(1).GetChild(2).gameObject.SetActive(false);
+                    role.transform.GetChild(step).GetChild(1).GetChild(3).gameObject.SetActive(false);
+                }
             }
             else
             {
-                role.transform.GetChild(step).gameObject.SetActive(false);
-                role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
-                role.transform.GetChild(step).GetChild(1).GetChild(2).gameObject.SetActive(false);
+                if (role.inRange)
+                {
+                    role.transform.GetChild(step).gameObject.SetActive(true);
+                }
+                else
+                {
+                    role.transform.GetChild(step).gameObject.SetActive(false);
+                    role.transform.GetChild(step).GetChild(1).GetChild(1).gameObject.SetActive(false);
+                    role.transform.GetChild(step).GetChild(1).GetChild(2).gameObject.SetActive(false);
+                }
             }
-        } else if (objs.GetComponent<PlayerData>().GetUpgrade() != 0)
+                //Debug.Log("Role: " + role);
+            
+
+        } 
+        else if (objs.GetComponent<PlayerData>().GetUpgrade() != 0)
         {
             //Debug.Log("Role: " + role);
             if (role.inRange)
