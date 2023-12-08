@@ -6,7 +6,14 @@ public class tutorial_controller : MonoBehaviour
 {
     public GameObject[] popUps;  // Assign your popups in the inspector
     private int popUpIndex = 1;
+
+
+    public AudioSource bell;
+
+
+
     private bool waitForSpacebar = true;
+
 
     void Start()
     {
@@ -36,6 +43,8 @@ public class tutorial_controller : MonoBehaviour
             if (popUpIndex > 0)
             {
                 popUps[popUpIndex - 1].SetActive(false);
+
+                bell.Play();
             }
 
             // Enable the current popup
@@ -51,7 +60,7 @@ public class tutorial_controller : MonoBehaviour
             popUpIndex = 0;
             // If there are no more popups, you can perform any other actions here
         }
-
-    }
+        }
 
 }
+

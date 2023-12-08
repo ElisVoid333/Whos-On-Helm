@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     //RigidBody
     private Rigidbody2D rb;
 
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -118,10 +119,13 @@ public class PlayerController : MonoBehaviour
         if (moveable)
         {
             speed = 1.5f;
+            
         }
         if (moveable == false)
         {
             speed = 0f;
+            //audio
+           
         }
 
         //Poop Slipped
@@ -144,6 +148,7 @@ public class PlayerController : MonoBehaviour
 
         if (moveable == true)
         {
+          
             if (Input.GetKey(KeyCode.W))
             {
                 inputY = speed;
@@ -164,6 +169,7 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.D))
             {
+               
                 inputX = speed;
                 ChangeAnimationState(CAP_WALK);
                 spriteRenderer.flipX = false;
