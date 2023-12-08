@@ -58,6 +58,15 @@ public class ShopController : MonoBehaviour
 
         captain_chosen = data.GetCaptain();
 
+        level = data.GetUpgrade();
+        bank = data.GetPlayerFloat("bank");
+        crewM8_1 = data.GetFirstM8();
+        crewM8_1_temp = crewM8_1;
+        crewM8_2 = data.GetSecondM8();
+        crewM8_2_temp = crewM8_2;
+        crewM8_3 = data.GetThirdM8();
+        crewM8_3_temp = crewM8_3;
+
         if (captain_chosen == 0)
         {
             captain_1.sprite = maleStatic;
@@ -116,14 +125,7 @@ public class ShopController : MonoBehaviour
             crew_3.sprite = crew_sprite3;
         }
 
-        level = data.GetUpgrade();
-        bank = data.GetPlayerFloat("bank");
-        crewM8_1 = data.GetFirstM8();
-        crewM8_1_temp = crewM8_1;
-        crewM8_2 = data.GetSecondM8();
-        crewM8_2_temp = crewM8_2;
-        crewM8_3 = data.GetThirdM8();
-        crewM8_3_temp = crewM8_3;
+        
 
         bank_txt.text = bank.ToString("0.00");
 
