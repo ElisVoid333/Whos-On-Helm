@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public bool occupied;
     public RoleController currentJob;
     private bool slipped;
+    public int poopSlipped;
     private float timerSlipt;
 
     //public Collider2D playableArea;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     //RigidBody
     private Rigidbody2D rb;
 
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,8 @@ public class PlayerController : MonoBehaviour
         speed = 1.5f;
         moveable = true;
         occupied = false;
+
+        poopSlipped = 0;
         slipped = false;
         timerSlipt = 0f;
 
@@ -115,10 +119,13 @@ public class PlayerController : MonoBehaviour
         if (moveable)
         {
             speed = 1.5f;
+            
         }
         if (moveable == false)
         {
             speed = 0f;
+            //audio
+           
         }
 
         //Poop Slipped
@@ -141,6 +148,7 @@ public class PlayerController : MonoBehaviour
 
         if (moveable == true)
         {
+          
             if (Input.GetKey(KeyCode.W))
             {
                 inputY = speed;
@@ -161,6 +169,7 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.D))
             {
+               
                 inputX = speed;
                 ChangeAnimationState(CAP_WALK);
                 spriteRenderer.flipX = false;
@@ -304,7 +313,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Poop")
         {
             Destroy(collision.gameObject);
-
+            poopSlipped++;
             Debug.Log("Captain slipped on poopy!");
             slipped = true;
         }

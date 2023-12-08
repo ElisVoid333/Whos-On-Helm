@@ -14,9 +14,12 @@ public class PlayerData : MonoBehaviour
     static float score;
     static int kills;
     static int purse;
+    static int fishWorth;
+    static int fishesFished;
 
     static float Total_score;
     static int Total_count;
+    static int Total_slipped;
     static float bank;
 
     static int trips_completed; // How many trips they have completed
@@ -34,6 +37,20 @@ public class PlayerData : MonoBehaviour
     static int firstM8_chosen = 1;
     static int secondM8_chosen = 2;
     static int thirdM8_chosen = 3;
+
+    //Achievments
+    //static GameObject canonTrophy;
+    static bool canonTrophyCompleted = false;
+    //static GameObject broomTrophy;
+    static bool broomTrophyCompleted = false;
+    //static GameObject crownTrophy;
+    static bool crownTrophyCompleted = false;
+    //static GameObject helmTrophy;
+    static bool helmTrophyCompleted = false;
+    //static GameObject fishTrophy;
+    static bool fishTrophyCompleted = false;
+
+
     private void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
@@ -54,6 +71,13 @@ public class PlayerData : MonoBehaviour
         duration = 0f;
         happyVal = 0f;
         healthVal = 0f;
+        fishWorth = 25;
+
+        if (SceneManager.GetActiveScene().name == "08_Achievements")
+        {
+            calculateAchievements();
+            displayAchievements();
+        }
     }
 
 
@@ -83,8 +107,8 @@ public class PlayerData : MonoBehaviour
             int status = GetUpgrade();
             if (status == 0)
             {
+                //SceneManager.LoadScene("01_Level_V1");
                 SceneManager.LoadScene("01_Level_V1");
-                //SceneManager.LoadScene("03_Level");
             }
             else if (status == 1)
             {
@@ -141,18 +165,24 @@ public class PlayerData : MonoBehaviour
         else if (i == 8)
         {
             SceneManager.LoadScene("08_Achievements");
+            calculateAchievements();
+            //displayAchievements();
         }
     }
 
-    public void LogPlayerData(float time, float happy, float health, int count, int loot)
+    public void LogPlayerData(float time, float happy, float health, int count, int loot, int fishCaught, int slippedOnPoop)
     {
         duration = time;
         happyVal = happy;
         healthVal = health;
         kills = count;
-        purse = loot;
+        purse = loot + (fishCaught * fishWorth);
+        
+        fishesFished += fishCaught;
+        Total_slipped += slippedOnPoop;
 
         ProcessData();
+
     }
 
     public void ProcessData()
@@ -167,6 +197,92 @@ public class PlayerData : MonoBehaviour
 
         Total_score += score;
         Total_count += kills;
+
+        calculateAchievements();
+    }
+
+    //Achievements 
+    public void calculateAchievements()
+    {
+        if (Total_slipped >= 10)
+        {
+            broomTrophyCompleted = true;
+        }
+        if (Total_count >= 15)
+        {
+            canonTrophyCompleted = true;
+        }
+        if (duration <= 75f)
+        {
+            helmTrophyCompleted = true;
+        }
+        if (fishesFished >= 50)
+        {
+            fishTrophyCompleted = true;
+        }
+        if (bank >= 10000)
+        {
+            crownTrophyCompleted = true;
+        }
+    }
+
+    public void displayAchievements()
+    {
+        Debug.Log("displaying all achievements");
+        calculateAchievements();
+        //Get all trophies
+        GameObject broomTrophy = GameObject.FindGameObjectWithTag("BroomTrophy");
+        Debug.Log(broomTrophy);
+        GameObject canonTrophy = GameObject.FindGameObjectWithTag("CanonTrophy");
+        GameObject crownTrophy = GameObject.FindGameObjectWithTag("KingTrophy");
+        GameObject helmTrophy = GameObject.FindGameObjectWithTag("HelmTrophy");
+        GameObject fishTrophy = GameObject.FindGameObjectWithTag("FishTrophy");
+
+        if (broomTrophyCompleted)
+        {
+            broomTrophy.SetActive(true);
+        }
+        else
+        {
+            broomTrophy.SetActive(false);
+        }
+
+        if (canonTrophyCompleted)
+        {
+            canonTrophy.SetActive(true);
+        }
+        else
+        {
+            canonTrophy.SetActive(false);
+        }
+
+        if (helmTrophyCompleted)
+        {
+            helmTrophy.SetActive(true);
+        }
+        else
+        {
+            helmTrophy.SetActive(false);
+        }
+
+        if (crownTrophyCompleted)
+        {
+            crownTrophy.SetActive(true);
+        }
+        else
+        {
+            crownTrophy.SetActive(false);
+        }
+
+        if (fishTrophyCompleted)
+        {
+            fishTrophy.SetActive(true);
+        }
+        else
+        {
+            fishTrophy.SetActive(false);
+        }
+
     }
 
     public float GetPlayerFloat(string name)
