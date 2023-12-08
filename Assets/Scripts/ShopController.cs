@@ -77,6 +77,45 @@ public class ShopController : MonoBehaviour
             captain_3.sprite = neutralStatic;
         }
 
+        if (crewM8_1 == 1)
+        {
+            crew_1.sprite = crew_sprite1;
+        }
+        else if (crewM8_1 == 2)
+        {
+            crew_1.sprite = crew_sprite2;
+        }
+        else if (crewM8_1 == 3)
+        {
+            crew_1.sprite = crew_sprite3;
+        }
+
+        if (crewM8_2 == 1)
+        {
+            crew_2.sprite = crew_sprite1;
+        }
+        else if (crewM8_2 == 2)
+        {
+            crew_2.sprite = crew_sprite2;
+        }
+        else if (crewM8_2 == 3)
+        {
+            crew_2.sprite = crew_sprite3;
+        }
+
+        if (crewM8_3 == 1)
+        {
+            crew_3.sprite = crew_sprite1;
+        }
+        else if (crewM8_3 == 2)
+        {
+            crew_3.sprite = crew_sprite2;
+        }
+        else if (crewM8_3 == 3)
+        {
+            crew_3.sprite = crew_sprite3;
+        }
+
         level = data.GetUpgrade();
         bank = data.GetPlayerFloat("bank");
         crewM8_1 = data.GetFirstM8();
@@ -121,7 +160,7 @@ public class ShopController : MonoBehaviour
             crew_3.sprite = crew_sprite3;
         }
 
-        //skin_cost = 0;
+        skin_cost = 0;
     }
 
     public void SetCrew1(int skin)
@@ -203,6 +242,9 @@ public class ShopController : MonoBehaviour
             data.SetPlayerFloat("bank", bank);
         }
 
+        data.SetFirstM8(crewM8_1);
+        data.SetSecondM8(crewM8_2);
+        data.SetThirdM8(crewM8_3);
     }
 
     public void SetCost(int status)
@@ -220,6 +262,7 @@ public class ShopController : MonoBehaviour
 
     public void SetSkinCost()
     {
+        skin_cost = 0;
         if (crewM8_1 != crewM8_1_temp)
         {
             skin_cost += 150;

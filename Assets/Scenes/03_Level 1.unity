@@ -6280,6 +6280,11 @@ MonoBehaviour:
   respawnRate: 15
   timer: 0
   randomTime: 0
+  navy_audio: {fileID: 0}
+  main_audio: {fileID: 0}
+  canon_audio: {fileID: 0}
+  fadeInDuration: 0
+  fadeOutDuration: 0
 --- !u!50 &879100048
 Rigidbody2D:
   serializedVersion: 4
@@ -8618,6 +8623,7 @@ MonoBehaviour:
   moveable: 0
   occupied: 0
   currentJob: {fileID: 0}
+  poopSlipped: 0
   game: {fileID: 8055151341807211500}
   spriteRenderer: {fileID: 1096069401}
   maleStatic: {fileID: 21300000, guid: 1b3acba538b8ad94fa7a8c77992ff299, type: 3}
@@ -15053,6 +15059,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1799898958}
+  controller1: {fileID: 9100000, guid: 4f125f30836c02d4694abfe722d95800, type: 2}
+  controller2: {fileID: 9100000, guid: 4556f2aded5e98e4a8c7542af93c07f5, type: 2}
+  controller3: {fileID: 9100000, guid: 563099c0e52fe3444b73e45473b1af6c, type: 2}
+  crewSprite_1: {fileID: 21300000, guid: de29414e8a2684d46ac24eaba590537c, type: 3}
+  crewSprite_2: {fileID: 21300000, guid: f1f64275b60a5474f9f8e8ace6079b64, type: 3}
+  crewSprite_3: {fileID: 21300000, guid: dc4f30f904a003b4b8661eb5afb3ebc5, type: 3}
   game: {fileID: 8055151341807211500}
   CREW_STATIC: crewmate1_idle
   CREW_INTERACT: crewmate1_interact
@@ -15795,6 +15807,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1860512482}
+  controller1: {fileID: 9100000, guid: 4f125f30836c02d4694abfe722d95800, type: 2}
+  controller2: {fileID: 9100000, guid: 4556f2aded5e98e4a8c7542af93c07f5, type: 2}
+  controller3: {fileID: 9100000, guid: 563099c0e52fe3444b73e45473b1af6c, type: 2}
+  crewSprite_1: {fileID: 21300000, guid: de29414e8a2684d46ac24eaba590537c, type: 3}
+  crewSprite_2: {fileID: 21300000, guid: f1f64275b60a5474f9f8e8ace6079b64, type: 3}
+  crewSprite_3: {fileID: 21300000, guid: dc4f30f904a003b4b8661eb5afb3ebc5, type: 3}
   game: {fileID: 8055151341807211500}
   CREW_STATIC: crewmate2_idle
   CREW_INTERACT: crewmate2_interact
@@ -17873,6 +17891,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2112799611}
+  controller1: {fileID: 9100000, guid: 4f125f30836c02d4694abfe722d95800, type: 2}
+  controller2: {fileID: 9100000, guid: 4556f2aded5e98e4a8c7542af93c07f5, type: 2}
+  controller3: {fileID: 9100000, guid: 563099c0e52fe3444b73e45473b1af6c, type: 2}
+  crewSprite_1: {fileID: 21300000, guid: de29414e8a2684d46ac24eaba590537c, type: 3}
+  crewSprite_2: {fileID: 21300000, guid: f1f64275b60a5474f9f8e8ace6079b64, type: 3}
+  crewSprite_3: {fileID: 21300000, guid: dc4f30f904a003b4b8661eb5afb3ebc5, type: 3}
   game: {fileID: 8055151341807211500}
   CREW_STATIC: crewmate3_idle
   CREW_INTERACT: crewmate3_interact
@@ -19200,6 +19224,7 @@ MonoBehaviour:
   TimerOn: 1
   TimerText: {fileID: 1181612696}
   Score: 0
+  fishObj: {fileID: 0}
   cleaner: {fileID: 597187545}
   canon: {fileID: 1187077685}
   repair: {fileID: 2085186585}

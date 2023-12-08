@@ -9180,6 +9180,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1799898958}
+  controller1: {fileID: 9100000, guid: 4f125f30836c02d4694abfe722d95800, type: 2}
+  controller2: {fileID: 9100000, guid: 4556f2aded5e98e4a8c7542af93c07f5, type: 2}
+  controller3: {fileID: 9100000, guid: 563099c0e52fe3444b73e45473b1af6c, type: 2}
+  crewSprite_1: {fileID: 21300000, guid: de29414e8a2684d46ac24eaba590537c, type: 3}
+  crewSprite_2: {fileID: 21300000, guid: f1f64275b60a5474f9f8e8ace6079b64, type: 3}
+  crewSprite_3: {fileID: 21300000, guid: dc4f30f904a003b4b8661eb5afb3ebc5, type: 3}
   game: {fileID: 8055151341807211500}
   CREW_STATIC: crewmate1_idle
   CREW_INTERACT: crewmate1_interact
