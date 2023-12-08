@@ -24,6 +24,13 @@ public class ShopController : MonoBehaviour
     public TextMeshProUGUI upgrade_txt;
     public TextMeshProUGUI skin_txt;
 
+    public SpriteRenderer crew_1;
+    public SpriteRenderer crew_2;
+    public SpriteRenderer crew_3;
+    public Sprite crew_sprite1;
+    public Sprite crew_sprite2;
+    public Sprite crew_sprite3;
+
     public SpriteRenderer captain_1;
     public SpriteRenderer captain_2;
     public SpriteRenderer captain_3;
@@ -82,6 +89,7 @@ public class ShopController : MonoBehaviour
         bank_txt.text = bank.ToString("0.00");
 
         SetCost(level);
+        SetSkinCost();
 
         SetupUpgrades(level);
     }
@@ -94,6 +102,77 @@ public class ShopController : MonoBehaviour
 
         SetupUpgrades(level);
         SetCost(level);
+
+        SetSkinCost();
+    }
+
+    public void ResetButton(int crewMate)
+    {
+        if (crewMate == 1)
+        {
+            crew_1.sprite = crew_sprite1;
+        }
+        else if (crewMate == 2)
+        {
+            crew_2.sprite = crew_sprite2;
+        }
+        else if (crewMate == 3)
+        {
+            crew_3.sprite = crew_sprite3;
+        }
+
+        //skin_cost = 0;
+    }
+
+    public void SetCrew1(int skin)
+    {
+        crewM8_1_temp = skin;
+        if (skin == 1)
+        {
+            crew_1.sprite = crew_sprite1;
+        }
+        else if (skin == 2)
+        {
+            crew_1.sprite = crew_sprite2;
+        }
+        else if (skin == 3)
+        {
+            crew_1.sprite = crew_sprite3;
+        }
+    }
+
+    public void SetCrew2(int skin)
+    {
+        crewM8_2_temp = skin;
+        if (skin == 1)
+        {
+            crew_2.sprite = crew_sprite1;
+        }
+        else if (skin == 2)
+        {
+            crew_2.sprite = crew_sprite2;
+        }
+        else if (skin == 3)
+        {
+            crew_2.sprite = crew_sprite3;
+        }
+    }
+
+    public void SetCrew3(int skin)
+    {
+        crewM8_3_temp = skin;
+        if (skin == 1)
+        {
+            crew_3.sprite = crew_sprite1;
+        }
+        else if (skin == 2)
+        {
+            crew_3.sprite = crew_sprite2;
+        }
+        else if (skin == 3)
+        {
+            crew_3.sprite = crew_sprite3;
+        }
     }
 
     public void UpgradeShip()
@@ -106,6 +185,24 @@ public class ShopController : MonoBehaviour
             data.SetPlayerFloat("bank", bank);
         }
         
+    }
+
+    public void CustomizeCrew()
+    {
+        crewM8_1 = crewM8_1_temp;
+        crewM8_2 = crewM8_2_temp;
+        crewM8_3 = crewM8_3_temp;
+
+        if (bank >= skin_cost && level < 5)
+        {
+            data.SetFirstM8(crewM8_1);
+            data.SetSecondM8(crewM8_2);
+            data.SetThirdM8(crewM8_3);
+
+            bank -= skin_cost;
+            data.SetPlayerFloat("bank", bank);
+        }
+
     }
 
     public void SetCost(int status)
@@ -121,9 +218,26 @@ public class ShopController : MonoBehaviour
         upgrade_txt.text = upgrade_cost.ToString("0.00");
     }
 
+    public void SetSkinCost()
+    {
+        if (crewM8_1 != crewM8_1_temp)
+        {
+            skin_cost += 150;
+        }
+        if (crewM8_2 != crewM8_2_temp)
+        {
+            skin_cost += 150;
+        }
+        if (crewM8_3 != crewM8_3_temp)
+        {
+            skin_cost += 150;
+        }
+        skin_txt.text = skin_cost.ToString("0.00");
+    }
+
     public void SetupUpgrades(int status)
     {
-        Debug.Log("Upgrade Status : " + status);
+        //Debug.Log("Upgrade Status : " + status);
 
         if (status == 0)
         {
