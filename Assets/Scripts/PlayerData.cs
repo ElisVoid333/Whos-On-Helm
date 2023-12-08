@@ -86,7 +86,7 @@ public class PlayerData : MonoBehaviour
             if (status == 0)
             {
                 //SceneManager.LoadScene("01_Level_V1");
-                SceneManager.LoadScene("03_Level_V1");
+                SceneManager.LoadScene("01_Level_V1");
             }
             else if (status == 1)
             {
