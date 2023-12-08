@@ -30,6 +30,13 @@ public class EnemyController : MonoBehaviour
     public float timer; //Time.deltaTime
     public float randomTime;
 
+    //audio
+    public AudioSource navy_audio;
+    public AudioSource main_audio;
+    public AudioSource canon_audio;
+    public float fadeInDuration;
+    public float fadeOutDuration;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,13 +99,21 @@ public class EnemyController : MonoBehaviour
         if (attacking)
         {
             shooting = true;
-            
+
+            //audio
+        
+            PlayWithFadeOut();
+
         }
         HandleEnemyCanonBall(ball);
 
         if (lives == 0)
         {
             SetTarget("flee");
+
+            //audio stop
+            navy_audio.Stop();
+            main_audio.Play();
 
         }
     }
@@ -109,7 +124,9 @@ public class EnemyController : MonoBehaviour
         {
             attacking = true;
             targetPos = attackPos;
-        }else if (target == "flee")
+            PlayWithFadeIn();
+        }
+        else if (target == "flee")
         {
             targetPos = fleePos;
         }
@@ -126,6 +143,8 @@ public class EnemyController : MonoBehaviour
                 //Debug.Log("FIRE!!!");
                 ballPos.x = ship.transform.position.x + 2f;
                 fire = true;
+                //audio
+                playCanonFire();
             }
             //Debug.Log("Enemy CanonBall");
             canonball.SetActive(true);
@@ -150,6 +169,9 @@ public class EnemyController : MonoBehaviour
             ballPos.x = ship.transform.position.x + 2f;
 
             fire = false;
+
+            //audio
+            canon_audio.Stop();
 
             canonball.SetActive(false);
         }
@@ -190,5 +212,61 @@ public class EnemyController : MonoBehaviour
             //Debug.Log("Enemy MISSED");
         }
     }
+
+    //AUDIO
+    public void PlayWithFadeIn()
+    {
+        StartCoroutine(FadeInCoroutine());
+    }
+
+    public void PlayWithFadeOut()
+    {
+        StartCoroutine(FadeOutCoroutine());
+    }
+
+    private IEnumerator FadeInCoroutine()
+    {
+
+        Debug.Log("Playing navy theme");
+        navy_audio.Play();
+
+        float startVolume = 0.0f; // Start volume from zero
+
+        // Gradually increase the volume over the specified duration
+        for (float t = 0.0f; t < fadeInDuration; t += Time.deltaTime)
+        {
+            navy_audio.volume = Mathf.Lerp(startVolume, 0.2f, t / fadeInDuration);
+            yield return null;
+        }
+
+        // Ensure the volume is set to the maximum (1.0f)
+        navy_audio.volume = 0.2f;
+        
+
+    }
+
+    private IEnumerator FadeOutCoroutine()
+    {
+
+        Debug.Log("Stopping main Theme");
+        float startVolume = main_audio.volume; // Start volume from zero
+
+        for (float t = 0.0f; t < fadeOutDuration; t += Time.deltaTime)
+        {
+            main_audio.volume = Mathf.Lerp(startVolume, 0.0f, t / fadeOutDuration);
+            yield return null;
+        }
+        // Ensure the volume is set to the maximum (1.0f)
+        main_audio.volume = 0.0f;
+        main_audio.Stop();
+
+    }
+
+    public void playCanonFire()
+    {
+        canon_audio.Play();
+    }
+
+
 
 }
