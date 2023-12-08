@@ -14,6 +14,12 @@ TagManager:
   - Crew
   - Border
   - Poop
+  - DontDestroy
+  - BroomTrophy
+  - CanonTrophy
+  - KingTrophy
+  - HelmTrophy
+  - FishTrophy
   layers:
   - Default
   - TransparentFX

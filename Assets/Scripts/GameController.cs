@@ -170,22 +170,33 @@ public class GameController : MonoBehaviour
             //Timer Countdown
             if (TimerOn == false)
             {
+                PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+                int poopSlipped = player.poopSlipped;
                 //LogPlayerData(float time, float happy, float health, int count, int loot)
                 if (enemy != null && fish != null)
                 {
-                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 500, fishCaught);
+                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 500, fishCaught, poopSlipped);
+                    objs.GetComponent<PlayerData>().calculateAchievements();
 
-                }else if (fish != null)
+                }
+                else if (fish != null)
                 {
-                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, 0, 500, fishCaught);
+                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, 0, 500, fishCaught, poopSlipped);
+                    objs.GetComponent<PlayerData>().calculateAchievements();
 
-                }else
+                }
+                else
                 {
-                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, 0, 500, 0);
+                    objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, 0, 500, 0, poopSlipped);
+                    objs.GetComponent<PlayerData>().calculateAchievements();
                 }
                 Debug.Log("Wrote down the player score values for the level!");
                 setScene(5);
             }
+        }
+        if (SceneManager.GetActiveScene().name == "08_Achievements")
+        {
+            objs.GetComponent<PlayerData>().displayAchievements();
         }
     }
 
@@ -269,6 +280,7 @@ public class GameController : MonoBehaviour
 
             //Fishing Role
             //Enable the Radial menu
+            //Debug.Log(fish);
             if(fish != null)
             {
                 if (fish.crewInRange)
@@ -277,12 +289,13 @@ public class GameController : MonoBehaviour
                     fishTimer += Time.deltaTime;
                     if (fishTimer >= 8.5f)
                     {
-
+                        fishObj.SetActive(true);
                     }
                     if (fishTimer >= 10f)
                     {
                         fishTimer = 0f;
                         fishCaught++;
+                        fishObj.SetActive(false);
                         Debug.Log(fishCaught);
                     }
                 }
@@ -379,7 +392,7 @@ public class GameController : MonoBehaviour
 
     private void ShowMenu(int step, RoleController role)
     {
-        Debug.Log("Upgrade Status:" + objs.GetComponent<PlayerData>().GetUpgrade());
+        //Debug.Log("Upgrade Status:" + objs.GetComponent<PlayerData>().GetUpgrade());
 
         if (objs.GetComponent<PlayerData>().GetUpgrade() > 2)
         {
@@ -546,6 +559,10 @@ public class GameController : MonoBehaviour
         else if (i == 8)
         {
             SceneManager.LoadScene("08_Achievements");
+            objs.GetComponent<PlayerData>().calculateAchievements();
+            //GameObject broomObj = GameObject.FindGameObjectWithTag("BroomTrophy");
+            //Debug.Log(broomObj);
+            //objs.GetComponent<PlayerData>().displayAchievements();
         }
 
     }
