@@ -394,7 +394,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 0e2c73356974071468935205a741486a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2836,6 +2836,7 @@ MonoBehaviour:
   TimerOn: 0
   TimerText: {fileID: 1181612696}
   Score: 0
+  fishObj: {fileID: 0}
   cleaner: {fileID: 597187546}
   canon: {fileID: 0}
   repair: {fileID: 2085186586}
@@ -4340,6 +4341,7 @@ MonoBehaviour:
   moveable: 0
   occupied: 0
   currentJob: {fileID: 0}
+  poopSlipped: 0
   game: {fileID: 1670624686}
   spriteRenderer: {fileID: 6491971248903614118}
   maleStatic: {fileID: 21300000, guid: 1b3acba538b8ad94fa7a8c77992ff299, type: 3}
@@ -4828,7 +4830,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

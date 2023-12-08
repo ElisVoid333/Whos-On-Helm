@@ -5312,6 +5312,7 @@ MonoBehaviour:
   moveable: 0
   occupied: 0
   currentJob: {fileID: 0}
+  poopSlipped: 0
   game: {fileID: 1670624686}
   spriteRenderer: {fileID: 1038267346}
   maleStatic: {fileID: 21300000, guid: 1b3acba538b8ad94fa7a8c77992ff299, type: 3}
@@ -8679,7 +8680,7 @@ GameObject:
   - component: {fileID: 1670624686}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
