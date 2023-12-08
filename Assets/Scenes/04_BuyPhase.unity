@@ -1143,12 +1143,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9203920001499396860}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeShip
-        m_Mode: 1
+        m_MethodName: SetSkin3
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2373,12 +2373,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9203920001499396860}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeShip
-        m_Mode: 1
+        m_MethodName: SetSkin1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4426,12 +4426,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9203920001499396860}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeShip
-        m_Mode: 1
+        m_MethodName: SetSkin3
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4827,12 +4827,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9203920001499396860}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeShip
-        m_Mode: 1
+        m_MethodName: SetSkin2
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4892,7 +4892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &876554551
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5200,12 +5200,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9203920001499396860}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeShip
-        m_Mode: 1
+        m_MethodName: SetSkin2
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7172,7 +7172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1502822410
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7840,8 +7840,8 @@ RectTransform:
   - {fileID: 936216512}
   - {fileID: 940762135}
   - {fileID: 864424838}
-  - {fileID: 427412896}
   - {fileID: 1849590479}
+  - {fileID: 427412896}
   m_Father: {fileID: 876554551}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -8698,12 +8698,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9203920001499396860}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeShip
-        m_Mode: 1
+        m_MethodName: SetSkin3
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8831,12 +8831,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9203920001499396860}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeShip
-        m_Mode: 1
+        m_MethodName: SetSkin2
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9654,12 +9654,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9203920001499396860}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeShip
-        m_Mode: 1
+        m_MethodName: SetSkin1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -10201,12 +10201,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9203920001499396860}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeShip
-        m_Mode: 1
+        m_MethodName: SetSkin1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -10758,6 +10758,7 @@ MonoBehaviour:
   TimerOn: 1
   TimerText: {fileID: 0}
   Score: 0
+  fishObj: {fileID: 0}
   cleaner: {fileID: 0}
   canon: {fileID: 0}
   repair: {fileID: 0}
@@ -11041,6 +11042,12 @@ MonoBehaviour:
   bank_txt: {fileID: 96489944}
   upgrade_txt: {fileID: 7114001232594110574}
   skin_txt: {fileID: 2094601476}
+  crewSkin_1: {fileID: 945004424}
+  crewSkin_2: {fileID: 936216513}
+  crewSkin_3: {fileID: 534500604}
+  crewSprite1: {fileID: 21300000, guid: de29414e8a2684d46ac24eaba590537c, type: 3}
+  crewSprite2: {fileID: 21300000, guid: f1f64275b60a5474f9f8e8ace6079b64, type: 3}
+  crewSprite3: {fileID: 21300000, guid: dc4f30f904a003b4b8661eb5afb3ebc5, type: 3}
   captain_1: {fileID: 2692675445392617665}
   captain_2: {fileID: 1964135602}
   captain_3: {fileID: 65801350}
