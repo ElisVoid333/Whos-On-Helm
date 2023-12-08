@@ -103,7 +103,7 @@ public class ShopController : MonoBehaviour
         SetupUpgrades(level);
         SetCost(level);
 
-        SetSkinCost();
+        //SetSkinCost();
     }
 
     public void ResetButton(int crewMate)
