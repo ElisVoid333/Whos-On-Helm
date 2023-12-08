@@ -5930,7 +5930,7 @@ Animator:
   m_GameObject: {fileID: 1031935673}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: eefdd6ac843c75a4da298f66639babea, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5c735cc5d5e5f70469c4392c4d9b6435, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6334,12 +6334,12 @@ MonoBehaviour:
   moveable: 0
   occupied: 0
   currentJob: {fileID: 0}
+  poopSlipped: 0
   game: {fileID: 8055151341807211500}
   spriteRenderer: {fileID: 1096069401}
   maleStatic: {fileID: 21300000, guid: 1b3acba538b8ad94fa7a8c77992ff299, type: 3}
   femaleStatic: {fileID: 21300000, guid: 6038a9644711b7f4a8ed98e25e8c10e4, type: 3}
   neutralStatic: {fileID: 21300000, guid: e27177ddf2a161a4dba79fda05b43504, type: 3}
-  walking_audio: {fileID: 0}
 --- !u!212 &1096069401
 SpriteRenderer:
   m_ObjectHideFlags: 0
