@@ -5,6 +5,7 @@ using UnityEngine;
 public class tutorial_controller : MonoBehaviour
 {
     public GameObject[] popUps;  // Assign your popups in the inspector
+    public GameObject popupBG;
     private int popUpIndex = 1;
 
 
@@ -58,7 +59,11 @@ public class tutorial_controller : MonoBehaviour
         {
             Debug.Log("No more popups");
             popUpIndex = 0;
-            // If there are no more popups, you can perform any other actions here
+            popUps[popUpIndex].SetActive(false);
+            popupBG.SetActive(false);
+
+            // If there are no more popups
+
         }
         }
 

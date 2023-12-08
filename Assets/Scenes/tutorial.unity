@@ -1104,6 +1104,7 @@ Transform:
   - {fileID: 949478724}
   - {fileID: 793345042}
   - {fileID: 1042747212}
+  - {fileID: 1378013453}
   m_Father: {fileID: 1534942414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &303024318
@@ -1136,6 +1137,7 @@ MonoBehaviour:
   - {fileID: 949478723}
   - {fileID: 793345041}
   - {fileID: 1042747211}
+  popupBG: {fileID: 303024316}
   bell: {fileID: 1674370974}
 --- !u!212 &303024319
 SpriteRenderer:
@@ -5312,6 +5314,7 @@ MonoBehaviour:
   moveable: 0
   occupied: 0
   currentJob: {fileID: 0}
+  poopSlipped: 0
   game: {fileID: 1670624686}
   spriteRenderer: {fileID: 1038267346}
   maleStatic: {fileID: 21300000, guid: 1b3acba538b8ad94fa7a8c77992ff299, type: 3}
@@ -6708,15 +6711,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1378013452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4557.3623}
-  m_LocalScale: {x: 7.6130605, y: 7.6130605, z: 7.6130605}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.13145468, y: 0.13145468, z: 0.13145468}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1534942414}
+  m_Father: {fileID: 303024317}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.424514, y: -144.45659}
+  m_AnchoredPosition: {x: -0.1800003, y: 0.89001465}
   m_SizeDelta: {x: 15, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1378013454
@@ -7362,7 +7365,6 @@ RectTransform:
   - {fileID: 2064127573}
   - {fileID: 1577644902}
   - {fileID: 2057825127}
-  - {fileID: 1378013453}
   - {fileID: 303024317}
   - {fileID: 1818650340}
   - {fileID: 1916151337}
