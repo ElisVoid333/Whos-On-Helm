@@ -39,15 +39,15 @@ public class PlayerData : MonoBehaviour
     static int thirdM8_chosen = 3;
 
     //Achievments
-    static GameObject canonTrophy;
+    //static GameObject canonTrophy;
     static bool canonTrophyCompleted = false;
-    static GameObject broomTrophy;
+    //static GameObject broomTrophy;
     static bool broomTrophyCompleted = false;
-    static GameObject crownTrophy;
+    //static GameObject crownTrophy;
     static bool crownTrophyCompleted = false;
-    static GameObject helmTrophy;
+    //static GameObject helmTrophy;
     static bool helmTrophyCompleted = false;
-    static GameObject fishTrophy;
+    //static GameObject fishTrophy;
     static bool fishTrophyCompleted = false;
 
 
@@ -72,8 +72,10 @@ public class PlayerData : MonoBehaviour
         happyVal = 0f;
         healthVal = 0f;
         fishWorth = 25;
-        if (SceneManager.GetActiveScene().name == "08_achievements")
+
+        if (SceneManager.GetActiveScene().name == "08_Achievements")
         {
+            calculateAchievements();
             displayAchievements();
         }
     }
@@ -163,6 +165,8 @@ public class PlayerData : MonoBehaviour
         else if (i == 8)
         {
             SceneManager.LoadScene("08_Achievements");
+            calculateAchievements();
+            //displayAchievements();
         }
     }
 
@@ -178,6 +182,7 @@ public class PlayerData : MonoBehaviour
         Total_slipped += slippedOnPoop;
 
         ProcessData();
+
     }
 
     public void ProcessData()
@@ -207,7 +212,7 @@ public class PlayerData : MonoBehaviour
         {
             canonTrophyCompleted = true;
         }
-        if (duration >= 75f)
+        if (duration <= 75f)
         {
             helmTrophyCompleted = true;
         }
@@ -223,12 +228,15 @@ public class PlayerData : MonoBehaviour
 
     public void displayAchievements()
     {
+        Debug.Log("displaying all achievements");
+        calculateAchievements();
         //Get all trophies
-        broomTrophy = GameObject.FindGameObjectWithTag("BroomTrophy");
-        canonTrophy = GameObject.FindGameObjectWithTag("CanonTrophy");
-        crownTrophy = GameObject.FindGameObjectWithTag("KingTrophy");
-        helmTrophy = GameObject.FindGameObjectWithTag("HelmTrophy");
-        fishTrophy = GameObject.FindGameObjectWithTag("FishTrophy");
+        GameObject broomTrophy = GameObject.FindGameObjectWithTag("BroomTrophy");
+        Debug.Log(broomTrophy);
+        GameObject canonTrophy = GameObject.FindGameObjectWithTag("CanonTrophy");
+        GameObject crownTrophy = GameObject.FindGameObjectWithTag("KingTrophy");
+        GameObject helmTrophy = GameObject.FindGameObjectWithTag("HelmTrophy");
+        GameObject fishTrophy = GameObject.FindGameObjectWithTag("FishTrophy");
 
         if (broomTrophyCompleted)
         {

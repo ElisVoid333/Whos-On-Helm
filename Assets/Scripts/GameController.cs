@@ -176,18 +176,27 @@ public class GameController : MonoBehaviour
                 if (enemy != null && fish != null)
                 {
                     objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, enemy.GetComponent<EnemyController>().attacks, 500, fishCaught, poopSlipped);
+                    objs.GetComponent<PlayerData>().calculateAchievements();
 
-                }else if (fish != null)
+                }
+                else if (fish != null)
                 {
                     objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, 0, 500, fishCaught, poopSlipped);
+                    objs.GetComponent<PlayerData>().calculateAchievements();
 
-                }else
+                }
+                else
                 {
                     objs.GetComponent<PlayerData>().LogPlayerData(TimeActual, total_happiness, total_health, 0, 500, 0, poopSlipped);
+                    objs.GetComponent<PlayerData>().calculateAchievements();
                 }
                 Debug.Log("Wrote down the player score values for the level!");
                 setScene(5);
             }
+        }
+        if (SceneManager.GetActiveScene().name == "08_Achievements")
+        {
+            objs.GetComponent<PlayerData>().displayAchievements();
         }
     }
 
@@ -550,6 +559,10 @@ public class GameController : MonoBehaviour
         else if (i == 8)
         {
             SceneManager.LoadScene("08_Achievements");
+            objs.GetComponent<PlayerData>().calculateAchievements();
+            //GameObject broomObj = GameObject.FindGameObjectWithTag("BroomTrophy");
+            //Debug.Log(broomObj);
+            //objs.GetComponent<PlayerData>().displayAchievements();
         }
 
     }
