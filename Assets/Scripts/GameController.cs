@@ -53,14 +53,17 @@ public class GameController : MonoBehaviour
     public GameObject objs; //temp val to hold PlayerData
     private bool PhysicsEnabled; //the case that determines if the scene is a playable one
 
+    private void Awake()
+    {
+        objs = GameObject.FindGameObjectWithTag("DontDestroy");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         //Ship Variables
         total_happiness = MAX_HAPPINESS;
         total_health = MAX_HEALTH;
-
-        objs = GameObject.FindGameObjectWithTag("DontDestroy");
 
         PhysicsEnabled = false;
 
